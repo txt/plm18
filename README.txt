@@ -68,15 +68,32 @@ function call(i,what,a,b,c,d,e,f,g,h,i,j,k,l,m) {
   return call1(OK.instances.is[i],what,
                  a,b,c,d,e,f,g,h,i,j,k,l,m)
 }
-function call1(class,i,what,a,b,c,d,e,f,g,h,i,j,k,l,m) {
-  if (class=="") "class-less instance"/0
+function call1(class,x,what,a,b,c,d,e,f,g,h,i,j,k,l,m) {
+  if (class=="") NOclass()
   if (what in OK.instances[class].does)
-     return funcall(i,OK.instances[i].does,
+     return funcall(OK.instances[x].does,x,
                     a,b,c,d,e,f,g,h,i,j,k,l,m)
   else if (class in OK.instances.parent) {
      return call1(OK.instances.parent[class],
-                  i,what,
+                  x,what,
                   a,b,c,d,e,f,g,h,i,j,k,l,m)
-  else "method lookup failure"/0   
+  else NOmethodfound()
+}
+function funcall(f,a,b,c,d,e,f,g,h,i,j,k,l,m) {
+  if (a=='') return @f()
+  if (b=='') return @f(a)
+  if (c=='') return @f(a,b)
+  if (d=='') return @f(a,b,c)
+  if (e=='') return @f(a,b,c,d)
+  if (f=='') return @f(a,b,c,d,e)
+  if (g=='') return @f(a,b,c,d,e,f)
+  if (h=='') return @f(a,b,c,d,e,f,g)
+  if (i=='') return @f(a,b,c,d,e,f,g,h)
+  if (j=='') return @f(a,b,c,e,e,f,g,h,i)
+  if (k=='') return @f(a,b,c,e,e,f,g,h,i,j)
+  if (l=='') return @f(a,b,c,d,e,f,g,h,i,j,k)
+  if (m=='') return @f(a,b,c,d,e,f,g,h,i,j,k,l)
+  return            @f(a,b,c,d,e,f,g,h,i,j,k,l,m)
+
 }
 ```
