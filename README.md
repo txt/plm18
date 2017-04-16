@@ -1,6 +1,16 @@
 # Ideas
 
-Systems
+## projects
+
+markdown
+mustache
+minikaren
+lisp
+
+## package management for ok
+
+
+## Systems
 - travis integration
 - mysql integration
 - find standard libraries. implement them
