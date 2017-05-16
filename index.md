@@ -2,7 +2,15 @@
 title: asdas
 ---
 
-## <i class="fa fa-user"> asdaa 111s 222
+## <i class="fa fa-user"> For students
+
+asd
+
+## <i class="fa fa-user"> For industry
+
+ada
+
+## <i class="fa fa-user"> My funding
 
 asas
 asdas
