@@ -1,3 +1,6 @@
+Special Topics in Computer Science: Programming Languages and Modeling
+Course: CSC 495 002 Semester: SPRG 2018
+T. Menzies  TTh 4:30pm–5:45pm 
 
 
 CSC 591-023 (10722)   
