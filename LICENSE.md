@@ -1,4 +1,4 @@
-BSD 2-Clause License
+# BSD 2-Clause License
 
 Copyright (c) 2017, textual stuff
 All rights reserved.
