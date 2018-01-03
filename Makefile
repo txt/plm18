@@ -1,5 +1,8 @@
 
-typo:  ready
+pull:  
+	@git pull
+
+push:  ready
 	@- git status
 	@- git commit -am "saving"
 	@- git push origin master
