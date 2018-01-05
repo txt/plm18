@@ -5,12 +5,8 @@ pull:
 push:  ready
 	@- git status
 	@- git commit -am "saving"
-	@- git push origin master
+	@- git push 
 
-commit:  ready
-	@- git status
-	@- git commit -a
-	@- git push origin master
 
 update:; @- git pull origin master
 status:; @- git status
