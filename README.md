@@ -44,7 +44,7 @@ The premise of this subject is that computers should adapt to the ways of people
 Introduction:
 <a href="doc/lecture0.md">Hello!</a> 
 <li>
-Python
+Python (intro):
 <li>
 Parsing (basics):
 <li>
