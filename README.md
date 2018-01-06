@@ -11,144 +11,65 @@
 ______
 
 
+# Home
 
-# Ideas
+The premise of this subject is that computers should adapt to the ways of people, and not the other way around. Why? well...
 
-## projects
-
-markdown
-mustache
-minikaren
-lisp
-
-## package management for ok
+- Sapir-Whorf hypothesis: The structure of a language affects its speakers' world view or cognition.
+- Given the right language, problem solving becomes easier [Hofstadter, 1980, p286](https://en.wikipedia.org/wiki/G%C3%B6del,_Escher,_Bach)
+   - Experts don't think deeper than novices; rather, they just don't waste as much time on bad ideas.
+   - The right language is like a  feature extractors act like a "filter": e.g. in chess, an expert literally does not see bad moves;
+   - Massive implicit pruning of the search space [Larkin, et.al. 1980](http://digitalcollections.library.cmu.edu/awweb/awarchive?type=file&item=33886)
 
 
-## Systems
-- travis integration
-- mysql integration
-- find standard libraries. implement them
-   - mustache
-   - markdown
-   - xml library
-   - json library
-   - stats
-   - collections
-   - the jamie 17
-       https://github.com/jamiejennings/rosie-pattern-language/blob/tranche-2/src/core/list.lua
-       Tests/examples are in:
-       https://github.com/jamiejennings/rosie-pattern-language/blob/tranche-2/src/list-test.lua
-- modes for vim, emacs, and what ever else is in the
-  language dejour
-        - time to struggle with viml, elisp, etc
-	- what should a mode do?
-        - long string highlighting
-	- markdown highting within a string
-	- lints. what lints?
-	- reformat (to arnold's standards)
-- Jypter   notepbppks
+<table width="100%" border=0 align=right>
+<tr>
+<td align=center><img  src="img/lectures.gif"></td>
+<td align=center><img  src="img/homework.png"></td>
+<td align=center><img  src="img/review.gif"></td>
+<td align=center><img  src="img/news.png"></td>
+</tr>
+<tr>
+<td align=center><b>Lectures</b></td>
+<td align=center><b>Project</b>
+</td><td align=center><b>Review </td>
+<td align=center><b>Misc</b> </td>
+</tr>
+<tr>
+<td valign=top  xwidth="100px">
 
-Port little languages
-
-- miniKaren
-- Norvig's lisp
-
-closures (is that even possible?)
-
-Add an OO layer
-
-polymorphism
-- static: if the LAST thing in "." chain is a ( then
-  at load time, do the lookup  (assumes that all files
-  have "safe" BEGIN statements and that methods defined
-  before used; e.g. superclassed before sub-classes
-  )
-- dynamic: ?
-- add "function Num.fred" notation
-
-anyway to garbage collect instance memory ?
-- if not, what is the cost? (dude, we are not writing operating
-  systems here). ? a linit for local vars that are objects?
-
-not multiple inheritance
-
-```
-BEGIN { 
-  OK.instances.id=0
-}
-function isa(class1,class2) {
-  OK.instances.exists[class1]
-  OK.instances.exists[class2]
-  OK.instances.parent[class2] = class1
-}
-function new(i,class,   id,tmp) {
-  if (class=='') class='lobby'
-  ++OK.instances.exists[class]
-  id = class ++OK.instances.exists[class]
-  OK.instances.isa[id] = class
-  return id
-}
-function call(i,what,a,b,c,d,e,f,g,h,i,j,k,l,m) {
-  class = OK.instances.isa[i] 
-  return call1(OK.instances.is[i],what,
-                 a,b,c,d,e,f,g,h,i,j,k,l,m)
-}
-function call1(class,x,what,a,b,c,d,e,f,g,h,i,j,k,l,m) {
-  if (class=="") NOclass()
-  if (what in OK.instances[class].does)
-     return funcall(OK.instances[x].does,x,
-                    a,b,c,d,e,f,g,h,i,j,k,l,m)
-  else if (class in OK.instances.parent) {
-     return call1(OK.instances.parent[class],
-                  x,what,
-                  a,b,c,d,e,f,g,h,i,j,k,l,m)
-  else NOmethodfound()
-}
-function funcall(f,a,b,c,d,e,f,g,h,i,j,k,l,m) {
-  if (a=='') return @f()
-  if (b=='') return @f(a)
-  if (c=='') return @f(a,b)
-  if (d=='') return @f(a,b,c)
-  if (e=='') return @f(a,b,c,d)
-  if (f=='') return @f(a,b,c,d,e)
-  if (g=='') return @f(a,b,c,d,e,f)
-  if (h=='') return @f(a,b,c,d,e,f,g)
-  if (i=='') return @f(a,b,c,d,e,f,g,h)
-  if (j=='') return @f(a,b,c,e,e,f,g,h,i)
-  if (k=='') return @f(a,b,c,e,e,f,g,h,i,j)
-  if (l=='') return @f(a,b,c,d,e,f,g,h,i,j,k)
-  if (m=='') return @f(a,b,c,d,e,f,g,h,i,j,k,l)
-  return            @f(a,b,c,d,e,f,g,h,i,j,k,l,m)
-
-}
-```
+<!-- -------------------------------- -->
+<ul>
+<li>
+Introduction:
+<a href="doc/lecture0.md">Hello!</a> 
+<li>
+Python
+<a href="404.md">basics</a>
+<li>
+Parsing (basics):
+<a href="404.md">stuff</a>
+<li>
+Styles:
+<a href="404.md">things</a>
+<li>
+Paradigms:
+<a href="404.md">other stuff</a>
+<li>
+Idioms:
+<a href="404.md">yet more stuff</a>
+</ul>
 
 
-# Free Bootstrap Resume/CV Template for developers
+<!-- -------------------------------- -->
 
-## Theme name:
+</td><td align=center valign=top xwidth="100px">
+</td>
+<td align=center   valign=top xwidth="100px">
+</td>
+<td align=center valign=top  xwidth="100px">
 
-Orbit
+</td>
+</tr>
 
-## Theme version:
-
-v1.0
-
-## Release Date:
-
-29 Jan 2016
-
-## Author: 
-
-Xiaoying Riley at 3rd Wave Media (http://themes.3rdwavemedia.com/)
-
-## Contact:
-
-Web: http://themes.3rdwavemedia.com/  
-Email: hello@3rdwavemedia.com  
-Twitter: @3rdwave_themes  
-
-## License: 
-
-This template is free under the Creative Commons Attribution 3.0 License.
-https://creativecommons.org/licenses/by/3.0/
+</table>
