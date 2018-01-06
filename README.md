@@ -10,20 +10,8 @@
 
 ______
 
-## The Premise
-
-Software are the gloves we use to touch and sense and control the world.
-This means we are helpless to whatever the
-gloves can't touch or see.
-
-So how can we design better gloves? This subject explores two ways:
-
-- Top down: Implement user idioms in convenient short hand notations (i.e. domain-specific languages);
-- Bottom up: relfect on the essence of programming to build a minimal machine that does what we want
-  (i.e. lambda calculus, resolution engines, data-flow, etc). 
 
 
-*.un~
 # Ideas
 
 ## projects

@@ -1,83 +1,115 @@
-Special Topics in Computer Science: Programming Languages and Modeling
-Course: CSC 495 002 Semester: SPRG 2018
-T. Menzies  TTh 4:30pm–5:45pm 
+[home](http://tiny.cc/plm18) |
+[copyright](https://github.com/txt/plm18/blob/master/LICENSE.md) &copy;2018, tim&commat;menzies.us
+<br>
+[<img width=900 src="https://raw.githubusercontent.com/txt/plm18/master/img/banner.png">](http://tiny.cc/plm18)<br>
+[syllabus](https://github.com/txt/plm18/blob/master/doc/syllabus.md) |
+[src](https://github.com/txt/plm18/tree/master/src) |
+[submit](http://tiny.cc/plm18give) |
+[chat](https://plm18.slack.com/)
 
 
-CSC 591-023 (10722)   
-CSC 791-023 (11162)   
-Tues/Thurs 4:30 to 5:45     
-EE III, Room 	2232 Engineering Building 3    
-Mid-session exam week 10 (on terminology)   
-No final exam.  
-
-### Overview
-
-**Synopsis:** 
-"Science" is the process of communities sharing and reviewing and
-improving each other’s ideas. Sadly, most "data science" is not about
-"science". Rather its about vendors selling you stuff that does not
-work properly and does not ring an alarm when it starts failing.  This
-is strange since an important part of knowledge is "no"; i.e. the
-ability to critically assess something, and to recognize when one idea
-is better, smarter, than another.
-So a million million people can run data miners. But how many now when
-those data miners start going wrong? And how to fix faulty models?
-Do this subject, learn answers to those questions. Become the data
-scientist everyone needs to consult with when things start going
-wrong.
-
-**Objectives:** By the end of the course, students should be able to:
- 
-+ Build data miners from scratch
-+ Customize data miners to serve the needs of communities reviewer and improving each other models.
-+ Report on complex technical  issues (spoken talk)
-+ Report on complex technical  issues (written talk)
+______
 
 
-<img class="pure-img displayed"  src="h150 ttp://www.csc.ncsu.edu/enews/images/1770.jpg">
+# Syllabus
 
-**Lecturer:** Tim Menzies (Prof)
+Spring 2018  
+CSC 495 Special Topics in CS (11297)  
+EB3, 2201  
+Tues, Thus, 4:30 to 5:45pm   
 
 
-+ Office Hours: Tuesday, 2:00-4:30 and by request
+## Catalog description:
+
+
+General principles of programming languages. Parsing technology
+such as  tokenization, parse trees, syntactic analysis, semantic
+analysis, regular expressions. Higher-level concepts such as state
+machines, type theory, lambda calculus, functions, closures and
+objects, predicates, resolution theorem proving. Projects in building
+programs using different paradigms.
+Extra topics include domain-specific languages and various
+languages used in industry and research; e.g. Python, Julia, Clojure,
+Prolog, Elixr, Haskell, etc.
+
+
+## General description:
+
+
+Given a commercial software problem, how can we best select a
+programming language for that problem? Further, given the ever-changing
+nature of computer programming languages, what can we learn now
+that will help us in the future to better understand future programming
+languages? To answer these questions, this subject takes a pragmatic
+and a theoretical approach,  from a modeling perspective.
+
+
+Lectures will cover:
+
+- Python programming
+   - all exercises will be done in Python
+- Parsing (basic)
+   - technology inclusing
+     tokenization, BNF, parse trees, syntactic analysis, semantic analysis,
+     regular expressions, macros
+- Styles
+   - From the Lopes text on programming styles
+   - good-old-times, forth, monolith, cookbook, pieline, reflective, spreadsheet, actors, map-reduce....
+- Paradigms:
+   - classical single-style languages such as LISP (functional), Smalltak (OO),  and Prolog (logical).  
+   - theory of programming (lambda calculus, logic programming, finite-state machines, closures,
+     predicates, etc
+- Idioms (usied in domain-specific languages)
+   - From the Fowler text on DLS.
+   - BNF, closure, decision table, dependency network, state machine, production rules....
+
+As to the modeling perspective, students will use these tools to
+build interpreters of domain-specific languages that are understandable
+and maintainable by non-programers.
+
+
+## Staff
+
+### Lecturer 
+
+<img width=200 align=right  src="http://menzies.us/img/smalltimm.png">
+
++ Tim Menzies (Prof)
++ Office Hours: Tuesday, 2:00-4:00 and by request
 + Location of Office Hours: EE II room 3298 
++ Github name: timm
 + Slack name: timm
 + E-Mail: tim.menzies@gmail.com 
-  + Only use this email for private matters. All other class communication should be via the class Slack group [http://fss17.slack.com](http://fss17.slack.com).
+  + Only use this email for private matters. All other class communication should be via the class Slack group [http://plm18.slack.com](http://plm18.slack.com).
 + Phone: 304-376-2859
        + **Do not use** this number, except in the most dire of 
           circumstances (best way to contact me is via email).
 
+### Teaching assistant
 
-<img class="pure-img displayed"  src="http://dichen.me/images/professional_avatar.jpeg">
+<img width=200 align=right  src="http://ai4se.net/img/Patrick.png">
 
-**Teaching assistant:** Di Chen (Jack, Ph.D. student)  
-
-
-
-+ Office Hours: Friday 8am to 10am
++ Tianpei (Patrick) Xia 
++ Office Hours: Wed 5pm to 7pm
 + Location of Office Hours: EB2 3240
-+ Slack name: jack\_chen
++ Github name: arennax
++ Slack name: patrick\_xia 
 
+<br clear=all>
 
+## Details
 
-**Group mailing list:** During term time, all communication will be via
-the Slack group https://fss17.slack.com.
+### Group Mailing List
+
+During term time, all communication will be via
+the Slack group https://plm18.slack.com.
 . Students are strongly encouraged to contribute their questions and answers to that shared resource.
 + Note that, for communication of a more private nature, contact the lecturer on the email shown above.
 
-**Topics:** Overview, methods for implementing comprehensible, fast, RAM-light, goal-aware, certification envelopers, context-aware, privacy-aware,
-anomaly-aware, sharable, self-tuning, incremental data mining methods.
 
+### Prerequisite
 
-
-**Projecti:** Students will implement and assess some of the above operators in a domain
-of their own choosing (ideally, some model relating to software engineering). Note that:
-
-+ CSC 791 Ph.d. student will work alone
-+ CSC 591 masters students will work in groups of three.
-
-**Prerequisite:** Note that this is a
+Note that this is a
 **programming-intensive** subject. A programming
 background is required in a contemporary language
 such as Java or C/C++ or Python. Hence,he
@@ -88,25 +120,53 @@ discretion.  Students in this class will work in
 Python, but no background knowledge of that language
 will be assumed.
 
-**Suggested texts:** none
-  absolute latest version of this book.
+### Suggested texts
 
-**Expected Workload:** 
-Sometimes, the lecturer/tutor will require you to attend a review session during their consultation  time. There, students may be asked to review
-code, concepts, or comment on the structure of the course. Those sessions are mandatory and failure to attend will result in marks being deducted.
+[Exercises in Programming Style](https://www.amazon.com/Exercises-Programming-Style-Cristina-Videira/dp/1482227371)     
+by Cristina Videira Lopes    
+Chapman and Hall/CRC; 1 edition (June 4, 2014)    
+ISBN-10: 1482227371
 
-Also, this is tools-based subject
+- [code avaliable on-line](https://github.com/crista/exercises-in-programming-style)
+- [Introductory slides](http://gotocon.com/dl/goto-aar-2013/slides/CristinaVideiraLopes_ExercisesInStyle.pdf)
+
+
+Domain-Specific Languages   
+by Martin Fowler   
+Addison-Wesley Professional; 1 edition (October 3, 2010)   
+ISBN-10: 0321712943 
+
+- [Catalog of DSL patterns](https://martinfowler.com/dslCatalog/)
+
+Thinks Python   
+by Allen Downey   
+O'Reilly Media; 2 edition (December 28, 2015)   
+ISBN-10: 1491939362
+
+- [PDF version](http://greenteapress.com/thinkpython2/thinkpython2.pdf)
+- [HTML version](http://greenteapress.com/thinkpython2/html/index.html)
+- [Code samples](https://github.com/AllenDowney/ThinkPython2/tree/master/code)
+
+
+### Expected Workload 
+
+This is tools-based subject
 and it is required that students learn and use those
 tools (Python, repositories, etc).  Students MUST be
 prepared to dedicate AT LEAST 5-8 working hours a
-week to this class (excluding the time spent in the
-classroom). Laboratory instruction is not included
+week to this class. 
+Laboratory instruction is not included
 in this subject (but the first three weeks will be
 spent on some in-depth programming tutorials). Note
 that the workload for masters and Ph.D. students
 will be different (see above).
 
-**Grading:** The following grade scale will be used: 
+Sometimes, the lecturer/tutor will require you to attend a review session during their consultation  time. There, students may be asked to review
+code, concepts, or comment on the structure of the course. Those sessions are mandatory and failure to attend will result in marks being deducted.
+
+### Grading 
+
+The following grade scale will be used: 
 
 + A+  (97-100), A (93-96), A-(90-92)
 + B+ (87-89), B (83-86), B-(80-82)
@@ -116,46 +176,46 @@ will be different (see above).
 
 Grades will be added together using:
 
++ Homeworks : 5 exercises, 4 marks each
++ Mid-term (Thursday March1) : 20  marks
++ Final Exam: 30 marks
++ Project (due April 26) 
+     - 7 marks: Video of the thing running
+     - 7 marks: **Tutorial** on the developed language (3 pages+)_
+     - 16 marks: A **Review** of your language, highlighting what parsing,  style, paradigm, idioms you used
+       (for each highlhg=ted ites, your commentary should define that item, explain
+        what problem it solves for you, discuss any drawbacks with using that item).
+	      - Note, we are expecting 8 items, or more.
+     - Tutorial and review should be fin pdf generated from Word of Latex using
+       [these tempaltes](https://www.acm.org/publications/proceedings-template-16dec2016);
+        e.g. [this doc](https://www.acm.org/binaries/content/assets/publications/article-templates/sig-alternate-sample.pdf)
 
-+ Homeworks : 25 marks (5 homerowks  5 marks each)
-+ Mid-term Exam week 10 (on terminology): 15  marks
-+ Paper (on current  directions in foundations of software science): 20 marks
-    - Masters students have to survey existing approaches 
-    - Ph.D. students must (a) survey _and_ (b) critically evaluate _and_ (c) propose
-      new directions
-+ Big project (on automated SE): 20 (essay) 10 (presentation) 10 (code review)
-    - The code review will be the lecturer reading the code checking that the implementation is above a minimum level of effort.
-    - Masters student have to motivate their design choices and demonstrate a a working system
-    - Ph.D. students have to (a) motivate their work and (b) demonstrate more than one working systemsand
-      (c) critically compare and contrasts these N methods.
+Reports
+that are too short or expand font size or margins sizes will lose points proprotional
+        to that expansion.
+	      
 
-The mid-term exam will be on Tues Oct 17 (80 minutes long)
+### Project
 
+Projects will be done in groups of three.
+For a task specified by the lecturer, students will implement a perfect language that uses
+the perfect mix of parser, style, paradigm, and idiom to generate a domain-specific
+language that non CS-programmers can understand and use.
 
-### Homeworks  and Project
+Project will start late in Febuary after the homeworks complete.
 
-Schedule:
+### Homework
 
-- August  will be introductory lectures.
-  - Semi-weekly homeworks start Aug 29 and are due Aug29, Sept12, Sept10,Sept26, Oct5.
-  - October is for the big project, due Nov 14
-  - November is for the big essay on current directions in software science, due Dec1. 
-      - Meanwhile, all groups will present their work (each talk= 15 minites) 
+Homeworks will be done individually. 
 
-Homeworks:
+Homeworks must be submitted on the due date, otherwise will lose 1 mark late per homework.
 
-+ All deliverables are group-based (one deliverable per group)
-  + 500-level students: groups of three
-  + 700-level students: groups of one
-+ Homeworks will be written into a public Github repo which students will create.
-+ Students will shorten the url (using something like tiny.cc) of the the main file of each homework submission
-    + That url wull be pasted into the spreadsheet http://tiny.cc/fss17give
-+ Homeworks will be  worth 5 marks
-+ Students cannot do homework <em>i+1</em> till  homework <em>i</em> gets at least 4 marks
-+ Homeworks can be submitted multiple times
-  + No late penalties
-  + No points taken off for repeat submissions
-  + ESSENTIAL: Students must submit (or resubmit) at least one item per week (or lose 2 marks)
+Until the end of Febuary, homeworks may be resubmitted, after rework, to get obtain higher marks.
+
+Pause.
+
+So, yes, you must submit SOMETHING each week or lose marks. But if you submit and don't get the grade,
+you CAN resubmit (at least, up to end of Feb). 
 
 ### Attendance
 
