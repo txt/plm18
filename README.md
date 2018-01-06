@@ -13,7 +13,7 @@ ______
 
 # Home
 
-The premise of this subject is that computers should adapt to the ways of people, and not the other way around. Why? well...
+The premise of this subject is that computer programming languages should adapt to the ways of people, and not the other way around. Why? well...
 
 - [Sapir-Whorf hypothesis](https://en.wikipedia.org/wiki/Linguistic_relativity#Programming_languages): The structure of a language affects its speakers' world view or cognition.
 - Given the right language, problem solving becomes easier [Hofstadter, 1980, p286](https://en.wikipedia.org/wiki/G%C3%B6del,_Escher,_Bach)
@@ -21,6 +21,7 @@ The premise of this subject is that computers should adapt to the ways of people
    - The right language is like a  feature extractors act like a "filter": e.g. in chess, an expert literally does not see bad moves;
    - Massive implicit pruning of the search space [Larkin, et.al. 1980](http://digitalcollections.library.cmu.edu/awweb/awarchive?type=file&item=33886)
 
+So this subject explores how to write a "good" programming language.
 
 <table width="100%" border=0 align=right>
 <tr>
