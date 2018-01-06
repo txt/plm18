@@ -177,8 +177,8 @@ The following grade scale will be used:
 Grades will be added together using:
 
 + Homeworks : 5 exercises, 4 marks each
-+ Mid-term (Thursday March1) : 20  marks
-+ Final Exam: 30 marks
++ Mid-term (Thursday March1, 6pm) : 20  marks
++ Final Exam (Tuesday, May8, 6pm): 30 marks
 + Project (due April 26) 
      - 7 marks: Video of the thing running
      - 7 marks: **Tutorial** on the developed language (3 pages+)_
