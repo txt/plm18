@@ -45,19 +45,14 @@ Introduction:
 <a href="doc/lecture0.md">Hello!</a> 
 <li>
 Python
-<a href="404.md">basics</a>
 <li>
 Parsing (basics):
-<a href="404.md">stuff</a>
 <li>
 Styles:
-<a href="404.md">things</a>
 <li>
 Paradigms:
-<a href="404.md">other stuff</a>
 <li>
 Idioms:
-<a href="404.md">yet more stuff</a>
 </ul>
 
 
