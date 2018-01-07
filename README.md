@@ -48,13 +48,15 @@ Introduction:
 <li>
 Python (intro):
 <li>
-Parsing (basics):
+Parsing (basics): Translation, [regx](doc/re.md), tokens, Precedence, Grammers, macros
 <li>
-Styles:
+Lopes' styles:
+   good-old-times, forth, monolith, cookbook, pipeline, reflective, spreadsheet, actors, map-reduce....
 <li>
-Paradigms:
+Paradigms: lambdaCalculus, Lisp Prolog, Unix, Virtual
 <li>
-Idioms:
+Fowler's DSL idioms:
+    BNF, closure, decision table, dependency network, state machine, production rules....
 </ul>
 
 
