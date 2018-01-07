@@ -48,7 +48,7 @@ Introduction:
 <li>
 Python (intro):
 <li>
-Parsing (basics): Translation, [regx](doc/re.md), tokens, Precedence, Grammers, macros
+Parsing (basics): Translation, <a href="doc/re.md">Regx</a>, tokens, Precedence, Grammers, macros
 <li>
 Lopes' styles:
    good-old-times, forth, monolith, cookbook, pipeline, reflective, spreadsheet, actors, map-reduce....
