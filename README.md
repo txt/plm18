@@ -41,29 +41,34 @@ So this subject explores how to write a "good" programming language.
 <td valign=top  xwidth="100px">
 
 <!-- -------------------------------- -->
-<ul>
-<li>
+<dl>
+<dt>
 Introduction:
-<a href="doc/lecture0.md">Hello!</a> 
-<li>
-Python (intro): Lopes proloue, 3, 4, 5,6,  8, 9, 10, 16, 19, 
+<dd>
+<a href="doc/lecture0.md">Hello!</a>,
+<a href="doc/style.md">Style</a>,
+
+<dt>
+Python (intro):
+<dd> Lopes' prologue, 3, 4, 5,6,  8, 9, 10, 16, 19, 
 <a href="http://openbookproject.net/thinkcs/python/english3e/classes_and_objects_I.html">classes</a>,
-<a href="https://www.python-course.eu/python3_magic_methods.php">magic</a>,
-<a href="http://anandology.com/python-practice-book/iterators.html">other</a>,
-<a href="https://norvig.com/python-iaq.html">yoda</a>
-<li>
-Parsing (basics): Translation, <a href="doc/re.md">Regx</a>,  Precedence, Grammers, macros
-<li>
-Metaphors: States, Tubs
-<li>
+<a href="http://anandology.com/python-practice-book/iterators.html">iterators</a>,
+<dt>
+Parsing (basics):
+<dd>Translation, <a href="doc/re.md">Regx</a>,  Precedence, Grammers, macros
+<dt>
+Metaphors:
+<dd>States, Tubs
+<dt>
 Lopes' styles:
-   good-old-times, forth, monolith, cookbook, pipeline, reflective, spreadsheet, actors, map-reduce....
-<li>
-Paradigms: make, lambdaCalculus, Lisp, smalltalk, Prolog, Unix, Virtual
-<li>
+ <dd>  spreadsheet, map-reduce, RESTful,...
+<dt>
+Paradigms:
+<dd>make, lambdaCalculus, Lisp, smalltalk, Prolog, Unix, Virtual
+<dt>
 Fowler's DSL idioms:
-    BNF, closure, decision table, dependency network, state machine, production rules....
-</ul>
+  <dd>  BNF, closure, decision table, dependency network, state machine, production rules....
+</dl>
 
 
 <!-- -------------------------------- -->
@@ -73,12 +78,23 @@ Fowler's DSL idioms:
 <td align=center   valign=top xwidth="100px">
 </td>
 <td align=center valign=top  xwidth="100px">
-
-<a href="https://www.youtube.com/watch?v=AuXCc7WSczM">Smalltalk</a><br>
+<p>Python: <br>
+<a href="https://norvig.com/python-iaq.html">Yoda</a><br>
+<a href="https://www.python-course.eu/python3_magic_methods.php">Magic</a>
+<hr>
+Fun:<br>
 <a href="https://www.youtube.com/watch?v=rRbY3TMUcgQ">Erlang</a><br>
+<hr>
+Lisp (ish):<br>
+<a href="http://www.paulgraham.com/rootsoflisp.html">Roots.lisp</a><br>
+<a href="http://library.readscheme.org/page1.html">Ultimate</a><br>
+<hr>
+Misc:<br>
+<a href="https://www.youtube.com/watch?v=qAKrMdUycb8">Liskov</a><br>
+<a href="https://www.youtube.com/watch?v=AuXCc7WSczM">Smalltalk</a><br>
 <a href="http://unbox.org/doc/Seven%20More%20Languages%20in%20Seven%20Weeks.pdf">Languages2</a><br>
 <a href="http://unbox.org/doc/Seven%20Languages%20in%20Seven%20Weeks%20A%20Pragmatic%20Guide%20to%20Learning%20Programming%20Languages.pdf">Languages1</a>
-
+</p>
 </td>
 </tr>
 
