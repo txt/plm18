@@ -46,14 +46,20 @@ So this subject explores how to write a "good" programming language.
 Introduction:
 <a href="doc/lecture0.md">Hello!</a> 
 <li>
-Python (intro):
+Python (intro): Lopes proloue, 3, 4, 5,6,  8, 9, 10, 16, 19, 
+<a href="http://openbookproject.net/thinkcs/python/english3e/classes_and_objects_I.html">classes</a>,
+<a href="https://www.python-course.eu/python3_magic_methods.php">magic</a>,
+<a href="http://anandology.com/python-practice-book/iterators.html">other</a>,
+<a href="https://norvig.com/python-iaq.html">yoda</a>
 <li>
-Parsing (basics): Translation, <a href="doc/re.md">Regx</a>, tokens, Precedence, Grammers, macros
+Parsing (basics): Translation, <a href="doc/re.md">Regx</a>,  Precedence, Grammers, macros
+<li>
+Metaphors: States, Tubs
 <li>
 Lopes' styles:
    good-old-times, forth, monolith, cookbook, pipeline, reflective, spreadsheet, actors, map-reduce....
 <li>
-Paradigms: lambdaCalculus, Lisp Prolog, Unix, Virtual
+Paradigms: make, lambdaCalculus, Lisp, smalltalk, Prolog, Unix, Virtual
 <li>
 Fowler's DSL idioms:
     BNF, closure, decision table, dependency network, state machine, production rules....
