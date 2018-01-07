@@ -60,4 +60,18 @@ To get your team through a gate, you walk through and holler for them to follow 
 
 Phase one: all doors are open, no gatekeepers, no clever search, just wonder at random.
 
+p 
+     - 7 marks: Video of the thing running
+     - 7 marks: **Tutorial** on the developed language (3 pages+)_
+     - 16 marks: A **Review** of your language, highlighting what parsing,  style, paradigm, idioms you used
+       (for each highlhg=ted item, your commentary should define that item, explain
+        what problem it solves for you, discuss any drawbacks with using that item).
+	      - Note, we are expecting 8 items, or more.
+     - Tutorial and review should be fin pdf generated from Word of Latex using
+       [these templates](https://www.acm.org/publications/proceedings-template-16dec2016);
+        e.g. [this doc](https://www.acm.org/binaries/content/assets/publications/article-templates/sig-alternate-sample.pdf)
 
+Reports
+that are too short or expand font size or margins sizes will lose points proportional
+        to that expansion.
+	

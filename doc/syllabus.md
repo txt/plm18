@@ -178,24 +178,11 @@ The following grade scale will be used:
 
 Grades will be added together using:
 
-+ Homeworks : 5 exercises, 4 marks each
++ Homeworks, spot quizes: 5 exercises, 4 marks each
 + Mid-term (Thursday March1, 6pm) : 20  marks
 + Final Exam (Tuesday, May8, 1pm to 3pm): 30 marks
-+ Project (due April 26) 
-     - 7 marks: Video of the thing running
-     - 7 marks: **Tutorial** on the developed language (3 pages+)_
-     - 16 marks: A **Review** of your language, highlighting what parsing,  style, paradigm, idioms you used
-       (for each highlhg=ted item, your commentary should define that item, explain
-        what problem it solves for you, discuss any drawbacks with using that item).
-	      - Note, we are expecting 8 items, or more.
-     - Tutorial and review should be fin pdf generated from Word of Latex using
-       [these templates](https://www.acm.org/publications/proceedings-template-16dec2016);
-        e.g. [this doc](https://www.acm.org/binaries/content/assets/publications/article-templates/sig-alternate-sample.pdf)
-
-Reports
-that are too short or expand font size or margins sizes will lose points proportional
-        to that expansion.
-	      
++ Project: 30 marks. Details TBD.
+      
 
 ### Project
 
