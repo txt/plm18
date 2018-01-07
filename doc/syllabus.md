@@ -50,23 +50,23 @@ Lectures will cover:
 - Python programming
    - all exercises will be done in Python
 - Parsing (basic)
-   - technology inclusing
+   - technology including
      tokenization, BNF, parse trees, syntactic analysis, semantic analysis,
      regular expressions, macros
 - Styles
    - From the Lopes text on programming styles
-   - good-old-times, forth, monolith, cookbook, pieline, reflective, spreadsheet, actors, map-reduce....
+   - good-old-times, forth, monolith, cookbook, pipeline, reflective, spreadsheet, actors, map-reduce....
 - Paradigms:
    - classical single-style languages such as LISP (functional), Smalltak (OO),  and Prolog (logical).  
    - theory of programming (lambda calculus, logic programming, finite-state machines, closures,
      predicates, etc
-- Idioms (usied in domain-specific languages)
-   - From the Fowler text on DLS.
+- Idioms (used in domain-specific languages)
+   - From the Fowler text on DSL.
    - BNF, closure, decision table, dependency network, state machine, production rules....
 
 As to the modeling perspective, students will use these tools to
 build interpreters of domain-specific languages that are understandable
-and maintainable by non-programers.
+and maintainable by non-programmers.
 
 
 ## Staff
@@ -117,7 +117,7 @@ background is required in a contemporary language
 such as Java or C/C++ or Python. Hence,he
 prerequisite for this class is 510, Software
 Engineering. Significant software industry
-experience may be substituted, at the instructorâ€™s
+experience may be substituted, at the instructor€™s
 discretion.  Students in this class will work in
 Python, but no background knowledge of that language
 will be assumed.
@@ -129,7 +129,7 @@ by Cristina Videira Lopes
 Chapman and Hall/CRC; 1 edition (June 4, 2014)    
 ISBN-10: 1482227371
 
-- [code avaliable on-line](https://github.com/crista/exercises-in-programming-style)
+- [code available on-line](https://github.com/crista/exercises-in-programming-style)
 - [Introductory slides](http://gotocon.com/dl/goto-aar-2013/slides/CristinaVideiraLopes_ExercisesInStyle.pdf)
 
 
@@ -185,15 +185,15 @@ Grades will be added together using:
      - 7 marks: Video of the thing running
      - 7 marks: **Tutorial** on the developed language (3 pages+)_
      - 16 marks: A **Review** of your language, highlighting what parsing,  style, paradigm, idioms you used
-       (for each highlhg=ted ites, your commentary should define that item, explain
+       (for each highlhg=ted item, your commentary should define that item, explain
         what problem it solves for you, discuss any drawbacks with using that item).
 	      - Note, we are expecting 8 items, or more.
      - Tutorial and review should be fin pdf generated from Word of Latex using
-       [these tempaltes](https://www.acm.org/publications/proceedings-template-16dec2016);
+       [these templates](https://www.acm.org/publications/proceedings-template-16dec2016);
         e.g. [this doc](https://www.acm.org/binaries/content/assets/publications/article-templates/sig-alternate-sample.pdf)
 
 Reports
-that are too short or expand font size or margins sizes will lose points proprotional
+that are too short or expand font size or margins sizes will lose points proportional
         to that expansion.
 	      
 
@@ -204,7 +204,7 @@ For a task specified by the lecturer, students will implement a perfect language
 the perfect mix of parser, style, paradigm, and idiom to generate a domain-specific
 language that non CS-programmers can understand and use.
 
-Project will start late in Febuary after the homeworks complete.
+Project will start late in February after the Homeworks complete.
 
 ### Homework
 
@@ -212,7 +212,7 @@ Homeworks will be done individually.
 
 Homeworks must be submitted on the due date, otherwise will lose 1 mark late per homework.
 
-Until the end of Febuary, homeworks may be resubmitted, after rework, to get obtain higher marks.
+Until the end of February, homeworks may be resubmitted, after rework, to get obtain higher marks.
 
 Pause.
 
@@ -229,7 +229,7 @@ reduce your attendance grade by 10%.
 Except for officially allowed reasons, your presence in the class if required from day one. 
 Late-comers will have to work in their own solo groups (to avoid disruptions to existing groups).
 
-Note that absences for weddings (your own, or someone else's, is not an offically allowed reason).
+Note that absences for weddings (your own, or someone else's, is not an officially allowed reason).
 
 Exceptions: this subject  will support students who are absent for any of the following
 officially allowed reasons:
@@ -259,7 +259,7 @@ someone else's product is:
 + The imported project is understood, and
 + The imported project is significantly extended.
 
-Students are encouraged to read each others code and repor **uninformed reuse**
+Students are encouraged to read each others code and report **uninformed reuse**
 to the lecturer. The issue will be explored and, if uncovered,
 cheating will be reported to the university
 and marks will be deducted if the person who is doing the reuse:
