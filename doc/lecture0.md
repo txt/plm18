@@ -48,7 +48,7 @@ Some of which are very silly:
 - [Whitespace](https://goo.gl/6rmC5);
    e.g. print "hello world" in Whitespace:
 
-![](https://en.wikipedia.org/wiki/Whitespace_(programming_language)#/media/File:Whitespace_in_vim2.png)
+![](https://goo.gl/i5VzJT)
 
 
 Many of which tuned to very specific tasks
