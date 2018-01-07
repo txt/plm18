@@ -48,7 +48,8 @@ Some of which are very silly:
 - [Whitespace](https://goo.gl/6rmC5);
    e.g. print "hello world" in Whitespace:
 
-![](https://goo.gl/i5VzJT)
+<img src="https://goo.gl/i5VzJT">
+
 
 
 Many of which tuned to very specific tasks
