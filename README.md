@@ -81,6 +81,7 @@ Fowler's DSL idioms:
 <p>Python: <br>
 <a href="https://norvig.com/python-iaq.html">Yoda</a><br>
 <a href="https://www.python-course.eu/python3_magic_methods.php">Magic</a>
+<a href="http://greenteapress.com/thinkpython2/html/index.html">Intro</a>
 <hr>
 Fun:<br>
 <a href="https://www.youtube.com/watch?v=rRbY3TMUcgQ">Erlang</a><br>
