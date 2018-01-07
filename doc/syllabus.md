@@ -92,6 +92,7 @@ and maintainable by non-programers.
 + Tianpei (Patrick) Xia 
 + Office Hours: Wed 5pm to 7pm
 + Location of Office Hours: EB2 3240
++ Email: txia4@ncsu.edu
 + Github name: arennax
 + Slack name: patrick\_xia 
 
