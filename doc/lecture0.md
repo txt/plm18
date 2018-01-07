@@ -27,3 +27,25 @@ If the world merely lived up to our wildest dreamings, what a dull place it woul
 Learn why the world wags and what wags it. That is the only thing which the mind can never exhaust, never alienate, never be tortured by, never fear or distrust, and never dream of regretting. Learning is the only thing for you. Look what a lot of things there are to learn.    
 -- T.H. White (The Once and Future King)
 
+
+## Q: Which language is best?
+
+A: none of them.
+
+<img width=900 src="../img/tiobe.png">
+
+And the language you use next is probably not the one you are using now:
+
+- Empirical Analysis of Programming Language Adoption Leo A. Meyerovich, Ariel Rabkin, OOPSLA ’13.
+
+<img width=700 src="../img/nextLanguage.png">
+
+## So Many Languages
+
+Many of which tuned to very specific tasks
+
+- See [19. Examples of Domain Specific Languages](https://tomassetti.me/domain-specific-languages/)
+
+Some build for very general tasks (e.g. defining an object-oriented language)
+
+[![](http://ecx.images-amazon.com/images/I/61PruSolX%2BL.jpg)](https://pdfs.semanticscholar.org/a679/e05cae9dd36c0d89a5bb27a8e91aac6690f0.pdf)
