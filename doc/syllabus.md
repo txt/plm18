@@ -117,7 +117,7 @@ background is required in a contemporary language
 such as Java or C/C++ or Python. Hence,he
 prerequisite for this class is 510, Software
 Engineering. Significant software industry
-experience may be substituted, at the instructor€™s
+experience may be substituted, at the instructor's
 discretion.  Students in this class will work in
 Python, but no background knowledge of that language
 will be assumed.

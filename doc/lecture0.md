@@ -36,7 +36,7 @@ A: none of them.
 
 And the language you use next is probably not the one you are using now:
 
-- Empirical Analysis of Programming Language Adoption Leo A. Meyerovich, Ariel Rabkin, OOPSLA ’13.
+- Empirical Analysis of Programming Language Adoption Leo A. Meyerovich, Ariel Rabkin, OOPSLA '13.
 
 <img width=700 src="../img/nextLanguage.png">
 
