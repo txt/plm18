@@ -42,7 +42,11 @@ And the language you use next is probably not the one you are using now:
 
 ## So Many Languages
 
-Some of which are very silly:
+If you want to see your favorite 10 lines of code presented in hundreds of different languages:
+
+- [Rosetta Code](http://rosettacode.org/wiki/Category:Programming_Tasks)
+
+Some languages are very silly:
 
 - [Brainf\*ck](https://en.wikipedia.org/wiki/Brainfuck)
 - [Whitespace](https://goo.gl/6rmC5);
@@ -50,11 +54,6 @@ Some of which are very silly:
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Whitespace_in_vim2.png">
 
-
-
-Many of which tuned to very specific tasks
-
-- See [19. Examples of Domain Specific Languages](https://tomassetti.me/domain-specific-languages/)
 
 Some build for very general tasks (e.g. defining an object-oriented language)
 
@@ -92,7 +91,9 @@ Some build for very general tasks (e.g. defining an object-oriented language)
    )
 ```
 
-If you want to see your favorite 10 lines of code presented in hundreds of different languages:
 
-- [Rosetta Code](http://rosettacode.org/wiki/Category:Programming_Tasks)
+
+Many of which tuned to very specific tasks
+
+- See [19. Examples of Domain Specific Languages](https://tomassetti.me/domain-specific-languages/)
 
