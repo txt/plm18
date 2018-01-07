@@ -11,6 +11,7 @@
 ______
 
 
+
 # Home
 
 The premise of this subject is that computer programming languages should adapt to the ways of people, and not the other way around. Why? well...

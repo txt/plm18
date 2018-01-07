@@ -27,6 +27,7 @@ gitting:
 F=$(shell ls *.md doc/*.md)
 
 prep:
-	@$(foreach f,$F, if [ "etc/header" -nt "$f" ]; then echo "# updating $f ... "; gawk -f etc/headers.awk $f > .tmp; mv .tmp $f; fi; )
+	@$(foreach f,$F, echo "# updating $f ... "; gawk -f etc/headers.awk $f > .tmp; mv .tmp $f; )
+
 
 

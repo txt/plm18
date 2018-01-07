@@ -1,36 +1,16 @@
+[home](http://tiny.cc/plm18) |
+[copyright](https://github.com/txt/plm18/blob/master/LICENSE.md) &copy;2018, tim&commat;menzies.us
+<br>
+[<img width=900 src="https://raw.githubusercontent.com/txt/plm18/master/img/banner.png">](http://tiny.cc/plm18)<br>
+[syllabus](https://github.com/txt/plm18/blob/master/doc/syllabus.md) |
+[src](https://github.com/txt/plm18/tree/master/src) |
+[submit](http://tiny.cc/plm18give) |
+[chat](https://plm18.slack.com/)
 
-- week1
-    - tuesday
-	- hella stories of how language matters
-	      - prolog, elixr rlang, actors
-	      - the acm com paper
-	      - the pige story
-	      - make (dependencies)
-	      - cognitive theory and languages
-    - thursday, set up day. eveyone try to bring a laptop
-         - one repo per group
-	 - one repo per student
-	 - tim andgetting a python/github environment going
 
-week2 
-    - tueday : in house test
-    - thursday: pthon tutorial starts. example. ey wrk on cntxt. chapter5 of lopes
-- intro to Python
-- the classics
-     - LISP
-     - Prolog
-     - Smalltalk
+______
 
-week N
-- DSLS
-   markdown
-homework
 
-- Intro python
-- shunting yard
-- State machine
-- Compartmental models
-- production rules
 
 # Ideas
 
