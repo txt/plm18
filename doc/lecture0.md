@@ -42,6 +42,9 @@ And the language you use next is probably not the one you are using now:
 
 ## So Many Languages
 
+<a href="http://unbox.org/doc/Seven%20Languages%20in%20Seven%20Weeks%20A%20Pragmatic%20Guide%20to%20Learning%20Programming%20Languages.pdf"><img src="https://imagery.pragprog.com/products/195/btlang.jpg?1298589937" width=350></a><a 
+href="http://unbox.org/doc/Seven%20More%20Languages%20in%20Seven%20Weeks.pdf"><img width=350 src="https://imagery.pragprog.com/products/410/7lang.jpg?1414690061"></a><br>
+
 If you want to see your favorite 10 lines of code presented in hundreds of different languages:
 
 - [Rosetta Code](http://rosettacode.org/wiki/Category:Programming_Tasks)
