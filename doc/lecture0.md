@@ -112,11 +112,8 @@ The [Hersleb hypothesis](https://www.youtube.com/watch?v=v0CSnYvd0C4)  hypothesi
 
 So maybe we should assess languages by the devoition they inspire?
 
-<img src="../img/pack1.png" width=300>
-<img src="../img/pack2.png" width=300>
-<img src="../img/pack3.png" width=300>
-<img src="../img/pack4.png" width=300>
-<img src="../img/pack5.png" width=300>
-<img src="../img/pack6.png" width=300>
-<img src="../img/pack7.png" width=300>
+<img src="../img/pack4.png" width=300><img
+src="../img/pack5.png" width=300><img
+src="../img/pack6.png" width=300><img
+src="../img/pack7.png" width=300>
 
