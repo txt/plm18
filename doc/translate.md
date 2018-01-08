@@ -30,6 +30,12 @@ Much recent activity in the following.
 - Target= JavaScript: e.g. ClojureScript, CoffeeScript
       - CoffeeScript is just JavaScript, plus 2000 lines of a grammar
 
+Some problems with tool support in transpilation
+
+- Code at the level of sourceCode1
+- Bugs are reported at level of sourceCode2
+- Can get confusing (its the reason I left Coffeescript)
+
 ## Not-Popular Alternatives
 
 In theory,the following ould be used a lot. 
