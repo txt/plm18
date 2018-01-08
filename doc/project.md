@@ -1,7 +1,18 @@
+[home](http://tiny.cc/plm18) |
+[copyright](https://github.com/txt/plm18/blob/master/LICENSE.md) &copy;2018, tim&commat;menzies.us
+<br>
+[<img width=900 src="https://raw.githubusercontent.com/txt/plm18/master/img/banner.png">](http://tiny.cc/plm18)<br>
+[syllabus](https://github.com/txt/plm18/blob/master/doc/syllabus.md) |
+[src](https://github.com/txt/plm18/tree/master/src) |
+[submit](http://tiny.cc/plm18give) |
+[chat](https://plm18.slack.com/)
+
 
 ______
 
-# The Game: Puppy Power (in Python)!
+
+
+# Project : pup.py (Puppy Power, in Python)
 
 ## Goal 
 
@@ -9,7 +20,9 @@ In this subject you will implement a game using a domain-specific language imple
 If you need behavioral attachments, you can code them us as (e.g.) S-expressions interpreted by Norvig's LISP code or (e.g.)
 some declarative and-or-not tree that queries a data base carried around as a working memory.
 
-However you do it, your method for configuring the game must be perfect. A language of crystal clear clarity that anyone can glance at, understand, and code.
+However you do it, your method for configuring the game must be <b><u><i>PERFECT</i></u></b>. A language of crystal clear clarity and beauty that anyone can glance at, understand, and code.
+
+There is much in what follows that is under-specified. That is deliberate. Time to use your imagination.
 
 ### Background 
 
@@ -18,19 +31,20 @@ However you do it, your method for configuring the game must be perfect. A langu
 Welcome to PuppyLand where all the machines are powered by puppy cuteness. Power shortages are chronic so teams are sent out to
 search the world looking for more puppies.
 
+You will code a team of N people  walking the earth looking for puppies, which you will collect and return to PuppyLand.
+Once you get home, you can go out again to get more.
+
+- Points increase the faster more of your team bring home more puppies.
+- Points decrease if (say), only one of you gets back, empty handed, after a very long time.
 
 Puppies are fixed in number  at the start of the game.
 Some countries have lots of puppies, some have none. The occurrence of puppy-less countries is spread
 out evenly across the world.
 
-
-You will code a team of 4  walking the earth looking for puppies, which you will collect and return to PuppyLand.
-Once you get home, you can go out again to get more.
-
-Points increase the faster more of your team bring home more puppies.
-Points decrease if (say), only one of you gets back, empty handed, after a very long time.
-
 ### Team Members
+
+Carrying N puppies means you have to walk slower at speed 1/N of normal.
+So carrying 1 puppy means you can walk normally, 2 means half speed, 3 a third speed, etc
 
 As you walk the world, you leave behind footprints that never wash off. And the more people that walked some
 spot, the deeper the footprints.
@@ -45,18 +59,7 @@ Any apple bigger than 1 can be eaten. You can eat any whole number of that apple
 If you run out of food, you are stuck; i.e.
 you must sit still hoping another member of your team will find you and give you apples. You can live forever stuck.
 
-### Hollering
-
-Any member of the team
-can holler at strength 1 2 3 4 in which case, for as long as you holler,
-all team members within some distance of you will start walking towards you at speeds 1 2 3 4 (and note that running at
-speed, say, 2 consumes twice as much energy as walking at speed 1). If two team members are hollering
-then everyone else heads towards the loudest (breaking ties at random).
-
-Note that hollering is heard all over the world (cause you actually holler via cell phone).
-
-To get your team through a gate, you walk through and holler for them to follow you. Its up to you if you holler first
-(to collect them) before trying to get the door open, or afterwards.
+All team members are autonomous. There is no central controller. All team members make their decisions based solely on what they've seen as they walk the world.
 
 ### Countries
 
@@ -70,8 +73,21 @@ connected by open doors.
 
 With two exceptions, team members only have access to anything the see while walking around; i.e. anything in the country they cross or anything they see in a neighboring country. The two exceptions are:
 
-- hollering, which is audible all over the world.
 - "chains" where team members stand together in adjacent countries and tell each other what they see around each other.
+- hollering (see below), which is audible all over the world.
+
+### Hollering
+
+Any member of the team
+can holler at strength 1 2 3 4 in which case, for as long as you holler,
+all team members within some (not global) distance of you will start walking towards you at speeds 1 2 3 4 (and note that running at
+speed, say, 2 consumes twice as much energy as walking at speed 1). If two team members are hollering
+then everyone else heads towards the loudest (breaking ties at random).
+
+Note that hollering is heard all over the world (cause you actually holler via cell phone).
+
+To get your team through a gate, you walk through and holler for them to follow you. Its up to you if you holler first
+(to collect them) before trying to get the door open, or afterwards.
 
 ### Doors and Gatekeepers
 
