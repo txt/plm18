@@ -178,10 +178,10 @@ The following grade scale will be used:
 
 Grades will be added together using:
 
-+ Homeworks, spot quizes: 5 exercises, 4 marks each
++ Homeworks: 10 marks
 + Mid-term (Thursday March1, 6pm) : 20  marks
-+ Final Exam (Tuesday, May8, 1pm to 3pm): 30 marks
-+ Project: 30 marks. Details TBD.
++ Final Exam (Tuesday, May8, 1pm to 3pm): 20 marks
++ Project: 50 marks. Details TBD.
       
 
 ### Project
@@ -197,7 +197,7 @@ Project will start late in February after the Homeworks complete.
 
 Homeworks will be done individually. 
 
-Homeworks must be submitted on the due date, otherwise will lose 1 mark late per homework.
+Homeworks must be submitted on the due date, otherwise will lose 1 mark late per day.
 
 Until the end of February, homeworks may be resubmitted, after rework, to get obtain higher marks.
 

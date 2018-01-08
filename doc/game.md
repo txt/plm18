@@ -1,77 +1,169 @@
 
 ______
 
-# The Game: Planet of the Puppies  (POP)
+# The Game: Puppy Power (in Python)!
 
-You and your team are walking the earth looking for puppies, which you will collect and retrn to home.
-Points increase the faster more of your team bring home more pupiies.
-Points decrease if (say), only one of you gets back, empty handed, after a very long time.
+## Goal 
 
-You can holler at strength 1 2 3 4 in which case 
-all team members within some distance of you will start walking towards you at speeds 1 2 3 4 (and note that unnign at
-speed, say, 2 consumes twice as much energy as walking at speed 1). If two team members are hollering
-then everyone else heads towards the loudest (breaking ties at random).
+In this subject you will implement a game using a domain-specific language implemented using Lopes' styles and Fowler's idioms.
+If you need behavioural attachments, you can code them us as (e.g.) S-expressions interpreted by Norvig's LISP code or (e.g.)
+some declarative and-or-not tree that quries a data base carried around as a working memory.
 
-Note that holeering is heard all over the earth (cause you actually holler via cell phone).
+However you do it, your method for configuring the game must be perfect. A language of crystal clear clarity that anyone can glance at, understand, and code.
 
-As you walk the earth, you leave behind footprints that never wash off. And the more people that walked some
-spot, the deeper the footprints.
-This means you can execute a tabu search (\*) or ant colony optimization (\*) to get more puppies home faster.
+### Background 
 
-(\*) look it up.
+<img align=right src="http://www.petsworld.in/blog/wp-content/uploads/2014/09/running-cute-puppies.jpg">
 
-Walking requires food (apples). Sometimes you come across fresh apples which if you eat, you can walk further.
-Such apples grow X% per time T, spontaneaously in all the lowland countries.
-Any apple bigger than 1 can be eaten. You can eat any whole number of that apple (and the rest remains for others).
-If you run out of food,
-you must sit still hoping another member of your team will find you and give you apples.
+Welcome to PuppyLand where all the machines are powered by puppy cuteness. Power shortages are chronic so teams are sent out to
+search the world looking for more puppies.
 
-Puppies are fixed in number  at the start of the game and never create any more.
+
+Puppies are fixed in number  at the start of the game.
 Some countries have lots of puppies, some have none. The occurence of puppy-less countries is spread
 out evenly across the world.
 
-The word has countries and in one country you can see all the doors to other countries, the depth of the
-footsteps in this country, how many apples and puppies are found there and how many
-team members in this country.
-Ditto for any neighboring country 
-connected by open doors.
 
-Doors are controlled by gatekeepers
-who you must meet
-persaude to let you pass. That persaussian  takes one of 
-five forms:
+You will code a team of 4  walking the earth looking for puppies, which you will collect and return to Puppyland.
+Once you get home, you can go out again to get more.
 
-- Ethos: authority dont u know who i a my fatehr is the king
-       your suerpvosirs told us we could go here
-    her's a piece of paper authorizing us
-pathos: we're starving, come a long way
-logos: anything to do with facts and figures and numbers and logic
-     feeding oen os now means not having to feed all of us later
-     if u let osu thru, we will not sit here and eat all our food
-kairos: "a passing instant when an opening appears which must be driven through with force if success is to be achieved."
-  - might leve the gate open as thye, every seven days, walk intot he next country to go to church
-  - of sleep
-violence: move it and we'll blast you
- note to implement the above, you ahve to invent a land with laws, where characters have back stories and motivations
-and carry with them a world model of what they'll do in exchange for materials
+Points increase the faster more of your team bring home more pupiies.
+Points decrease if (say), only one of you gets back, empty handed, after a very long time.
+
+### Team Members
+
+As you walk the world, you leave behind footprints that never wash off. And the more people that walked some
+spot, the deeper the footprints.
+This means you can execute a 
+[tabu search](https://en.wikipedia.org/wiki/Tabu_search#Pseudocode) or 
+[ant colony optimization](https://en.wikipedia.org/wiki/Ant_colony_optimization_algorithms#Example_pseudo-code_and_formula)
+to get more puppies home faster.
+
+Walking requires food (apples). Sometimes you come across apples which if you eat, you can walk further.
+Such apples grow X% per time T, spontaneaously in all the lowland countries.
+Any apple bigger than 1 can be eaten. You can eat any whole number of that apple (and the rest remains for others).
+If you run out of food, youare stuck; i.e.
+you must sit still hoping another member of your team will find you and give you apples. You can live forever stuck.
+
+### Hollering
+
+Any member of the team
+can holler at strength 1 2 3 4 in which case, for as long as you holler,
+all team members within some distance of you will start walking towards you at speeds 1 2 3 4 (and note that runnign at
+speed, say, 2 consumes twice as much energy as walking at speed 1). If two team members are hollering
+then everyone else heads towards the loudest (breaking ties at random).
+
+Note that hollering is heard all over the world (cause you actually holler via cell phone).
 
 To get your team through a gate, you walk through and holler for them to follow you. Its up to you if you holler first
 (to collect them) before trying to get teh door open, or afterwards.
 
-Phase one: all doors are open, no gatekeepers, no clever search, just wonder at random.
+### Countries
 
-p 
-     - 7 marks: Video of the thing running
-     - 7 marks: **Tutorial** on the developed language (3 pages+)_
-     - 16 marks: A **Review** of your language, highlighting what parsing,  style, paradigm, idioms you used
-       (for each highlhg=ted item, your commentary should define that item, explain
-        what problem it solves for you, discuss any drawbacks with using that item).
-	      - Note, we are expecting 8 items, or more.
-     - Tutorial and review should be fin pdf generated from Word of Latex using
+<img width=300 align=right src="https://whatjaysaid.files.wordpress.com/2016/01/forceunconnectedareas.png?w=497">
+The world is full of square countries. Cross each country takes time that is square root of its area.
+In one country you can see all the doors to other countries, the depth of the
+footsteps in this country, how many apples and puppies are found there and how many
+team members in this country (so you could peek into a country and see if someone is stuck).
+Ditto for any neighboring country 
+connected by open doors.
+
+With two exceptions, team members only have access to anything the see while walking around; i.e. anything in the country they cross or anything they see in a neighboring country. The two exceptions are:
+
+- hollering, which is audible all over the world.
+- "chains" where team members stand together in adjacent countries and tell each other what they see around each other.
+
+### Doors and Gatekeepers
+
+Countries are connected by doors. Each door has its own seperate 
+gatekeepers 
+who you must meet
+persaude to let open the door. Doors stay open for some period of time, then close.  
+
+Gatekeepers are of one of four types, depending on how they respond to arguments.
+You won't know what until
+you try (which btw, means that coming back with the puppies is fsaer cause you'll know how to reason 
+
+Note that all the following persausian  strategies require background knowledge and one of the tasks of this 
+project is to determine how to express that background knowledge in an elegant language.
+
+<img align=right width=400 src="https://i.pinimg.com/originals/cb/3b/f3/cb3bf3270c1f529b5b1523c4e8ba5435.jpg">
+
+#### Ethos: authority, credability
+
+- e.g. countries are in empires and team members are related to the king. "don't you know who i am? I am the queen's son!"
+- e.g. gatekeepers work in gangs and you can present a letter from a gang boss saying you can pass. 
+- e.g. your king presents you wth some passprot that opens some doors
+    her's a piece of paper authorizing us
+
+#### Pathos: emotional appeal
+
+- e.g. you can tell the story of orphans back home that will starve unless you can get puppies
+- e.g. you deliberately wear down your food supply then show the gatekeeper your younget team member and say "look atthis wrteh, he's starving! let us through so we can get more food next door."
+
+
+#### Logos: rational appeal
+
+Anything to do with facts and figures and numbers and logic
+
+- e.g. we are eating apples here at the following rate. if you don't let us pass, we'll eat you out of house and home
+- e.g. let us through and we will pay you a few of N apples
+
+#### Kairos: timely
+
+"A passing instant when an opening appears which must be driven through with force if success is to be achieved."
+
+-  e.g. You wait till Sunday when the gatekeeper leaves the gate open when she goes visits her Mum.
+- e.g. The gatekeeper likes a drink. You canabilize your apples to make cider.
+
+
+
+## What to do
+
+### Project1 (due end Jan): 3 marks
+
+Code a barebones versions of the above. All doors are open, no gatekeepers
+
+- Random walk of the world, eating whatever, getting stuck sometime.
+- Pick control parameters such that your team usually gets round to most parts of the world.
+
+### Project2 (due end Feb): 7 marks (+4 bonus)
+
+All the above spec coded in dirty raw Python
+
+- 2 extra marks: code tabu search and submit charts showing the effects of tabu search off or tabu search on.
+- 2 extra marks: code ant colony optimization and present charts showing the effects of ACO off or ACO on.
+
+### Project3 (due end March):  10  marks
+
+Phase2 re-written as a beautiful DSL.
+
+### Phase4 (due end April): (code=10, report=10, talk=5, cool=5) marks
+
+- Your phase3 code will be reviewed and various challenge problems will be set. 
+- In  phase4, you will attempt to address those challenges. 
+     - Note: is not expected that all challenges will be meet
+- You will present you game (10 mins max) and a "coolness" grade (out of 5) will be assigned.
+
+For phase4, you also have to include a file pro4/report.pdf which is a   five page (or more) document describing the styles and idioms you used in your language, what problem they solved,
+and how you implemented them. The goal of this document is to show that you understand language choices.
+That report should be generated from  Word oir Latex using
        [these templates](https://www.acm.org/publications/proceedings-template-16dec2016);
         e.g. [this doc](https://www.acm.org/binaries/content/assets/publications/article-templates/sig-alternate-sample.pdf)
-
 Reports
 that are too short or expand font size or margins sizes will lose points proportional
         to that expansion.
 	
+## What to hand in
+
+In your Github repo XXX,  subdirectories called proj1, proj2, proj3, proj4 each:
+
+- containing its own `__main__.py` file.
+- containing a file log.out showing a transcript of the game in action
+
+Your code will be tested as follows:
+
+    cd XXX
+    python3 proj1
+
+
