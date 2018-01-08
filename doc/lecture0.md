@@ -116,5 +116,5 @@ So maybe we should assess languages by the devoition they inspire?
 src="../img/pack4.png" width=300><img
 src="../img/pack5.png" width=300><img
 src="../img/pack6.png" width=300><img
-src="../img/pack7.png" width=300>
+src="../img/pack3.png" width=300>
 
