@@ -100,3 +100,23 @@ Many of which tuned to very specific tasks
 
 - See [19. Examples of Domain Specific Languages](https://tomassetti.me/domain-specific-languages/)
 
+## What Matters Most? Languages? or Community?
+
+The [Hersleb hypothesis](https://www.youtube.com/watch?v=v0CSnYvd0C4)  hypothesis starts at 29:45:
+
+- If Developer X and Y..
+- ... work on parts A and B in the code ...
+- ... and if A interacts with B ..
+- ... and if X and Y don't
+- ... the expect bugs!
+
+So maybe we should assess languages by the devoition they inspire?
+
+<img src="../img/pack1.png" width=300>
+<img src="../img/pack2.png" width=300>
+<img src="../img/pack3.png" width=300>
+<img src="../img/pack4.png" width=300>
+<img src="../img/pack5.png" width=300>
+<img src="../img/pack6.png" width=300>
+<img src="../img/pack7.png" width=300>
+

@@ -20,8 +20,9 @@ Standard pipeline
 
     tokenization ==> lexical analysis ==> parsing ==> code generation
 
-Now after this pipeline there is a whole another process involved where we actually commit to the semantics of what we are processing. 
-But that's a take for another day. 
+Now after this pipeline there is a whole another process involved where we actually execute something.
+And that means committing to the semantics of what we are processing. 
+But that's a tale for another day. 
 
 ## Tokenization (fast, easy)
 
