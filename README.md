@@ -80,7 +80,7 @@ Fowler's DSL idioms:
 <td align=center valign=top  xwidth="100px">
 <p>Python: <br>
 <a href="https://norvig.com/python-iaq.html">Yoda</a><br>
-<a href="https://www.python-course.eu/python3_magic_methods.php">Magic</a>
+<a href="https://www.python-course.eu/python3_magic_methods.php">Magic</a><br>
 <a href="http://greenteapress.com/thinkpython2/html/index.html">Intro</a>
 <hr>
 Fun:<br>
