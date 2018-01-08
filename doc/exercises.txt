@@ -1,0 +1,182 @@
+Please do the following exercises, for each of them, write python functions called "eg1", "eg2", "eg3" ..., and each function should start out by writing "I am egN". You need to submit:
+1. a file named "egN.py" for the source code;
+2. a file named "egN.out" for the outputs.
+
+Exercise 1
+------------------------------------
+Write a method which can calculate square value of number
+
+Hints:
+Using the ** operator
+
+
+Exercise 2
+------------------------------------
+Write a program which will find all such numbers which are divisible by 7 but are not a multiple of 5,
+between 2000 and 3200 (both included).
+The numbers obtained should be printed in a comma-separated sequence on a single line.
+
+Hints: 
+Consider use range(#begin, #end) method
+
+
+Exercise 3
+------------------------------------
+Write a program which can compute the factorial of a given numbers.
+The results should be printed in a comma-separated sequence on a single line.
+Suppose the following input is supplied to the program:
+8
+Then, the output should be:
+40320
+
+Hints:
+In case of input data being supplied to the question, it should be assumed to be a console input.
+
+
+Exercise 4
+------------------------------------
+With a given integral number n, write a program to generate a dictionary that contains (i, i*i) such that is an integral number between 1 and n (both included). and then the program should print the dictionary.
+Suppose the following input is supplied to the program:
+8
+Then, the output should be:
+{1: 1, 2: 4, 3: 9, 4: 16, 5: 25, 6: 36, 7: 49, 8: 64}
+
+Hints:
+In case of input data being supplied to the question, it should be assumed to be a console input.
+Consider use dict()
+
+
+Exercise 5
+------------------------------------
+Write a program which accepts a sequence of comma-separated numbers from console and generate a list and a tuple which contains every number.
+Suppose the following input is supplied to the program:
+34,67,55,33,12,98
+Then, the output should be:
+['34', '67', '55', '33', '12', '98']
+('34', '67', '55', '33', '12', '98')
+
+Hints:
+In case of input data being supplied to the question, it should be assumed to be a console input.
+tuple() method can convert list to tuple
+
+
+Exercise 6
+------------------------------------
+Define a class which has at least two methods:
+getString: to get a string from console input
+printString: to print the string in upper case.
+Also please include simple test function to test the class methods.
+
+Hints:
+Use __init__ method to construct some parameters
+
+
+Exercise 7
+------------------------------------
+Write a program that computes the value of a+aa+aaa+aaaa with a given digit as the value of a.
+Suppose the following input is supplied to the program:
+9
+Then, the output should be:
+11106
+
+Hints:
+In case of input data being supplied to the question, it should be assumed to be a console input.
+
+
+Exercise 8
+------------------------------------
+Write a program that accepts a comma separated sequence of words as input and prints the words in a comma-separated sequence after sorting them alphabetically.
+Suppose the following input is supplied to the program:
+without,hello,bag,world
+Then, the output should be:
+bag,hello,without,world
+
+Hints:
+In case of input data being supplied to the question, it should be assumed to be a console input.
+
+
+Exercise 9
+------------------------------------
+Python has many built-in functions, and if you do not know how to use it, you can read document online or find some books. But Python has a built-in document function for every built-in functions.
+Please write a program to print some Python built-in functions documents, such as abs(), int(), raw_input()
+And add document for your own function
+    
+Hints:
+The built-in document method is __doc__
+
+
+Exercise 10
+------------------------------------
+Define a function which can generate a list where the values are square of numbers between 1 and 20 (both included). Then the function needs to print the last 5 elements in the list.
+
+Hints:
+Use ** operator to get power of a number.
+Use range() for loops.
+Use list.append() to add values into a list.
+Use [n1:n2] to slice a list
+
+
+Exercise 11
+------------------------------------
+Please write a program using generator to print the numbers which can be divisible by 5 and 7 between 0 and n in comma separated form while n is input by console.
+Example:
+If the following n is given as input to the program:
+100
+Then, the output of the program should be:
+0,35,70
+
+Hints:
+Use yield to produce the next value in generator.
+In case of input data being supplied to the question, it should be assumed to be a console input.
+
+
+Exercise 12
+------------------------------------
+By using list comprehension, please write a program to print the list after removing the value 24 in [12,24,35,24,88,120,155].
+
+Hints:
+Use list's remove method to delete a value.
+
+
+Exercise 13
+------------------------------------
+The Fibonacci Sequence is computed based on the following formula:
+f(n)=0 if n=0
+f(n)=1 if n=1
+f(n)=f(n-1)+f(n-2) if n>1
+Please write a program using list comprehension to print the Fibonacci Sequence in comma separated form with a given n input by console.
+Example:
+If the following n is given as input to the program:
+7
+Then, the output of the program should be:
+0,1,1,2,3,5,8,13
+
+Hints:
+We can define recursive function in Python.
+Use list comprehension to generate a list from an existing list.
+Use string.join() to join a list of strings.
+In case of input data being supplied to the question, it should be assumed to be a console input.
+
+
+Exercise 14
+------------------------------------
+Define a class named Rectangle which can be constructed by a length and width. The Rectangle class has a method which can compute the area. 
+
+Hints:
+Use def methodName(self) to define a method.
+
+
+Exercise 15
+------------------------------------
+Write a program to compute 1/2+2/3+3/4+...+n/n+1 with a given n input by console (n>0).
+Example:
+If the following n is given as input to the program:
+5
+Then, the output of the program should be:
+3.55
+In case of input data being supplied to the question, it should be assumed to be a console input.
+
+Hints:
+Use float() to convert an integer to a float
+
+
