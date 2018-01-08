@@ -93,9 +93,6 @@ Some build for very general tasks (e.g. defining an object-oriented language)
    ;; deal with spaceship hitting spaceship
    )
 ```
-
-
-
 Many of which tuned to very specific tasks
 
 - See [19. Examples of Domain Specific Languages](https://tomassetti.me/domain-specific-languages/)
