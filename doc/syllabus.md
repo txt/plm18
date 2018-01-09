@@ -90,7 +90,7 @@ and maintainable by non-programmers.
 
 <img width=200 align=right  src="http://ai4se.net/img/Patrick.png">
 
-+ Tianpei Xia 
++ Tianpei (Patrick) Xia 
 + Office Hours: Wed 5pm to 7pm
 + Location of Office Hours: EB2 3240
 + Email: txia4@ncsu.edu
