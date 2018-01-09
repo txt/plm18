@@ -14,8 +14,15 @@ ______
 
 # Install instructions for python3
 
-## [On Mac OS X](https://github.com/kennethreitz/python-guide/blob/master/docs/starting/install3/osx.rst)
+### On Mac OS X
+https://github.com/kennethreitz/python-guide/blob/master/docs/starting/install3/osx.rst
 
-## [On Windows](https://github.com/kennethreitz/python-guide/blob/master/docs/starting/install3/win.rst)
+### On Windows
+https://github.com/kennethreitz/python-guide/blob/master/docs/starting/install3/win.rst
 
-## [On Linux](https://github.com/kennethreitz/python-guide/blob/master/docs/starting/install3/linux.rst)
+### On Linux
+https://github.com/kennethreitz/python-guide/blob/master/docs/starting/install3/linux.rst
+
+# Instructions for GitHub
+
+### [Learn Github in 20 minutes](https://www.youtube.com/embed/0fKg7e37bQE)
