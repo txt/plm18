@@ -10,7 +10,7 @@
 
 ______
 
-
+DO NOT READ THIS. A WORK IN  PROGRESS. PRONE TO MUCH CHANGE
 
 # Project : pup.py (Puppy Power, in Python)
 
