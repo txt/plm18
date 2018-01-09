@@ -77,7 +77,7 @@ and maintainable by non-programmers.
 
 + Tim Menzies (Prof)
 + Office Hours: Tuesday, 2:00-4:00 and by request
-+ Location of Office Hours: EE II room 3298 
++ Location of Office Hours: EB2 room 3298 
 + Github name: timm
 + Slack name: timm
 + E-Mail: tim.menzies@gmail.com 
@@ -90,12 +90,12 @@ and maintainable by non-programmers.
 
 <img width=200 align=right  src="http://ai4se.net/img/Patrick.png">
 
-+ Tianpei (Patrick) Xia 
++ Tianpei Xia 
 + Office Hours: Wed 5pm to 7pm
 + Location of Office Hours: EB2 3240
 + Email: txia4@ncsu.edu
 + Github name: arennax
-+ Slack name: patrick\_xia 
++ Slack name: Tianpei Xia 
 
 <br clear=all>
 
