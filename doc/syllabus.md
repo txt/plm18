@@ -95,7 +95,7 @@ and maintainable by non-programmers.
 + Location of Office Hours: EB2 3240
 + Email: txia4@ncsu.edu
 + Github name: arennax
-+ Slack name: Tianpei Xia 
++ Slack name: patrick_xia 
 
 <br clear=all>
 
