@@ -191,7 +191,6 @@ For a task specified by the lecturer, students will implement a perfect language
 the perfect mix of parser, style, paradigm, and idiom to generate a domain-specific
 language that non CS-programmers can understand and use.
 
-Project will start late in February after the Homeworks complete.
 
 ### Homework
 
