@@ -55,7 +55,7 @@ Python (intro):
 <a href="http://anandology.com/python-practice-book/iterators.html">iterators</a>,
 <dt>
 Parsing (basics):
-<dd>Translation, <a href="doc/re.md">Regx</a>,  Precedence, Grammers, macros
+<dd>Translation, <a href="doc/re.md">Regex</a>,  Precedence, Grammers, macros
 <dt>
 Metaphors:
 <dd>States, Tubs
