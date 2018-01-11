@@ -18,7 +18,11 @@ ompile to those semantics
 
 Examples:
 
+Turig
+s machine
+
 von-Neumann Machines
+stacks (forth)
 
 Data-flow machines
 
@@ -27,6 +31,11 @@ Resolution
 Lambda Calculus
 yzers and grammers. 
 
+Objecs and mesages
+
+Production rules
+
+pattern-based: pipeline, MVC, blackboard
 
 Here, you actually make the code work.
 

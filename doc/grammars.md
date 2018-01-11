@@ -20,6 +20,11 @@ Context-Free Grammars
 -   Language generators, meant to describe the syntax of natural
     languages Define a class of languages called context-free languages
 
+Example parse tree for a simple English sentence
+
+![http://unbox.org/open/trunk/310/14/spring/doc/img/johnHitTheBall.jpg](http://unbox.org/open/trunk/310/14/spring/doc/img/johnHitTheBall.jpg)
+
+
 Backus-Naur Form (1959)
 
 -   Invented by John Backus to describe Algol 58
@@ -152,8 +157,8 @@ val of a const is provided to us by the scanner.
 We must then invent a set of rules for each production, to specify how
 the vals of different symbols are related. The resulting *attribute
 grammar* (AG) for a simple calculator is shown here:
-
-![ag](http://unbox.org/open/trunk/310/14/spring/doc/img/ag.jpg)
+ 
+![ag](../imb/ag.jpg)
 
 ### Attributed Grammars in Prolog
 
@@ -163,7 +168,7 @@ as a patterns matches in a set of _clauses_ and terminals denoted
 in _[squareBrackets]_.
 
 
-     # the following cluases encode this grammar
+     # the following clauses encode this grammar
 	 #sentence
 	 #    pronoun = [he] | [she]
      #	  verb_phrase
@@ -192,7 +197,7 @@ anything that can be set starts in with an _UpperCaseLetter_
 to _Number_ is set as we go down the tree).  
 
 This _Number_ 
-attribute ensure that the mulitiplicity of the
+attribute ensure that the multiplicity of the
 _nounPhrase_ agrees with the _verbPhrase_ (so if we
 use a singular man for the noun, we use a singular
 verb).
@@ -233,47 +238,18 @@ verb).
     
     pronoun(plural) --> [you].
 
-These attributes can carry around numbers that we compute representing,
-say, our belief in the current conclusions. In fuzzy logic we believe
-conjunctions at the _minimum_ belief of each part and we believe
-disjunctions at the _maximum_ belief of each part (and for negation,
-we take the _complement_). For example here is a full Prolog version
-of a fuzzy logic interpreter. Like DCGs, this is still a set of clauses
-but now we are free to do more in each clause. Prolog denotes DCGs with a
-_-->_ neck an full Prolog with a _:-_ neck.
-        
-    :- op(999,xfx,if).
-    :- op(998,xfy,or).
-    :- op(997,xfy,and).
-    :- op(997,fy,not).
-    
-    student if young and poor and not dumb.
-    
-    dumb if not smart.
-    
-    cf(young,0.4).
-    cf(poor,0.9).
-    cf(smart,0.9).
-    
-    belief(X,Y) :- cf(X,Y).
-    belief(X,Cf) :-
-    	X if Z,
-    	belief(Z,Cf).
-    
-    belief(X and Y,CF0) :-
-    	belief(X,CF1),
-    	belief(Y,CF2),
-    	CF0 is min(CF1,CF2).
-    
-    belief(X or Y,CF0) :-
-    	belief(X,CF1),
-    	belief(Y,CF2),
-    	CF0 is max(CF1,CF2).
-    
-    belief(not X,CF0) :-
-    	belief(X,CF1),
-    	CF0 is 1 - CF1.
+Note that this grammar demands that the number of verbs matches the number
+of the nouns. A small variant to this grammar would break that rule:
 
+    sentence --> nounPhrase(Number), verbPhrase(AnotherNumber).
+
+Note that this new grammar could generate the sentence
+
+     the,men,eats,the,apple]
+
+while the original grammar would ensure that we always get
+
+     the,men,eats,the,apples.
 
 Object Grammars
 ---------------
@@ -293,69 +269,6 @@ To interpret this, the OO interpreter just sends the message "evaluate"
 to this instance which, in turn, sends "evaluate" to "expr". If that
 returns true, then the "then" action is messaged with "evaluate". Else,
 we "evaluate" the "else".
-
-From Parse Trees to Computation
--------------------------------
-
-### Prolog DCGs
-
-PROLOG is a logic programming language where programmers offer clauses
-describing constraints between variables.
-
-Those constraints can model recursive structures.
-
-Computation = accumulating side-effects during that execution. e.g.
-
-      ?- number(Value, [ two, hundred, and, twenty, three ], []). 
-
-To which Prolog responds with:
-
-      Value = 233
-
-Program:
-
-      number(0)    -->  [zero].
-      number(N)    -->  digit(H), [hundred],
-                        and_tens(T), {N is H * 100 + T}.
-      number(N)    -->  sub_tens(N).
-      
-      and_tens(0)  --> [].
-      and_tens(N)  --> [and], sub_tens(N).
-      
-      sub_tens(N)  --> digit(N).
-      sub_tens(N)  --> teen(N).
-      sub_tens(N)  --> tens(T), and_digit(D), {N is T + D}.
-      
-      and_digit(0) --> [].
-      and_digit(N) --> digit(N).
-      
-      digit(1) --> [one].      teen(10) --> [ten].
-      digit(2) --> [two].      teen(11) --> [eleven].
-      digit(3) --> [three].    teen(12) --> [twelve].
-      digit(4) --> [four].     teen(13) --> [thirteen].
-      digit(5) --> [five].     teen(14) --> [fourteen].
-      digit(6) --> [six].      teen(15) --> [fifteen].
-      digit(7) --> [seven].    teen(16) --> [sixteen].
-      digit(8) --> [eight].    teen(17) --> [seventeen].
-      digit(9) --> [nine].     teen(18) --> [eighteen].
-                               teen(19) --> [nineteen].
-      
-      tens(20) --> [twenty].
-      tens(30) --> [thirty].
-      tens(40) --> [forty].
-      tens(50) --> [fifty].
-      tens(60) --> [sixty].
-      tens(70) --> [seventy].
-      tens(80) --> [eighty].
-      tens(90) --> [ninety].
-
-Besides performing this syntactical analysis and calculating the value,
-the program is also capable of providing an appropriate verbal
-expression for a given value (synthesis).
-
-      [user] ?- number(101, X, []). 
-      
-      X = [one,hundred,and,one]
 
 ### OCAML
 

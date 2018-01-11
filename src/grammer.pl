@@ -1,30 +1,11 @@
-sentence(s(NP,VP))               --> noun_phrase(NP,Num), verb_phrase(VP,Num).
+/* vim: set filetype=prolog  : */
 
-noun_phrase(np(DET, NP2), Num)   --> determiner(DET, Num), noun_phrase2(NP2, Num).
-noun_phrase(np(NP2), Num)        --> noun_phrase2(NP2, Num).
-noun_phrase2(np2(N), Num)        --> noun(N, Num).
-noun_phrase2(np2(ADJ, NP2), Num) --> adjective(ADJ), noun_phrase2(NP2, Num).
+sneak(F) :- load_files([F],[silent(true)]).
 
-verb_phrase(vp(V), Num)          --> verb(V, Num).  
-verb_phrase(vp(V, NP), Num)      --> verb(V, Num), noun_phrase(NP, _).
-
-
-determiner(det(the), _) --> [the].
-determiner(det(a), singular) --> [a].
-
-noun(n(pumpkin), singular) --> [pumpkin].
-noun(n(pumpkins), plural) --> [pumpkins].
-noun(n(lecturer), singular) --> [lecturer].
-noun(n(lecturers), plural) --> [lecturers].
-
-adjective(adj(possessed)) --> [possessed].
-
-verb(v(scares), singular) --> [scares].
-verb(v(scare), plural) --> [scare].
-
+:- sneak(grammer1).
 
 %---------------
-prim(X) :- var(X) | atomic(X).
+prim(X) :- var(X) | atomic(X). % X =.. [_,B], atomic(B).
 
 runiv(Term,L) :-
         Term =..L0,
@@ -37,9 +18,25 @@ runiv1(H0,H) :- runiv(H0,H).
 rprint(L) :- rprint([],L).
 
 rprint(Pre,X) :-
-  prim(X) -> rprint1(Pre,X) | maplist(rprint(['|   '|Pre]),X).
+  prim(X) -> rprint1(Pre,X) | X=[A|B], rprint(Pre,A), maplist(rprint(['|   '|Pre]),B).
 
-rprint1(Pres,X) :-
+rprint1([_|Pres],X) :-
 	forall(member(Pre,Pres), write(Pre)),
 	print(X), nl.
 
+%-----------------
+:- multifile sentence/2.
+:- multifile sentence/3.
+
+eg1 :-
+	sneak(grammer1),
+	forall(sentence(X,[]), (print(X),nl)).
+
+eg2 :-
+	sneak(grammer3),
+	forall(sentence(X,[]), (print(X),nl)).
+
+eg3 :- 	
+	sneak(grammer2),
+        sentence(Struct,[the, pumpkin, scares, the, lecturer],[]),
+	print(Struct),nl.
