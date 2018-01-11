@@ -245,7 +245,7 @@ recognizes (or generates) a valid sentence in a language.
 
 FSAs can be represented as transitions between states
 
-![fsa](http://unbox.org/open/trunk/310/13/fall/doc/img/fsa.jpg)
+![fsa](../img/fsa.jpg)
 
 Parser generators build these state transition tables (so that
 subsequent processing a programming language is very fast).
