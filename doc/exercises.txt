@@ -28,8 +28,8 @@ AS YOU WORK:
 
 4. To answer question N, write some function "def egN" that
    shows what happens when that code is executed.
-5. Type all those functions into ONE file called myname.py
-   (i.e. using your name for myname).
+5. Type all those functions into ONE file called myunityid.py
+   (i.e. using your unityid for myunityid).
 
 FINALLY
 
