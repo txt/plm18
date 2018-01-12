@@ -1,6 +1,40 @@
-Please try the following exercises, for each of them, write python functions called "eg1", "eg2", "eg3" ..., you need to submit:
-1. a file named "unityid.py" for the source code;
-2. a file named "unityid.out" for the outputs.
+Python proficiency test.
+
+Time: 90 minutes
+
+Of the following, only do:
+
+   1,  4,   7, 10, 16,
+  22, 31, 33, 46, 51, 
+  54, 56, 67 (no recursion), 70, 78,
+  84, 87,86, 90, 94
+
+========================
+
+BEFORE YOU BEGIN
+
+1. Download your favorite Python textbook. e.g.
+   http://www.ict.ru.ac.za/Resources/cspw/thinkcspy3/thinkcspy3.pdf
+2. Find some place whee you won't get interrupted for
+   90 minutes.
+
+WHEN YOU START
+
+3. Try to answer these questions using just your current knowledge
+   of Python, plus that one textbook. Please **DO NOT LOOK UP THESE
+   ANSWERS ON LINE*.
+
+AS YOU WORK:
+
+4. To answer question N, write some function "def egN" that
+   shows what happens when that code is executed.
+5. Type all those functions into ONE file called myname.py
+   (i.e. using your name for myname).
+
+FINALLY
+
+6. Submit that one page to Moodle before Monday midnight.
+
 
 Exercise 1
 ------------------------------------
@@ -8,8 +42,7 @@ Write a program which will find all such numbers which are divisible by 7 but ar
 between 2000 and 3200 (both included).
 The numbers obtained should be printed in a comma-separated sequence on a single line.
 
-Hints: 
-Consider use range(#begin, #end) method
+
 ------------------------------------
 
 Exercise 2
@@ -790,7 +823,7 @@ Then, the output of the program should be:
 Hints:
 Use yield to produce the next value in generator.
 In case of input data being supplied to the question, it should be assumed to be a console input.
-------------------------------------
+------------------------------------n
 
 Exercise 70
 ------------------------------------
@@ -1055,9 +1088,5 @@ Use itertools.permutations() to get permutations of list.
 
 Exercise 99
 ------------------------------------
-Write a program to solve a classic ancient Chinese puzzle: 
-We count 35 heads and 94 legs among the chickens and rabbits in a farm. How many rabbits and how many chickens do we have?
 
-Hint:
-Use for loop to iterate all possible solutions.
 ------------------------------------
