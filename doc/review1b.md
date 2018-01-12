@@ -1,0 +1,119 @@
+[home](http://tiny.cc/plm18) |
+[copyright](https://github.com/txt/plm18/blob/master/LICENSE.md) &copy;2018, tim&commat;menzies.us
+<br>
+[<img width=900 src="https://raw.githubusercontent.com/txt/plm18/master/img/banner.png">](http://tiny.cc/plm18)<br>
+[syllabus](https://github.com/txt/plm18/blob/master/doc/syllabus.md) |
+[src](https://github.com/txt/plm18/tree/master/src) |
+[submit](http://tiny.cc/plm18give) |
+[chat](https://plm18.slack.com/)
+
+
+______
+
+
+
+# Review
+
+## Pipes
+
+Pipes are used to connect together lots of little utiliies. 
+
+Q1: What does this pipe do? What are its parts?
+
+      ls | grep '/^[a-z]/' | wc -l
+
+In shell scipt, pipes only connect one input to one output.
+
+Q2: Comment: pipes are stupid cause they are too simple.
+
+Q3: Comment: pipes are fantastic cause they are so simple.
+
+## AWK
+
+AWK is a pattern matching language:
+
+- consisting of pattern-action pairs
+- and function
+- Variables are usually global and auto-initialize (usually to `""` or `0`).
+- where lines of input are divided into fields $1, $2,.... up to the number of fields `NF` 
+- `$i` means "item in field i". 
+- $0 denotes the whole line (and updating $i also updates $0).
+- Arrays can have keys that are numbers or strings.
+- `NR` is the record number; i.e. line number
+
+Q4: In the following, which is the pattern/action? What does this code do?
+
+      NF > 3 { print $0 }
+
+Q5: What is the default action? What does the following do?
+
+      1 
+
+Q6: What is the default pattern? Guess does the following awk program do?
+
+      { print length($0), $0 } 
+
+A Bayes classifier keeps counts on what symbols are seen for different classes. 
+Suppose data is represented as a comma-seperated file and the class is in the last column. Example, this file is about whether or not we played golf
+    
+```
+outlook	 temp,	humidity, windy,play
+sunny,	 hot,	high,	FALSE,	no
+sunny,	 hot,	high,	TRUE,	no
+overcast,hot,	high,	FALSE,	yes
+rainy,	 mild,	high,	FALSE,	yes
+rainy,	 cool,	normal,	FALSE,	yes
+rainy,	 cool,	normal,	TRUE,	no
+overcast,cool,	normal,	TRUE,	yes
+sunny,	 mild,	high,	FALSE,	no
+sunny,	 cool,	normal,	FALSE,	yes
+rainy,	 mild,	normal,	FALSE,	yes
+sunny,	 mild,	normal,	TRUE,	yes
+overcast,mild,	high,	TRUE,	yes
+overcast,hot,	normal,	FALSE,	yes
+rainy,	 mild,	high,	TRUE,	no
+```
+
+In the following code `data[a][b][c]++` increments the count of items in  a nested array (default value =0)
+
+
+Q7:  What is found in `$NF` on each line?
+
+Q8: Why is there no gaurd for the second  `gsub` action?
+
+Q9: For what kind of rows is `data` NOT updated?
+
+```awk
+            # tell awk that fields are seperated by a comma
+      BEGIN { FS="," }
+
+            # kill white space
+            { gsub(/[ \t]*/,"") # replaces any space and tabs with nothing
+              if ($0=="")       # if nothing left, go to next line
+	            next }
+      
+            # read column names in line 1
+      NR==1 { for(i=1; i<=NF; i++) { 
+                col[i]   = $i  } # indexes from column num  to column name
+      
+            # store data
+      NR >1 { for(i=1; i<=NF; i++)
+                data[ $NF ][ col[i] ][ $i ]++ }
+    
+      # function that does something arcane;
+      # HINT: `length(a)`  return the length of array `a`.
+      function xxx(x) { return data[x][ col[ length(col) ] ][x] }
+```
+
+Q10:  For the above table of data about golf data, what would be found in    
+  `name[ "outlook" ]`.
+
+Q11: For the above table of golf data, what would be found in     
+  `data[ "yes" ][ "outlook" ][ "sunny" ]` ?
+
+Q12: (HARD) What does the following call return? So what is a better name than `xxx`?    
+  ` xxx("yes")`
+
+
+
+
