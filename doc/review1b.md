@@ -53,7 +53,12 @@ Q6: What is the default pattern? Guess does the following awk program do?
 
       { print length($0), $0 } 
 
+(THIS PARA IS **NOT** EXAMINABLE.)
 A Bayes classifier keeps counts on what symbols are seen for different classes. 
+It can compute the probability that new items belong to a class `H` using evidence `E` using:
+
+     P( H|E ) = P( E|H ) * P(H) / P(E) 
+
 Suppose data is represented as a comma-seperated file and the class is in the last column. Example, this file is about whether or not we played golf
     
 ```
@@ -74,7 +79,8 @@ overcast,hot,	normal,	FALSE,	yes
 rainy,	 mild,	high,	TRUE,	no
 ```
 
-In the following code `data[a][b][c]++` increments the count of items in  a nested array (default value =0)
+In the following code `data[a][b][c]++` increments the count of items in  a nested array (default value =0).
+Note that `data` is part of the `P(E|H)` term in the above equation.
 
 
 Q7:  What is found in `$NF` on each line?
@@ -94,15 +100,16 @@ Q9: For what kind of rows is `data` NOT updated?
       
             # read column names in line 1
       NR==1 { for(i=1; i<=NF; i++) { 
-                col[i]   = $i  } # indexes from column num  to column name
+                name[$i] = i      # index from column name to column num
+                col[i]   = $i  }} # index from column num  to column name
       
             # store data
       NR >1 { for(i=1; i<=NF; i++)
                 data[ $NF ][ col[i] ][ $i ]++ }
     
-      # function that does something arcane;
-      # HINT: `length(a)`  return the length of array `a`.
-      function xxx(x) { return data[x][ col[ length(col) ] ][x] }
+      # mystery function: what does it do?
+      # HINT: `a[ length(a) ]`  returns the last item in array `a`.
+      function xxx(h) { return data[h][ col[ length(col) ] ][h] / NR }
 ```
 
 Q10:  For the above table of data about golf data, what would be found in    
@@ -112,7 +119,7 @@ Q11: For the above table of golf data, what would be found in
   `data[ "yes" ][ "outlook" ][ "sunny" ]` ?
 
 Q12: (HARD) What does the following call return? So what is a better name than `xxx`?    
-  ` xxx("yes")`
+  `END {print  xxx("yes") }`
 
 
 
