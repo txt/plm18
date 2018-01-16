@@ -40,7 +40,7 @@ Given the following regular expression
 
 	A+B+
      
-what could it match?
+What could it match?
 
 What if something it would not match?
 
