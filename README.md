@@ -35,9 +35,6 @@ So this subject explores how to write a "good" programming language.
 <td align=center><b>Lectures</b></td>
 <td align=center><b>Project</b>
 </td><td align=center><b>Review </td>
-   
-   1. <a href="doc/review1b.md">Review1</a>
-   
 <td align=center><b>Misc</b> </td>
 </tr>
 <tr>
@@ -84,6 +81,9 @@ Fowler's DSL idioms:
 </td><td align=center valign=top xwidth="100px">
 </td>
 <td align=center   valign=top xwidth="100px">
+   
+   1. <a href="doc/review1b.md">Review1</a>
+   
 </td>
 <td align=center valign=top  xwidth="100px">
 <p>Python: <br>
