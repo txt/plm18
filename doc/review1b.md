@@ -16,52 +16,52 @@ ______
 
 ## DSL
 
-What is the differenete between a domains speciifc language and a general language?
+Q1: What is the differenete between a domains speciifc language and a general language?
 
-Give one example of a domain specific language. When would you use it? And when would you not use it?
+Q2: Give one example of a domain specific language. When would you use it? And when would you not use it?
 
-Give one example of a general language. When would you use it? And when would you not use it?
+Q3: Give one example of a general language. When would you use it? And when would you not use it?
 
-Give the language fregment
+Q4: Give the language fregment
 
 	x*2 +     
 	y/3.14  # this is a little example
 
 
-How might this frament tokenize? What meta knowledge might be collected on each item?
-How might this fragment parse?
+Q5: How might this frament tokenize? What meta knowledge might be collected on each item?
 
+Q6: How might this fragment parse?
 
-What is tokenization?
+Q7: What is tokenization?
 
-What is parsing?
+Q8: What is parsing?
 
 Given the following regular expression 
 
 	A+B+
      
-What could it match?
+Q9: What could it match?
 
-What if something it would not match?
+Q10: What if something it would not match?
 
-Underneath regular expression, what is mathematic model?
+Q11: Underneath regular expression, what is mathematic model?
 
-What is Hersleb hypothesis? If you are a software manager, how could you apply the hersleb hypothesis?
+Q12: What is Hersleb hypothesis? If you are a software manager, how could you apply the hersleb hypothesis?
 
 
 ## Pipes
 
 Pipes are used to connect together lots of little utiliies. 
 
-Q1: What does this pipe do? What are its parts?
+Q13: What does this pipe do? What are its parts?
 
       ls | grep '/^[a-z]/' | wc -l
 
 In shell scipt, pipes only connect one input to one output.
 
-Q2: Comment: pipes are stupid cause they are too simple.
+Q14: Comment: pipes are stupid cause they are too simple.
 
-Q3: Comment: pipes are fantastic cause they are so simple.
+Q15: Comment: pipes are fantastic cause they are so simple.
 
 ## AWK
 
@@ -76,15 +76,15 @@ AWK is a pattern matching language:
 - Arrays can have keys that are numbers or strings.
 - `NR` is the record number; i.e. line number
 
-Q4: In the following, which is the pattern/action? What does this code do?
+Q16: In the following, which is the pattern/action? What does this code do?
 
       NF > 3 { print $0 }
 
-Q5: What is the default action? What does the following do?
+Q17: What is the default action? What does the following do?
 
       1 
 
-Q6: What is the default pattern? Guess does the following awk program do?
+Q18: What is the default pattern? Guess does the following awk program do?
 
       { print length($0), $0 } 
 
@@ -118,11 +118,11 @@ In the following code `data[a][b][c]++` increments the count of items in  a nest
 Note that `data` is part of the `P(E|H)` term in the above equation.
 
 
-Q7:  What is found in `$NF` on each line?
+Q19:  What is found in `$NF` on each line?
 
-Q8: Why is there no gaurd for the second  `gsub` action?
+Q20: Why is there no gaurd for the second  `gsub` action?
 
-Q9: For what kind of rows is `data` NOT updated?
+Q21: For what kind of rows is `data` NOT updated?
 
 ```awk
             # tell awk that fields are seperated by a comma
@@ -147,13 +147,13 @@ Q9: For what kind of rows is `data` NOT updated?
       function xxx(h) { return data[h][ col[ length(col) ] ][h] / NR }
 ```
 
-Q10:  For the above table of data about golf data, what would be found in    
+Q22:  For the above table of data about golf data, what would be found in    
   `name[ "outlook" ]`.
 
-Q11: For the above table of golf data, what would be found in     
+Q23: For the above table of golf data, what would be found in     
   `data[ "yes" ][ "outlook" ][ "sunny" ]` ?
 
-Q12: (HARD) What does the following call return? So what is a better name than `xxx`?    
+Q24: (HARD) What does the following call return? So what is a better name than `xxx`?    
   `END {print  xxx("yes") }`
 
 
