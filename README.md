@@ -82,7 +82,7 @@ Fowler's DSL idioms:
 </td>
 <td align=center   valign=top xwidth="100px">
    
-   1. <a href="doc/review1b.md">Review1</a>
+1. <a href="doc/review1b.md">Review1</a>
    
 </td>
 <td align=center valign=top  xwidth="100px">
