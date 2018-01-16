@@ -20,7 +20,7 @@ Give one example of a general language. When would you use it? And when would yo
 
 Give the language fregment
 
-      x*2 +     
+	x*2 +     
 	y/3.14  # this is a little example
 
 
@@ -33,7 +33,9 @@ What is tokenization?
 What is parsing?
 
 Given the following regular expression 
-     A+B+
+
+	A+B+
+     
 what could it match?
 
 What if something it would not match?
