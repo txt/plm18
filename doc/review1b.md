@@ -14,6 +14,8 @@ ______
 
 # Review
 
+### Week 1 : 01/09/2018 ~ 01/11/2018
+
 ## DSL
 
 Q1: What is the differenete between a domains speciifc language and a general language?
