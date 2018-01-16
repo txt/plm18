@@ -19,8 +19,11 @@ Give one example of a domain specific language. When would you use it? And when 
 Give one example of a general language. When would you use it? And when would you not use it?
 
 Give the language fregment
-x*2 +     
-y/3.14  # this is a little example
+
+      x*2 +     
+	y/3.14  # this is a little example
+
+
 How might this frament tokenize? What meta knowledge might be collected on each item?
 How might this fragment parse?
 
