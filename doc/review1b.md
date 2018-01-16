@@ -14,8 +14,12 @@ ______
 
 # Review
 
+## DSL
+
 What is the differenete between a domains speciifc language and a general language?
+
 Give one example of a domain specific language. When would you use it? And when would you not use it?
+
 Give one example of a general language. When would you use it? And when would you not use it?
 
 Give the language fregment
