@@ -14,6 +14,32 @@ ______
 
 # Review
 
+What is the differenete between a domains speciifc language and a general language?
+Give one example of a domain specific language. When would you use it? And when would you not use it?
+Give one example of a general language. When would you use it? And when would you not use it?
+
+Give the language fregment
+     x*2 +     
+     y/3.14 # this is a little example
+How might this frament tokenize? What meta knowledge might be collected on each item?
+How might this fragment parse?
+
+
+What is tokenization?
+
+What is parsing?
+
+Given the following regular expression 
+     A+B+
+what could it match?
+
+What if something it would not match?
+
+Underneath regular expression, what is mathematic model?
+
+What is Hersleb hypothesis? If you are a software manager, how could you apply the hersleb hypothesis?
+
+
 ## Pipes
 
 Pipes are used to connect together lots of little utiliies. 
