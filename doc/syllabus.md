@@ -115,7 +115,7 @@ Note that this is a
 **programming-intensive** subject. A programming
 background is required in a contemporary language
 such as Java or C/C++ or Python. Hence, the
-prerequisite for this class is 510, Software
+prerequisite for this class is CSC326, Software
 Engineering. Significant software industry
 experience may be substituted, at the instructor's
 discretion.  Students in this class will work in
