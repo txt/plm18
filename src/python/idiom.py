@@ -133,13 +133,13 @@ def csv(src):
 
 str001="""forecast,temp,humidity, ?windy, play
           #------- ---- --------  -----  -----
-          sunny, 85, 85, false, no
-          sunny, 72, 95, false, no
+          ?,     85, ?,  false, no
+          sunny, 72, 95.0, false, no
           sunny, 80, 90, true,  no # comments
           rainy, 65, 70, true,  no
           rainy, 71, 91, true,  no
           overcast, 83, 86, false, yes
-          rainy, 70, 96, false, yes
+          rainy, 70, ?, false, yes
 
           rainy, 68, 80, false, yes
           # another comment
@@ -150,24 +150,45 @@ str001="""forecast,temp,humidity, ?windy, play
           overcast, 72, 90, true, yes
           overcast, 81, 75, false, yes"""
 
-@go
+#@go
 def csvEg():
   for cells in csv(str001):
     print(cells)
 
+def thing(x):
+  def sym(x): return x
+  try:    
+    return int(x), int
+  except: 
+    try:    return float(x),float
+    except: return x,sym
+
 #-----------------------------------------------------
 # columns reader
-def noop(x) : return x
-def want(x) : return not x[0] != "?"
-
 def cols(src):
-  wanted = {}
-  def get(c,cells): wanted[c](cells[c])
-  for cells in csv(str):
-    wanted = wanted or {c:noop for c,txt for 
-                         enumerate(cells) if want(txt) }
-    yield [get(c,cells) for c in wanted]
-      
+  """ Cols have meta-knowledge. Meta-K starts life as
+      'None'. Then, when the first non empty cells shows up,
+      they are converted to 'int' or 'sym' or 'float'.
+  """
+  meta = None
+  # --- utils -----------------
+  def cols1(line,c, cell, f):
+    if line == 0   : return cell
+    if cell == "?" : return cell
+    if f           : return f(cell)
+    cell, meta[c] = thing(cell)
+    return cell
+  # --- main ------------------
+  for line,cells in enumerate(csv(src)):
+    meta = meta or { 
+            c:None for c,cell in enumerate(cells) if cell[0] != "?" }
+    yield [ cols1(line, c, cells[c], meta[c]) for c in meta ]
+
+@go
+def colsEg():
+  for cells in cols(str001):
+    print(cells)
+
 #def fileLines(file):
 #      
 #      line = re.sub(r'([\n\r\t]|#.*)', "", line)
