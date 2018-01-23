@@ -57,8 +57,8 @@ Python (intro):
 Parsing (basics):
 <dd>
 <a href="doc/re.md">Regx</a>,  				      
-<a href="doc/grammars.md">grammars</a>,  		      
-<a href="doc/grammars.md">syntax</a>,  			      
+<a href="doc/syntax.md">syntax</a>,  			      
+<a href="doc/semantics.md">semantics</a>,  		      
 Semantics,						      
 macros
 <dt>

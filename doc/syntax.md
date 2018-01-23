@@ -244,10 +244,163 @@ Welcome to the wonderful world of grammaers.
 
 Parsing = convert a sequence of linear tokens into a tree.
 
+Grammer = space of all possible trees allowed by a language
+
+One program = one tree from that grammer.
+
 A parser groups tokens into syntactical units. The output of the
 parser is a parse tree representation of the program.
 Grammars are used to define the program structure recognized by a
 parser. 
+
+
+Definitions
+
+-   A "sentence" is a string of characters over some alphabet
+-   A "language" is a set of sentences
+-   A "lexeme" is the lowest level syntactic unit of a language (e.g.,
+    \*, sum, begin)
+-   A "token" is a category of lexemes (e.g., identifier)
+
+Context-Free Grammars
+
+-   Developed by Noam Chomsky in the mid-1950s
+-   Language generators, meant to describe the syntax of natural
+    languages Define a class of languages called context-free languages
+
+Backus-Naur Form (1959)
+
+-   Invented by John Backus to describe Algol 58
+-   BNF is equivalent to context-free grammars
+
+Example:
+
+      <program> ==> <stmts>
+        <stmts> ==> <stmt> | <stmt> ; <stmts>
+         <stmt> ==> <var> = <expr>
+         <var>  ==> a | b | c | d
+         <expr> ==> <term> + <term> | <term> - <term>
+         <term> ==> <var> | const
+
+Example derivation:
+
+      <program> => <stmts>  => <stmt> 
+                            => <var> = <expr> 
+                            => a = <expr> 
+                            => a = <term> + <term>
+                            => a = <var> + <term> 
+                            => a = b + <term>
+                            => a = b + cons
+
+Or, consider, for example, the syntax of numeric constants accepted by a
+simple hand-held calculator:
+
+      <number>   => <integer> | <real>
+      <integer>  => <digit> <digit> *
+      <real>     => <integer> <exponent> | <decimal> ( <exponent> | Îµ )
+      <decimal>  => <digit> * ( . <digit> | <digit> . ) <digit> *
+      <exponent> => ( e | E ) ( + | - | Îµ ) <integer>
+      <digit>    => 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+
+### Parse tree
+
+A hierarchical representation of a derivation
+
+                    <program>
+                        |
+                     <stmts>
+                        |
+                     <stmt>
+                    /  |   \
+                   /   |    \
+                  /    |     \
+              <var>   "="    <expr>
+                |           /  |   \
+              "a"     <term>  "+"   <term>
+                        |             |
+                      <var>         const
+                        |
+                       "b"
+
+A grammar is "ambiguous" if and only if it generates a sentential form
+that has two or more distinct parse trees
+
+Example:
+
+       <expr> ==> <expr> <op> <expr>  |  const
+       <op>   ==> /  |  -
+
+Two possible outputs:
+
+                         <expr>                      <expr>
+                        /   \   \                   /   |    \
+                       /     \   \                 /    |     \
+                <expr>     <op>  <expr>        <expr>  <op>   <expr>
+                /  |   \       \      |          |      |    |  \   \
+               /   |    \       |     |          |      |    |   \    \
+              /    |     \      |     |          |      |    |    \     \
+          <expr> <op>  <expr>   |     |          |      |   <expr> <op> <expr>
+            |      |     |      |     |          |      |      |     |     |
+          const   "-"   const   "/"  const     const   "-"   const  "/"   const
+
+Fix: If we use the parse tree to indicate precedence levels of the
+operators, we cannot have ambiguity
+
+Example:
+
+          <expr> ==> <expr> - <term>  |  <term>
+          <term> ==> <term> / const| const
+
+Output:
+
+             <expr>
+            /   |   \
+       <expr>  "-"  <term>
+          |         |  \  \
+          |         |   \  \
+          |         |    \  \
+       <term>    <term> "/"  const
+          |         |
+       <const>   <const>
+
+
+Operator associativity can also be indicated by a grammar
+
+
+       <expr> ==> <expr> + <expr> |  const  (ambiguous)
+       <expr> ==> <expr> + const  |  const  (unambiguous
+
+
+Parse:
+
+                                   <expr>
+                                  /  |   \
+                            <expr>  "+"   const
+                          /   |   \    
+                    <expr>   "+"   const 
+                       |
+                     const
+
+Attributed Grammars
+-------------------
+
+Grammars generate all properly formed expressions in some language but
+says nothing about their meaning. To tie these expressions to
+mathematical concepts we need additional notation.
+
+The most common is based on attributes. In our expression grammar, we
+can associate a val attribute with each E, T, F, and const in the
+grammar.
+
+The intent is that for any symbol S, S.val will be the meaning, as an
+arithmetic value, of the token string derived from S. We assume that the
+val of a const is provided to us by the scanner.
+
+We must then invent a set of rules for each production, to specify how
+the vals of different symbols are related. The resulting *attribute
+grammar* (AG) for a simple calculator is shown here:
+ 
+![ag](../img/ag.jpg)
 
 Yacc and Bison are tools for generating parsers in C. Bison
 is a faster version of Yacc. Jack is a tool for generating scanners
@@ -413,4 +566,117 @@ _-->_ neck an full Prolog with a _:-_ neck.
     belief(not X,CF0) :-
     	belief(X,CF1),
     	CF0 is 1 - CF1.
+
+
+
+## Object Grammars
+
+Going one step further, the "Parse tree" is a nested set of objects. In
+this design, each non-terminal is some instance of sub-class of
+"Grammar". Once a language is parsed, an OO interpreter can execute the
+parse tree, with each non-terminal handling the specific processing
+associated with that node.
+
+For example, an if-test would create and instance of class "If" with
+slots for "expr" and then "then" and "else" actions.
+
+      <if> => if <expr> then <action> else <action> fi
+
+To interpret this, the OO interpreter just sends the message "evaluate"
+to this instance which, in turn, sends "evaluate" to "expr". If that
+returns true, then the "then" action is messaged with "evaluate". Else,
+we "evaluate" the "else".
+
+### OCAML
+
+Pure function language. Functions define a relationship between input
+types and output types.
+
+A strongly typed language (at compile time, you know if a variable is a
+string, number, whatever) and supported type inferencing (so you can
+check if you are doing dumb things like adding a number to a string).
+
+OCaml supports recursive type definitions. Question: is the following a
+type system or a grammar or both?
+
+      type paragraph =
+          Normal of par_text
+        | Pre of string * string option
+        | Heading of int * par_text
+        | Quote of paragraph list
+        | Ulist of paragraph list * paragraph list list
+        | Olist of paragraph list * paragraph list list
+      
+      and par_text = text list
+      
+      and text =
+          Text of string
+        | Emph of string
+        | Bold of string
+        | Struck of par_text
+        | Code of string
+        | Link of href
+        | Anchor of string
+        | Image of img_ref
+      
+      and href = { href_target : string; href_desc : string; }
+      
+      and img_ref = { img_src : string; img_alt : string; }
+
+The Ulist and Olist constructors take the first item followed by a
+(possible empty) list of items, to prevent empty lists --- this way,
+there's at least one element.
+
+So
+[eigenclass.org](http://eigenclass.org/R2/writings/fast-extensible-simplified-markdown-in-ocaml)
+uses the above to define a cool generator for HTML pages using a set of
+short-cuts:
+
+-   any character can be escaped with \\,
+-   emphasis is done with \_\_ (less prone to accidental use than \_)
+    and bold text with \*,
+-   typographical abuses like bold emphasized text are not allowed,
+-   headers are done with !level1 header, !!level2 header, etc.,
+-   the \# character is thus free and can be used for numbered lists,
+    replacing 1.,
+-   pre-formatted code is done with
+
+
+       {{
+         whatever
+       }}
+
+It is possible to extend the markup with custom processors, using
+    `{{extension-name` blocks; for instance, raw HTML is inserted with
+
+    {{html
+      <b> whatever </b>
+    }}
+
+(before you try to inject arbitrary HTML in the comments: this
+    extension is only enabled in the main text).
+
+The above grammar is the core of a parser that generates HTML. And,
+interestingly, in this ultra-high level language, this parse runs very
+very fast. <font size="2">
+
+                                            runtimes                       memory
+                                            -----------------------------  -------------
+                                LoCs        README.1  README.8  README.32  README.32 MEM
+      discount         C        ~4500                 0.016s    0.063s     2.8MB
+      Bluecloth        Ruby     1100        0.130s    2.16s     30s        31MB
+      markdown         Perl     1400        0.068s    0.66s     segfault   segfault
+      python-markdown  Python   1900        0.090s    0.35s     2.06s      23MB
+      Pandoc           Haskell   900 + 450  0.068s    0.55s     2.7s       25MB
+      ----------------------------------------------------------------------------------
+      Simple_markup    OCaml    313 + 55              0.012s    0.043s     3.5MB
+
+</font>
+So, in the 21st century, you can have you cake and eat it too:
+
+-   High-level descriptions.
+-   Tiny code.
+-   Fast runtimes.
+
+Excellent example of how pure theory improves implementations.
 
