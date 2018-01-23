@@ -15,6 +15,8 @@ ______
 
 # Project : Care for a Game of Cards?
 
+[Notes on (Automated) Game Design](https://goo.gl/xpQcf3)
+
 ## Goal 
 
 In this subject you will implement a game using a domain-specific language implemented using Lopes' styles and Fowler's idioms.
