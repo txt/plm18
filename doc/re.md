@@ -16,7 +16,7 @@ ______
 
 
 This subject is about languages. Some languages are very big (like JAVA) and some are very little.
-Regular expressions are  a little langauge to handle pattern matching.
+Regular expressions are  a little language to handle pattern matching.
 
 Regular expressions specifies a sequence of tokens. Tokens are one of:
 
