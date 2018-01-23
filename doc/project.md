@@ -78,4 +78,4 @@ Note: this annotation will NOT be complete, Just a place to get you thinking.
 
 - Contrast the games that lived long or died early in April.
 - What language features made them more or less fun?
-- Pdf, 5-10 pages in [this](https://www.acm.org/publications/proceedings-template-16dec2016)
+- Pdf, 5-10 pages in [this format](https://www.acm.org/publications/proceedings-template-16dec2016)
