@@ -46,7 +46,7 @@ Note: this annotation will NOT be complete, Just a place to get you thinking.
     - How to exchange a card, give or take from another player?
     - Hot to reveal information
     - How to bluff 
-    - What are the win conditions? Lose/‚ÄùoutÄù conditions?
+    - What are the win conditions? Lose-close out conditions?
     - Starting states/deals/hands/piles
     - Turn structure -- ordered or turn less? Can it change during play?
     - How to make a game fun? Make it so that newbies don't die straight away, that 
