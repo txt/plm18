@@ -3,6 +3,9 @@
 
 # Timm's rule. Python is not a language. 
 # Rather, it is a language laboratory.
+
+
+  
 #-----------------------------------------------------
 # decorators
 import re
@@ -13,12 +16,33 @@ def go(f):
   f()
   return f
 
-@go
+#@go
 def go1():
   """Isn't it great we can
   use the function doco string to
   document the test? """
   print("going!")
+
+#------------------------------------------------------
+# closures
+
+def visit(x,f):
+  if isinstance(x,list):
+    for y in x:
+      visit(y,f)
+  else:
+    f(x)
+
+def visitEg():
+  lst = [10, 20, [30, [40, 50]], [60, 70], 80]
+  class worker:
+    def __init__(i)   : i.n=0
+    def __call__(i,x) : i.n += x*100 
+  w = worker()
+  visit(lst, w)
+  return w.n
+
+print(visitEg())
 
 #-----------------------------------------------------
 # memoisation via decoration
@@ -35,15 +59,16 @@ def memo(f):
 def fib(n):
   return n if n < 2 else fib(n-2) + fib(n-1)
 
-@go
+#@go
 def fibEg():
   "without memoization, this will never terminate"
   print(fib(200))
 
+  
 #-----------------------------------------------------
 # list comprehensions
 
-@go
+#@go
 def compEg():
   s = [x**2 for x in range(10)]
   v = [2**i for i in range(13) ]
@@ -60,7 +85,7 @@ def items(x):
   else:
     yield x
 
-@go
+#@go
 def items1():
   for i in items([10, 20, [30, [40, 50]], [60, 70], 80]):
     print(i)
@@ -109,14 +134,14 @@ def lines(str):
   elif zip() : return zip2lines(str)
   else       : return str2lines(str)
 
-@go
+#@go
 def linesEg1():
   for n,line in enumerate(lines("""111 
                     222
                     333""")):
     print(n,"\t",line)
 
-@go
+#@go
 def linesEg2():
   for n,line in enumerate(lines("idiom.py")):
     print(n,"\t",line)
@@ -152,7 +177,7 @@ str001="""forecast,temp,humidity, ?windy, play
           overcast, 72, 90, true, yes
           overcast, 81, 75, false, yes"""
 
-@go
+#@go
 def csvEg():
   for cells in csv(str001):
     print(cells)
@@ -186,7 +211,7 @@ def cols(src):
             c:None for c,cell in enumerate(cells) if cell[0] != "?" }
     yield [ cols1(line, c, cells[c], meta[c]) for c in meta ]
 
-@go
+#@go
 def colsEg():
   for cells in cols(str001):
     print(cells)
