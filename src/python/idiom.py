@@ -4,24 +4,53 @@
 # Timm's rule. Python is not a language. 
 # Rather, it is a language laboratory.
 
+print(23) 
 
-  
-#-----------------------------------------------------
+print("hello")
+#------------------------------------------------------
 # decorators
-import re
+# For example, functions can be things to call, but
+# they can also be places to comment on things.
+import re, traceback, time
+
 def go(f):
-  print("\n#--|",f.__name__,"|------------------------")
+  print("\n-----| %s |-----------------------" % f.__name__)
   if f.__doc__:
     print("# "+ re.sub(r'\n[ \t]*',"\n# ",f.__doc__))
   f()
   return f
 
-#@go
+@go
 def go1():
   """Isn't it great we can
   use the function doco string to
   document the test? """
   print("going!")
+ 
+go1()
+#-------------------------------------------------------
+# World's shortest unit test engine
+
+TRY=FAIL=0
+
+def ok(f):
+  global TRY,FAIL 
+  try:     
+    TRY  += 1; go(f); print("# pass");  
+  except:  
+    FAIL += 1; print(traceback.format_exc());  
+  return f
+
+@ok
+def ok1(): 1/1
+
+@ok
+def ok2(): 1/0
+
+@ok
+def ok3(): 
+  "note how we get to ok3, even after ok2 crashes"
+  assert 1==0, "i thought one was zero %s " % "today"
 
 #------------------------------------------------------
 # closures
@@ -204,7 +233,7 @@ def cols(src):
     if cell == "?" : return cell
     if f           : return f(cell)
     cell, meta[c] = thing(cell)
-    return cell
+    return cell 
   # --- main ------------------
   for line,cells in enumerate(csv(src)):
     meta = meta or { 
@@ -216,3 +245,7 @@ def colsEg():
   for cells in cols(str001):
     print(cells)
 
+if __name__ == "__main__": 
+   print("\n# %s TRY= %s ,FAIL= %s ,%%PASS= %s"  % (
+          time.strftime("%d/%m/%Y, %H:%M:%S,"),
+          TRY, FAIL, int(round((TRY-FAIL)*100/(TRY+0.001)))))
