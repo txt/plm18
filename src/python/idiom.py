@@ -4,9 +4,43 @@
 # Timm's rule. Python is not a language. 
 # Rather, it is a language laboratory.
 
-print(23) 
+print(232000001111111) 
 
-print("hello")
+print("hello","gooodbye",sep=".... ",end=""); print("goodbye")
+
+def eg1():
+  old=[10,20,30,40, 50,60,70]
+  old[0] = 100
+  old[-1]= "red"
+  print(old[2:])
+  new=old[:]
+  old[0]= 99999
+  print(new)
+  #assert new[0] ==101,"i expcted %5.3f" % 100
+#  print(old)
+  
+#eg1()
+
+print([x/2 for x in range(0,9) if x % 2])
+import re
+
+def cells(str, out):
+   str = re.sub(r'([\n\t\r ]|#.*)', '', str)
+   if str != '':
+      lst = [z.strip() for z in str.split(",")]
+      if len(lst) > 0:
+        out += [lst]
+
+def filterEachLine(f=cells):
+  out=[]
+  line = input()
+  while line:
+    f(line, out)
+    line=input()
+  return out
+    
+for line in eg2():
+  print("\t",line)
 #------------------------------------------------------
 # decorators
 # For example, functions can be things to call, but
@@ -20,7 +54,7 @@ def go(f):
   f()
   return f
 
-@go
+#@go
 def go1():
   """Isn't it great we can
   use the function doco string to
@@ -41,13 +75,13 @@ def ok(f):
     FAIL += 1; print(traceback.format_exc());  
   return f
 
-@ok
+#@ok
 def ok1(): 1/1
 
-@ok
+#@ok
 def ok2(): 1/0
 
-@ok
+#@ok
 def ok3(): 
   "note how we get to ok3, even after ok2 crashes"
   assert 1==0, "i thought one was zero %s " % "today"
