@@ -39,7 +39,7 @@ def filterEachLine(f=cells):
     line=input()
   return out
     
-for line in eg2():
+for line in filterEachLine():
   print("\t",line)
 #------------------------------------------------------
 # decorators
