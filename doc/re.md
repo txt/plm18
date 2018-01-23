@@ -381,14 +381,14 @@ test for regular expressions.
     processor goes all the way back to the start of the pattern.
 -   Smarter way (Awk): parallel traversal of all pathways
 
-![grep1p](http://unbox.org/open/trunk/310/13/fall/doc/img/grep1p.jpg)
+![grep1p](../img/grep1p.jpg)
 
 e.g. Lets build two finate state automoa for the patterhn `abab|abbb`
 and run it the string `abbb`.
 
 First, the dumb way:
 
-![fig10](http://unbox.org/open/trunk/310/13/fall/doc/img/fig10.jpg)
+![fig10](../img/fig10.jpg)
 
 A more efficient but more complicated way to simulate perfect guessing
 is to guess both options simultaneously. In this approach, the
@@ -396,7 +396,7 @@ simulation allows the machine to be in multiple states at once. To
 process each letter, it advances all the states along all the arrows
 that match the letter.
 
-![fig12](http://unbox.org/open/trunk/310/13/fall/doc/img/fig12.jpg)
+![fig12](../img/fig12.jpg)
 
 Note that this second way was first implemented by Ken Thompson
 introduced the multiple-state simulation approach in his 1968 paper. The
