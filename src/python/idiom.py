@@ -1,6 +1,8 @@
 # vim: set filetype=python ts=2 sw=2 sts=2 expandtab: 
 # note above: enforce indentation standards
 
+# Timm's rule. Python is not a language. 
+# Rather, it is a language laboratory.
 #-----------------------------------------------------
 # decorators
 import re
@@ -22,7 +24,7 @@ def go1():
 # memoisation via decoration
 def memo(f):
   cache={}
-  def g(*lst, **dic):
+  def g(*lst, **dic):  
     if lst in cache:
       return cache[lst]
     new = cache[lst] = f(*lst, **dic)
@@ -33,7 +35,7 @@ def memo(f):
 def fib(n):
   return n if n < 2 else fib(n-2) + fib(n-1)
 
-#@go
+@go
 def fibEg():
   "without memoization, this will never terminate"
   print(fib(200))
@@ -58,7 +60,7 @@ def items(x):
   else:
     yield x
 
-#@go
+@go
 def items1():
   for i in items([10, 20, [30, [40, 50]], [60, 70], 80]):
     print(i)
@@ -92,7 +94,7 @@ def file2lines(file):
 
 import zipfile
 def zip2lines(file):
-  with zipfile.ZipFile(file) as z:
+  with zipfile.ZipFile(file) as z:    
     with z.open(file) as f:
       for line in f:
         yield line.rstring('\n')
@@ -107,17 +109,17 @@ def lines(str):
   elif zip() : return zip2lines(str)
   else       : return str2lines(str)
 
-#@go
+@go
 def linesEg1():
-  for line in lines("""111 
+  for n,line in enumerate(lines("""111 
                     222
-                    333"""):
-    print(line)
+                    333""")):
+    print(n,"\t",line)
 
-#@go
+@go
 def linesEg2():
-  for line in lines("idiom.py"):
-    print("\t",line)
+  for n,line in enumerate(lines("idiom.py")):
+    print(n,"\t",line)
 
 #-----------------------------------------------------
 # csv reader
@@ -150,7 +152,7 @@ str001="""forecast,temp,humidity, ?windy, play
           overcast, 72, 90, true, yes
           overcast, 81, 75, false, yes"""
 
-#@go
+@go
 def csvEg():
   for cells in csv(str001):
     print(cells)
@@ -189,17 +191,3 @@ def colsEg():
   for cells in cols(str001):
     print(cells)
 
-#def fileLines(file):
-#      
-#      line = re.sub(r'([\n\r\t]|#.*)', "", line)
-#      row = map(lambda z:z.strip(), line.split(","))
-#      if len(row)> 0:
-#        yield prep(row) if prep else row
-#
-
-#@go
-def linesEg1():
-  """Lets say what we are doing abd say so using
-  several lines of
-  test"""
-  lines("asasads.txt")
