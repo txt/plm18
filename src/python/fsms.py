@@ -9,6 +9,9 @@ sys.dont_write_bytecode = True
 #   python fsm.py 21083 # for a long-ish run
 #   python fsm.py 1     # for a short run
 
+# make a library. do an add with relabelling
+# subclass machine
+
 # ----------------------------------------------
 def fsm0(label):
   m     = Machine(label)
@@ -98,7 +101,7 @@ class Machine:
     tmp = State(txt)
     i.states[txt] = tmp
     i.first = i.first or tmp
-    i.here  = i.here or tmp
+    i.here  = i.here  or tmp
     return tmp
 
   @staticmethod
@@ -126,13 +129,14 @@ class Machine:
     for machine in Machine.Factory:
       lst[machine.pos] += machine.name
     show = lambda x : str(x if x else ".")
-    print(name," | ", " ".join(map(show, lst)))
+    print(name," | ", " ".join([show(x) for x in  lst]))
 
   def step(i, w): 
     if not i.here.stop():
       i.here = i.here.next(w)
       i.here.arrive()
-      i.pos += move()
+      i.pos = (i.pos + move()) % 50
+       
 
 def move(): return random.randint(-10, 10)
 
