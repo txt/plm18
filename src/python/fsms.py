@@ -1,5 +1,5 @@
 #!/usr/bin/python
-from __future__ import division, print_function
+#from __future__ import division, print_function
 import sys, random, os
 
 sys.dont_write_bytecode = True
