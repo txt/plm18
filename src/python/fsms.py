@@ -10,8 +10,8 @@ sys.dont_write_bytecode = True
 #   python fsm.py 1     # for a short run
 
 # ----------------------------------------------
-def fsm0(agent):
-  m     = Machine(agent)
+def fsm0(label):
+  m     = Machine(label)
   entry = m.state("entry")  # first names state is "start"
   foo   = m.state("foo")
   bar   = m.state("bar")
@@ -83,10 +83,10 @@ def T(here,gaurd,there):
 class Machine:
   Factory = []  # considered making it a class but it only has one method
 
-  def __init__(i,k):
+  def __init__(i,label):
     i.states = {}
     i.first = i.here = None  # i.here now an instance var
-    i.name = k
+    i.name = label
     i.pos = 0
     Machine.Factory.append(i)
 
@@ -128,11 +128,8 @@ class Machine:
     show = lambda x : str(x if x else ".")
     print(name," | ", " ".join(map(show, lst)))
 
-  def step(i, w):
-    if not i.here:
-     i.here = i.start
-     i.here.arrive()
-    elif not i.here.stop():
+  def step(i, w): 
+    if not i.here.stop():
       i.here = i.here.next(w)
       i.here.arrive()
       i.pos += move()
