@@ -8,3 +8,7 @@ import more
 print(aa())
 
 print(sys.argv)
+
+for line in sys.stdin:
+  print(line.strip())
+
