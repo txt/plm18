@@ -2,8 +2,7 @@
 import sys
 sys.dont_write_bytecode = True
 
-from machine import Machine
-from lib import maybe
+from machines import Machine,maybe
 
 # usage:
 #   python fsm.py 21083 # for a long-ish run

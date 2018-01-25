@@ -28,6 +28,31 @@ def ok(w, a):    return True
 def fail(w, a):  return maybe()
 def again(w, a): return maybe()
 
+class bcolors:
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
+
+print(bcolors.OKBLUE + """
+         ,     ,
+        (\____/)
+         (_oo_)
+          (O)
+        __||__    \)
+     []/______\[] /
+      / \______/ \/
+    /    /__\ 
+   (\   /____\ 
+
+Welcome to .... the machine.
+
+""" + bcolors.ENDC)
+
 fsm0(1)
 fsm0(2)
 fsm0(4)
