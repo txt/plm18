@@ -1,15 +1,12 @@
 # vim: set filetype=python ts=2 sw=2 sts=2 expandtab: 
+from __init__ import *
 import sys
-sys.dont_write_bytecode = True
-
-from machine import Machine,T
-from lib import maybe
 
 # usage:
 #   python fsm.py 21083 # for a long-ish run
 #   python fsm.py 1     # for a short run
 
-# subclass machine
+
 
 # ----------------------------------------------
 def fsm0(label):
@@ -31,11 +28,10 @@ def ok(w, a):    return True
 def fail(w, a):  return maybe()
 def again(w, a): return maybe()
 
-if __name__ == '__main__':
-  fsm0(1)
-  fsm0(2)
-  fsm0(4)
-  if len(sys.argv) > 1:
-    Machine.run(int(sys.argv[1]))
-  else:
-    Machine.run()
+fsm0(1)
+fsm0(2)
+fsm0(4)
+if len(sys.argv) > 1:
+  Machine.run(int(sys.argv[1]))
+else:
+  Machine.run()
