@@ -1,9 +1,8 @@
 # vim: set filetype=python ts=2 sw=2 sts=2 expandtab:
+from __init__ import *
 import sys
-sys.dont_write_bytecode = True
 
-from base import aa
-import more
+print(aa())
 
 print(aa())
 
@@ -12,3 +11,4 @@ print(sys.argv)
 for line in sys.stdin:
   print(line.strip())
 
+print(cant())
