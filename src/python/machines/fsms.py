@@ -14,14 +14,13 @@ from lib import maybe
 # ----------------------------------------------
 def fsm0(label):
   m     = Machine(label)
-  entry = m.S("entry")  # first names state is "start"
-  foo   = m.S("foo")
-  bar   = m.S("bar")
-  stop  = m.S("stop.")  # anything with a "." is a "stop"
+  s,t   = m.S, m.T
+  foo   = s("foo")
+  bar   = s("bar")
   #-- machine
-  m.T(entry, walk, foo)
-  m.T(foo,   walk, foo)
-  m.T(foo,   sit,  stop)
+  t(s("entry"), walk, foo)
+  t(foo,        walk, foo)
+  t(foo,        sit,  s("stop."))
   return m
  
 # ----------------------------------------------
