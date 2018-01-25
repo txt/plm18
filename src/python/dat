@@ -1,0 +1,6 @@
+name,  age, shoesize
+#--------------------------------
+tim,11, 45
+jane, 100, 34 # too large
+
+

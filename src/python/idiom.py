@@ -4,14 +4,44 @@
 # Timm's rule. Python is not a language. 
 # Rather, it is a language laboratory.
 
-print(232000001111111) 
+y = [x/2 for x in range(0,100) if x > 60]
 
-print("hello","gooodbye",sep=".... ",end=""); print("goodbye")
+lst = [ 1,2 ,3]
+d = dict(name=1, zebras=3, showsize=4)
+
+def me(x): return -1*x
+
+print(me)
+
+def ordered(lst,key=me):
+  print(">",lst.sort(key=key))
+  return lst
+
+def score(pair): return pair[0]
+
+def unscore(pair): return -1*score(pair)
+def what(pair):  return pair[1]
+
+print( ordered([ [3, "dog"],[4,"cat"],[1,"dog"]],
+               key=score))
+
+print(ordered([k for k in d.keys()]))
+
+print(ordered([k for k in d.values()]))
+
+print("B4 ", d)
+print("Adter ", {d[k] :k for k in d} )
+   
+
+
+#print(232000001111111) 
+
+#print("hello","gooodbye",sep=".... ",end=""); print("goodbye")
 
 def eg1():
   old=[10,20,30,40, 50,60,70]
   old[0] = 100
-  old[-1]= "red"
+  old[-1]= "rd"
   print(old[2:])
   new=old[:]
   old[0]= 99999
@@ -21,7 +51,7 @@ def eg1():
   
 #eg1()
 
-print([x/2 for x in range(0,9) if x % 2])
+#print([x/2 for x in range(0,9) if x % 2])
 import re
 
 def cells(str, out):
@@ -29,7 +59,7 @@ def cells(str, out):
    if str != '':
       lst = [z.strip() for z in str.split(",")]
       if len(lst) > 0:
-        out += [lst]
+        out += [lst]  
 
 def filterEachLine(f=cells):
   out=[]
@@ -39,8 +69,8 @@ def filterEachLine(f=cells):
     line=input()
   return out
     
-for line in filterEachLine():
-  print("\t",line)
+#for line in filterEachLine():
+#  print("\t",line)
 #------------------------------------------------------
 # decorators
 # For example, functions can be things to call, but
@@ -61,7 +91,7 @@ def go1():
   document the test? """
   print("going!")
  
-go1()
+#go1()
 #-------------------------------------------------------
 # World's shortest unit test engine
 
@@ -105,7 +135,7 @@ def visitEg():
   visit(lst, w)
   return w.n
 
-print(visitEg())
+#print(visitEg())
 
 #-----------------------------------------------------
 # memoisation via decoration
