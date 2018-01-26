@@ -9,17 +9,11 @@ import sys
 
 
 # ----------------------------------------------
-def fsm0(label):
-  m     = Machine(label)
-  entry = m.S("entry")  # first names state is "start"
-  foo   = m.S("foo")
-  bar   = m.S("bar")
-  stop  = m.S("stop.")  # anything with a "." is a "stop"
-  #-- machine
-  m.T(entry, walk, foo)
-  m.T(foo,   walk, foo)
-  m.T(foo,   sit,  stop)
-  return m
+def fsm0(s,t):
+  foo = s("foo")
+  t("entry", walk, foo)
+  t(foo,     walk, foo)
+  t(foo,     sit,  "stop.")
  
 # ----------------------------------------------
 def walk(w, a):  return maybe()
@@ -28,17 +22,7 @@ def ok(w, a):    return True
 def fail(w, a):  return maybe()
 def again(w, a): return maybe()
 
-class bcolors:
-    HEADER = '\033[95m'
-    OKBLUE = '\033[94m'
-    OKGREEN = '\033[92m'
-    WARNING = '\033[93m'
-    FAIL = '\033[91m'
-    ENDC = '\033[0m'
-    BOLD = '\033[1m'
-    UNDERLINE = '\033[4m'
-
-print(bcolors.OKBLUE + """
+print(LITE.BLUE + """
          ,     ,
         (\____/)
          (_oo_)
@@ -51,12 +35,12 @@ print(bcolors.OKBLUE + """
 
 Welcome to .... the machine.
 
-""" + bcolors.ENDC)
+""" + LITE.END)
 
-fsm0(1)
-fsm0(2)
-fsm0(4)
+factory = []
+factory = grow(factory,fsm0, factory, 1,2,4)
+
 if len(sys.argv) > 1:
-  Machine.run(int(sys.argv[1]))
+  Machine.run(all, int(sys.argv[1]))
 else:
-  Machine.run()
+  Machine.run(all)

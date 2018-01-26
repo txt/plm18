@@ -12,8 +12,8 @@ from lib import maybe
 # subclass machine
 
 # ----------------------------------------------
-def fsm0(label):
-  m     = Machine(label)
+def fsm0(label, all):
+  m     = Machine(label,all)
   s,t   = m.S, m.T
   foo   = s("foo")
   bar   = s("bar")
@@ -31,10 +31,11 @@ def fail(w, a):  return maybe()
 def again(w, a): return maybe()
 
 if __name__ == '__main__':
-  fsm0(1)
-  fsm0(2)
-  fsm0(4)
+  all = []
+  fsm0(1, all)
+  fsm0(2, all)
+  fsm0(4, all)
   if len(sys.argv) > 1:
-    Machine.run(int(sys.argv[1]))
+    Machine.run(all,int(sys.argv[1]))
   else:
-    Machine.run()
+    Machine.run(all)

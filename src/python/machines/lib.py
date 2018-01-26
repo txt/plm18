@@ -36,3 +36,15 @@ class Pretty(object):
 
 class o(Pretty):
   def __init__(i, **adds): i.__dict__.update(adds)
+
+### ---------------------------------
+
+class lite:
+    HEAD  = '\033[95m'
+    BLUE  = '\033[94m'
+    GREEN = '\033[92m'
+    WARN  = '\033[93m'
+    FAIL  = '\033[91m'
+    END   = '\033[0m'
+    BOLD  = '\033[1m'
+    ULINE = '\033[4m'
