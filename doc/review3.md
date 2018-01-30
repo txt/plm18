@@ -30,7 +30,7 @@ Q5. What does parser and grammer do in parsing?
 
 Q6. Give the defination of the following terms in parsing:
 
-	-sentence, language, lexeme, token
+	-sentence  -language  -lexeme  -token
 
 Q7. In state machines, what visual icon represents the final state?
 
