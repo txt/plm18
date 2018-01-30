@@ -86,6 +86,7 @@ Fowler's DSL idioms:
    
 <a href="doc/review1b.md">Review1</a>
 <a href="doc/review2.md">Review2</a>
+<a href="doc/review3.md">Review3</a>
    
 </td>
 <td align=center valign=top  xwidth="100px">
