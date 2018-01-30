@@ -14,11 +14,11 @@ ______
 
 # Semantic Analysis
 
-ompile to those semantics
+Compile to those semantics
 
 Examples:
 
-Turig
+Turing
 s machine
 
 von-Neumann Machines
