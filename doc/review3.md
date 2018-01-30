@@ -29,15 +29,16 @@ Q4. What kind of information does Lexical analysis return?
 Q5. What does parser and grammer do in parsing?
 
 Q6. Give the defination of the following terms in parsing:
+
 	-sentence, language, lexeme, token
 
-Q7. In state machines, what visual icon represents the represent the final state?
+Q7. In state machines, what visual icon represents the final state?
 
 Q8. In state machines, what are do edges mean?
 
 Q9. In state machines, what are gaurds?
 
-Q10. What is the difference between__main__.py  and __init__.py ?
+Q10. What is the difference between__main__.py and __init__.py ?
 
 Q11. For this code, how many elements does y have?
 
@@ -54,13 +55,13 @@ Q13. For the following code, what does 'what(pair)' function do?
 
     def what(pair):  return pair[1]
 
-Q14. For the following code, what is the output?
+Q14. For the following code:
 
     def score(pair): return pair[0]
     def unscore(pair): return -1*score(pair)
     def what(pair):  return pair[1]	
 
-    
+        What is the output?
 	#14a
 	print( ordered([ [3, "dog"],[4,"cat"],[1,"dog"]], key=unscore))
   
