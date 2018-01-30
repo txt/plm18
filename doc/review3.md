@@ -62,6 +62,7 @@ Q14. For the following code:
     def what(pair):  return pair[1]	
 
 What is the output?
+
 	#14a
 	print( ordered([ [3, "dog"],[4,"cat"],[1,"dog"]], key=unscore))
   
