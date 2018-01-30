@@ -51,6 +51,69 @@ def eg1():
   
 #eg1()
 
+def odds(lst):
+  for i in lst:
+    if i % 2:
+      yield  i
+ 
+for x in odds([1,2,3,4,5]):
+  print("X? ", x)
+  
+#def lines(str):
+ # for line in words(str):
+  ##     yield line
+     
+def person(x):  
+  return str(x) and x[0].isupper()
+
+
+print("ST ",str( person("Tim")))
+print(9999)
+
+import re
+def words(str): return re.split("[\n\t \r]+",str)
+      
+def people(src):
+  for s in src:
+    for w in words(s):
+      if person(w):
+        yield w
+  
+def linesFromString(str):
+  for line in str.split('\n'):
+     yield line
+      
+def linesFromFile(file):
+  with open(file) as f:
+    x= f.readline()
+    while x:
+      yield x
+      x = f.readline()
+
+# Timm
+it= """
+asd
+as asd
+  asdasd
+  
+  
+  asd Tim  """
+
+print(111)
+for x in people(linesFromFile("idiom.py")):
+  print("F> %s " % x)
+  
+print(333)
+#print([s for s in 
+ #      people("idiom.py")])
+
+
+#print("upper ", person("Tim"))
+
+#for i in odds(range(0,50)):
+ # print("I> ", i)
+  
+# =======================
 #print([x/2 for x in range(0,9) if x % 2])
 import re
 
@@ -277,11 +340,40 @@ def csvEg():
 
 def thing(x):
   def sym(x): return x
+  #sym = lambda x: x
   try:    
     return int(x), int
   except: 
     try:    return float(x),float
     except: return x,sym
+
+x,_= thing('7')
+print('TH>', x)
+
+class Fred:
+  def __init__(i,x):
+    i.name= x
+
+f=Fred(3)
+print(f.name)
+
+class Struct:
+    "A structure that can have any fields defined."
+    def __init__(self, **entries): 
+        self.__dict__.update(entries)
+    def __repr__(self):
+        keys=self.__dict__.keys()
+        keys = [k for k in keys]
+        keys.sort()
+        return str(["%s=%s" %  (k,self.__dict__[k]) for k in keys])
+    def __getitem__(self,x):
+        return self.__dict__[x]
+        
+s= Struct(name="tim",age="some lie")
+print("W> ",s)
+print("W> ",s.name)
+print("W> ",s.__dict__["name"])
+print("W3> ",s["name"])
 
 #-----------------------------------------------------
 # columns reader
