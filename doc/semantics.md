@@ -18,8 +18,7 @@ Compile to those semantics
 
 Examples:
 
-Turing
-s machine
+Turing's machine
 
 von-Neumann Machines
 stacks (forth)
