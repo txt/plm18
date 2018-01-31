@@ -25,7 +25,7 @@ class B(A):
   tag="-"
 class C(A):
   tag="/"
-class D(B,C):
+class D(B,C): # D has two parents... that way, madness lies
   tag="."
 class E(D):
   tag="!"
