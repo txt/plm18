@@ -1,4 +1,6 @@
 # vim: set filetype=python ts=2 sw=2 sts=2 expandtab: 
+
+
 import re,traceback,time,sys,time
 
 #----------
@@ -12,10 +14,10 @@ def kv(d):
 
 
 d= dict(lname='menzies', fname='tim', _secrets=57)
-print(d)
-print(kv(d))
+#print(d)
+#print(kv(d))
 
-sys.exit()
+#sys.exit()
 #-----------------------------------
 # getting meta (and recursive walks)
 
@@ -34,19 +36,19 @@ def isa(k, seen = None):
   assert isinstance(k, type),"superclass must be 'object'"
   seen = seen or set()
   if k  not in seen:
-    #_seen.add(k)
+    seen.add(k)
     yield k
     for sub in k.__subclasses__():
       for x in isa(sub, seen):
         yield x
 
 
-for x in isa(A):
-  print(x.__name__, x.tag)
+#or x in isa(A):
+  #rint(x.__name__, x.tag)
 
-print([x.tag for x in isa(A)])
+#rint([x.tag for x in isa(A)])
 
-sys.exit()
+#ys.exit()
 
 # function data
 def about(f):
@@ -71,7 +73,7 @@ def fib1a(): print(30, fib1(30))
 run(fib1a)
 
 #are the same as these two lines
-@run
+#@run
 def fib1a(): print(30, fib1(30))
 #@run
 def fib1b(): print(33, fib1(33))
@@ -80,6 +82,7 @@ def fib1c(): print(36, fib1(36))
 #@run
 def fib1d(): print(39, fib1(39))
 
+ 
 def memo(f):
   cache={}
   def g(*lst, **dic):  
@@ -89,6 +92,12 @@ def memo(f):
     return new
   return g
 
+def demo(*lst,**dic):
+  print("LIS ", lst)
+  print("DIC ", dic)
+  
+demo(age=41,name="tim")
+ 
 @memo
 def fib2(n):
   return n if n < 2 else fib2(n-2) + fib2(n-1)
