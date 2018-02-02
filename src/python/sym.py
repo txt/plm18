@@ -99,8 +99,8 @@ def sym1():
   rseed()
   s1 = Sym('programming is fun')
   assert s1.total == 18
-  assert s1.mode in 'rgm ' # rgm<space> is the most common symbol
-  assert s1.most == 2      # each of rgm<spance> appear twive
+  assert s1.mode in 'rgmn ' # rgmn<space> is the most common symbol
+  assert s1.most == 2      # each of rgmn<spance> appear twive
   assert s1.prob('g') == 2/18
   # and if we sample from s1...
   s2 = Sym( [x for x in s1.sample(1000)] )
