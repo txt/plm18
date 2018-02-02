@@ -76,7 +76,7 @@ class Sym(object):
        if new cost common symbol, update mode,most"""
     # Q3
   def prob(i,x):
-    "return probability of x being in sample"
+    "return probability of x, given the frequencies in counts"
     # Q4
   def sample(i, enough=500):
     """Iterator.  Yields often seen things most often
