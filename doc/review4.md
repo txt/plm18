@@ -20,9 +20,9 @@ Q1. What is "yield" used for?
 	
 Q2. What is generator? How do they generate values?
 
-Q3. Write a generater that return all numbers between 1 and 100
+Q3. Write a generater that return all numbers between 1 and 100.
 
-Q4. When does "isinstance(object,classinfo)" return true?
+Q4. When does "isinstance(object, classinfo)" return true?
 	
 Q5. What is dunder method? How to change the print representation of an object?
 
