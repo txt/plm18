@@ -11,8 +11,11 @@
 ______
 
 
-
 # Semantic Analysis
+
+
+
+i- re- Stack machines
 
 Compile to those semantics
 

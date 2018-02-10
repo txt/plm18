@@ -457,11 +457,11 @@ def rpn(input):
     print('stack = ', stack)
   return stack[0]           # return first item in stack
 
-def _shunt():
+def _rpn():
   print("5 + ((1 + 2) * 4) - 3 = " )
   print(rpn([5,1,2,"+",4,"*","+",3,"-"]))
 
-_shunt()
+_rpn()
 ```
 
 Example:
@@ -520,7 +520,237 @@ stack =  [14]
 14
 ```
 
-### Aside: Prolog
+## Associativity
+
+Associativity tells us about how to chain together operators (i.e. in
+which direction we should build the tree).
+
+In Prolog, the following
+operators of the same precedence can be next to each other and
+their place in the parse tree is determined by the _associativity_
+
+
++  _xfy_ is infix right associative
++  _fy_  is prefix right associative
++  _yfx_ is infix left associative.
+
+Code:
+
+     :- op( 1200, xfx, [ :-, --> ]).
+     :- op( 1000, xfy, [ ',' ]).
+     :- op(  500, yfx, [ +, -]).
+     :- op(  500,  fx, [ +, - ]).
+
+
+Example: "a :- b,c". In the following, the operators are ":-" and ","
+
+
+    a :- b,c
+
+
+This parses as follows (with ":-" higher than "," since it binds later):
+
+            :-
+            |
+      -------------
+      |           |
+      a           ,
+                  |
+              ----------
+              |        |
+              b        c
+			  
+Example:    "- 3 - 5 + 6 + 10"
+
+
+                          +
+                          |
+            ---------------------------						  
+            |                         |						 
+            +                        10
+            |
+      -------------
+      |           |
+      -           6
+      |
+    ----------
+    |        |
+    -        5
+    |
+    3 
+
+Note that:
+
++ Note that "+" being left associative allows "+" to be a parent of "+"
+  (top row).
++ This uses _two_ different "-": an infix "-" and a prefix "-".
++ The tree is biased to the left since the infix maths operators are "yfx",
+  i.e. they are _left_ associative.
+     + This means that a left to right top-down execution  
+	   would process the expression left to right
+	      + As we might expect.
+
+## Shunting Yard Algorithm
+
+Edsger Dijkstra, 1961. How to convert infix to RPN.
+
++ BTW, generalizes to [operator-precedence 
+  parsing](http://en.wikipedia.org/wiki/Operator-precedence_parser).
+
+We'll study a simplified version
+that ignores brackets or function symbols or brackets or associativity.
+
+The algorithm _shunts_ tokens between three lists:
+
++ A _stack_ of operators (this is a freezer that stores operators we do not yet know how to handle);
++ An _output_ list in RPN
++ _Input_ tokens: e.g. "A+B*C+D"  
+    + converted to the list ["A","+","D","\*","C","+","D"]
+
+Recall from the above, we want to read "A+B*C+D" as the tree.
+Note that the following tree assumes  "+" has a higher precedence to "*".
+
+
+            +
+            |
+    -----------------
+    |               |
+    A               +
+                    |
+	        ------------------
+            |                |
+	        *                D
+            |
+        ---------
+        |       |
+        B       C
+
+
+
+From that, we want the RPN list:
+
+    A
+    B
+    C
+    *
+    D   
+    +   
+    +
+
+### Rules of Shunting
+
+Rule #1-  non-ops go straight to _output_:
+
++ if the next _input_ token has zero precedence, move it straight to _output_.
+
+Rule #3- ops go to the operator _stack_:
+
++ if the next _input_ token is an operator, move it to the operator _stack_.
+
+Rule #2 (fires before Rule3)- sometimes, purge operator _stack_:
+
++ If the next _input_ token is an operator with lower precedence that the
+  top of the operator _stack_
+      + Then we need to do the operators on the _stack_ *before* the next token
++ So we need to pop the operator _stack_ and push that content to the _output_:
+          
+Rule #4- finale:
+
++ If tokens are done, and there is anything left in the operator _stack_
+    + pop them to _output_.
+
+### Example
+
+![example](../img/Shunting_yard.png)
+
+
+### Code
+
+Infix to RPN:
+
+    class Op:
+      all = []
+      def __init__(i,name,precedence=100):
+        i.name=name
+        i.precedence = precedence
+        Op.all += [i]
+      def __repr__(i):
+        return i.name + '{' + str(i.precedence) + '}'
+     
+Parsing utils:
+
+    def isa(x):
+      "Try to find the operator names 'x'. Else fail."
+      for y in Op.all:
+        if x == y.name: return y
+      return None
+        
+    def isNum(x):
+      "Let Python do the heavy lifting"
+      try: return int(x)
+      except ValueError:
+        try: return float(x)
+        except ValueError:
+          return None
+    
+Main engine:
+
+    import re
+    class Shunt:
+      """ Simple version of Edsger Dijkstra's shunting yard algorithm.
+          No associativity, brackets, function symbols, arguments.
+          No error checking.
+          For full version, see http://goo.gl/pakbVu
+      """
+      def __init__(i,str):
+        say(str + ' : ')
+        i.out   = []
+        i.stack = []
+        for token in i.tokens(str): 
+          i.shunt(token)
+        # tidy up
+        while i.stack: i.up()
+      def __repr__(i)   : return str(i.out)
+      def over(i,token) : say("o"); i.out   += token
+      def down(i,op)    : say("d"); i.stack += [op]
+      def up(i)         : say("u"); i.out   += [i.stack.pop()] 
+      def somethingIsMoreImportant(i,op):
+        return i.stack and op.precedence <= i.stack[-1].precedence
+      def tokens(i,str): 
+        "dumb tokenizer: assumes tokens one char wide)"
+        return list(re.sub("[ \t]*","",str)) 
+      def shunt(i,token):
+        op = isa(token)
+        if not op:
+          i.over(token)
+        else:
+          while i.somethingIsMoreImportant(op):
+            i.up()
+          i.down(op)
+
+Demos:
+
+    @go
+    def _shunt():
+      Op.all = []
+      Op('+',1)
+      Op('*',2)
+      Op('/',2)
+	  print Shunt("1 + 2")         # 1 2 +
+	  print Shunt("1 + 2 + 3")     # 1 2 + 3 +
+      print Shunt("1 + 2 / 3")     # 1 2 3 / +
+      print Shunt("a * b + c / d") # a b * c d / +
+      print Shunt("a * b + c * d") # a b * c d * +
+ 
+Note: the above is a _simple_ shunt. A _full_ shunt handles 
+brackets, functions with arguments, etc. 
+
++ For full algorithm see [here](http://en.wikipedia.org/wiki/Shunting-yard_algorithm#The_algorithm_in_detail).
++ For a  full implementation  (in Python and Java), see
+  [here](http://andreinc.net/2010/10/05/converting-infix-to-rpn-shunting-yard-algorithm).  Handles nested brackets,etc.
+
+
+## Aside: Prolog
 
 Tokenization, lexical analsis, attributed-grammers,
 precendence-driven parsing, all pretty much for free
@@ -540,9 +770,18 @@ _-->_ neck an full Prolog with a _:-_ neck.
     :- op(997,xfy,and).
     :- op(997,fy,not).
     
-    student if young and poor and not dumb.
+    student if young and poor and not not not dumb.
+    % if( student, 
+    %    and( young,
+    %          and( poor
+    %               not( 
+    %                 not( 
+    %                  not( dumb ))))))
+                
     
     dumb if not smart.
+    % if( dumb,
+    %      not( smart ))
     
     cf(young,0.4).
     cf(poor,0.9).
@@ -553,17 +792,17 @@ _-->_ neck an full Prolog with a _:-_ neck.
     	X if Z,
     	belief(Z,Cf).
     
-    belief(X and Y,CF0) :-
+    belief(and(X,Y),CF0) :-
     	belief(X,CF1),
     	belief(Y,CF2),
     	CF0 is min(CF1,CF2).
     
-    belief(X or Y,CF0) :-
+    belief(or(X,Y),CF0) :-
     	belief(X,CF1),
     	belief(Y,CF2),
     	CF0 is max(CF1,CF2).
     
-    belief(not X,CF0) :-
+    belief(not(X),CF0) :-
     	belief(X,CF1),
     	CF0 is 1 - CF1.
 
