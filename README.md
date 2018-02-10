@@ -58,7 +58,7 @@ Parsing (basics):
 <dd>
 <a href="doc/re.md">Regx</a>,  				      
 <a href="doc/syntax.md">syntax</a>,  			      
-<a href="doc/xsemantics.md">semantics</a>,  		      
+<a href="doc/lambda.md">lambda</a>,  		      
 Semantics,						      
 macros
 <dt>
