@@ -27,9 +27,9 @@ used in programming. And stack machines are one of the least powerful.
 For example, consider lambda bodies:
 
 - [Paul Graham, origins of lisp](http://lib.store.yahoo.net/lib/paulgraham/jmc.ps)
-       - Just read 1,2,3
+    - Just read 1,2,3
 - http://norvig.com/lispy.html
-       - LISP in Python
-       - Source code: https://github.com/norvig/pytudes/blob/master/py/lis.py
-       - Note that in March, some part of lispy will be embedded into your code
+    - LISP in Python
+    - Source code: https://github.com/norvig/pytudes/blob/master/py/lis.py
+    - Note that in March, some part of lispy will be embedded into your code
 
