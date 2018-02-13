@@ -55,7 +55,7 @@ Q11B. Give an example of creating an instance of this class to store name = "pat
 
 Q11C. Using the instance created in 11B, how to access "patrick"?
 
-Q11D. What is "__dict__"?
+Q11D. What is ```__dict__```?
 
 Q12. Explain the list comprehension
 
