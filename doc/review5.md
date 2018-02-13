@@ -41,7 +41,7 @@ Q9. Give a simple ternary operator example and explain how does it work?
 
 Q10. Create a simple function with iteration in python then convert it to recursive function.
 	
-In homework 3, for the following functions, answer Q11?
+In homework 3, for the following functions, answer Q11.
 
 	class o(Thing):
 		def __init__(i, **dic): 
@@ -55,9 +55,9 @@ Q11B. In the following, give an example of creating an instance of this class to
 
 Q11C. Using the instance created in 11B, how to access "patrick"?
 
-Q11D. What is __dict__?
+Q11D. What is "__dict__"?
 
 Q12. explain of list comprehension
 
     def kv(d):
-    return '(' + ', '.join(['%s: %s' % (k, d[k]) for k in sorted(d.keys()) if k[0] != "_"]) + ')'
+    	return '(' + ', '.join(['%s: %s' % (k, d[k]) for k in sorted(d.keys()) if k[0] != "_"]) + ')'
