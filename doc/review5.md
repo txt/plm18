@@ -14,7 +14,7 @@ ______
 
 # Review
 
-### Week 4 : 02/06/2018 ~ 02/08/2018
+### Week 5 : 02/06/2018 ~ 02/08/2018
 
 Q1. What is python exception class?
 
