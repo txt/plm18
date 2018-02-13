@@ -57,7 +57,7 @@ Q11C. Using the instance created in 11B, how to access "patrick"?
 
 Q11D. What is ```__dict__```?
 
-Q12. Explain the list comprehension
+Q12. Explain the list comprehension.
 
 Q13. What does the following function do?
 
