@@ -49,15 +49,17 @@ In homework 3, for the following functions, answer Q11.
 		def __getitem__(i, x): 
 			return i.__dict__[x]
 
-Q11A. Give an example of python magic methods
+Q11A. Give an example of python magic methods.
 
-Q11B. In the following, give an example of creating an instance of this class to store name = "patrick", age = "24"
+Q11B. Give an example of creating an instance of this class to store name = "patrick", age = "24".
 
 Q11C. Using the instance created in 11B, how to access "patrick"?
 
 Q11D. What is "__dict__"?
 
-Q12. explain of list comprehension
+Q12. Explain the list comprehension
+
+Q13. What does the following function do?
 
     def kv(d):
     	return '(' + ', '.join(['%s: %s' % (k, d[k]) for k in sorted(d.keys()) if k[0] != "_"]) + ')'
