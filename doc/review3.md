@@ -93,3 +93,6 @@ Q18. If I want the "new" list gets the same elements as "old" except the first e
 Q19. If I want the "new" list gets the same elements as "old" except last element, what should I do?
 
 Q20. What does the final "old" list look like?
+
+Answer:
+https://goo.gl/7inPCA
