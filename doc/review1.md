@@ -159,5 +159,7 @@ Q23: (HARD) What does the following call return? So what is a better name than `
   `END {print  xxx("yes") }`
 
 
+Answers:
+https://goo.gl/632rSJ
 
 
