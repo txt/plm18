@@ -50,3 +50,5 @@ Q9: Why would software engineer use COBRA?
 
 Q10: Why was classical GAWK much faster than ruby, python and perl? (Hard)
 
+Answer:
+https://goo.gl/4fEqLn
