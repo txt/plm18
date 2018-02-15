@@ -63,3 +63,6 @@ Q13. What does the following function do?
 
     def kv(d):
     	return '(' + ', '.join(['%s: %s' % (k, d[k]) for k in sorted(d.keys()) if k[0] != "_"]) + ')'
+
+Answer:
+https://goo.gl/tUhicX
