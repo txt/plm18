@@ -56,3 +56,6 @@ Q16. What strategy can we use to prevents duplicates?
 Q17. How can we get the run time for a function?
 
 Q18. What does a python decorator do? Give a simple example.
+
+Answer:
+https://goo.gl/VVcz1o
