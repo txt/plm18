@@ -16,7 +16,7 @@ ______
 
 ### Week 6 : 02/13/2018 ~ 02/15/2018
 
-Q1. For the following code:
+Q1. For the following code, what kinds of "\UNARY" it has? What about "\LITERAL"?
 
 	switch id
     case \true \false \null \void \arguments \debugger then tag = \LITERAL
@@ -33,9 +33,7 @@ Q1. For the following code:
       @fset \to false
     case \catch \function then id = ''
 
-	What kinds of "\UNARY" the coco has? What about "\LITERAL"?
-
-Q2. For the following code:
+Q2. For the following code, what is the difference between "\unless" and "\until"?
 
     case \and \or \is
       @unline!
@@ -50,8 +48,6 @@ Q2. For the following code:
       if able @tokens then id = \<<<; break
       fallthrough
     case \export \const \var then tag = \DECL
-
-	What is the difference between "\unless" and "\until" in coco?
 
 Q3. What is BNF? Write a BNF that describing a car with body and engine, and body with 4 wheels.
 
