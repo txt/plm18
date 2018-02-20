@@ -119,7 +119,7 @@ Q7c. The following has some errors, what are they and how could you fix them?
 
 Q8. Convert 5 y + z x 3 - * / into in-fix.
 	
-Q9. What are the difference between pre-fix/in-fix/post-fix language? Give examples to explain.
+Q9. What are the difference between pre-fix/in-fix/post-fix language? Explain their advantages and disadvantages.
 
 Q10. Syntax diagrams and BNF grammars have equivalent power: whatever languages you can describe with one, you can describe with the other. Is that true or false?
 
