@@ -142,3 +142,6 @@ Q13. The following has some errors, what are they and how would you fix them?
     6      +                  +                 A B C * ^
     7      D                  +                 A B C * ^ D
     8                                           A B C * ^ + D
+
+Answer:
+https://goo.gl/fvHuZ3
