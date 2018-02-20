@@ -53,9 +53,9 @@ Q3. What is BNF? Write a BNF that describing a car with body and engine, and bod
 
 Q4. Consider the following grammar
 
-   `<expr> ==> <expr> <op> <expr>  |  const
+   `<expr> ==> <expr> <op> <expr>  |  const`
    
-   <op>   ==> /  |  -`
+   `<op>   ==> /  |  -`
    
 Q4a. What kind of sentance will it accept.
 
