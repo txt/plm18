@@ -51,13 +51,13 @@ Q2. For the following code, what is the difference between "\unless" and "\until
 
 Q3. What is BNF? Write a BNF that describing a car with body and engine, and body with 4 wheels.
 
-Q4. Consider the following grammar
+Q4. Consider the following grammar:
 
    `<expr> ==> <expr> <op> <expr>  |  const`
    
    `<op>   ==> /  |  -`
    
-Q4a. What kind of sentance will it accept.
+Q4a. What kind of sentance will it accept?
 
 Q4b. Is this grammar ambiguous? Explain with an example.
 
