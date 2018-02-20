@@ -69,11 +69,10 @@ Q7. What is reverse polish notation?
 
 Q7a. Convert 3 / (5 + y * x) into RPN.
 
-Q7b. RPN interpreter has an input queue and a temporary stack. using the follwing example: 
+Q7b. RPN interpreter has an input queue and a temporary stack. using the follwing example, describle how rpn interperation works. 
 
 	((1 + 2) * 4) - (3 + 1) * 8
 
-	describle how rpn interperation works:
 
 Q7c. The following has some errors, what are they and how could you fix them?
 
