@@ -97,3 +97,5 @@ Q10. Implement the following by using Lisp lambda function:
 
 	c. What is Lisp lambda function to subtract 7 from a number (a parameter n)?
 
+Answer:
+https://goo.gl/b3VWDj
