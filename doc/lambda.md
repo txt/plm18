@@ -16,7 +16,7 @@ ______
 # Semantics: Lambda Bodies
 
 
-By know you might think that program "semantics" means do whatver you
+By now you might think that program "semantics" means do whatever you
 can to get things into a reverse polish
 (e.g. using the ShuntingYard algorithm), then run that machine
 using an RPN interpreter.
