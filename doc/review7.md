@@ -17,12 +17,19 @@ ______
 ### Week 7 : 02/20/2018 ~ 02/22/2018
 
 Q1. Here are the 7 primitive operators of Lisp, for each, define it and give an example of its use. 
+
 	a. (quote x)
+	
 	b. (atom x)
+	
 	c. (eq x y)
+	
 	d. (car x)
+	
 	e. (cdr x)
+	
 	f. (cons x y)
+	
 	g. (cond (p{1}...e{1}) ...(p{n}...e{n}))
 
 Q2. Define S expression and give 4 examples ranging from very simple to very complex.
