@@ -89,7 +89,7 @@ Q9. How to write the following code in Lisp?
 	if a then b 
 	else if c then d
 
-Q10. Implement the following functions by using Lisp lambda function:
+Q10. Implement the following by using Lisp lambda function:
 
 	a. Given x=3, y=2, z=1, write the Lisp lambda function to calculate x*3 - y*2 + z
 
