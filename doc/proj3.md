@@ -11,7 +11,7 @@
 
 ______
 
-# Project2 : Essence + Details
+# Project3 : Essence + Details
 
 ## Admin
 
