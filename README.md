@@ -79,6 +79,7 @@ Fowler's DSL idioms:
 <!-- -------------------------------- -->
 
 </td><td align=center valign=top xwidth="100px">
+<a href="doc/proj2.md">1.Proj2</a>
 <a href="doc/project.md">0.Project</a>
 
 </td>

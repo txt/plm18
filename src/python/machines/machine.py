@@ -8,7 +8,7 @@ from lib import shuffle,Pretty,o,rseed,between
 
 # ----------------------------------------------
 
-def grow(factory,,f,ako,*labels,**pairs):
+def grow(factory,f,ako,*labels,**pairs):
   for label in labels:
     grow1(f,ako,label,factory)
   for ako1,label in pairs:
@@ -58,7 +58,7 @@ class Machine:
   def trans(i, go,gaurd,end):
     tran.here.out += [o(here  = i.find(go), 
                         gaurd = gaurd, 
-                        there = i.find(end)]
+                        there = i.find(end))]
 
   def find(i,x):
     if isinstance(x,State): 
