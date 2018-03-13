@@ -15,13 +15,13 @@ ______
 
 # Semantics: 21st century Lambda Bodies
 
-Introducing Clojure
+## Introducing Clojure
 
 - Clojure is a new functional language written specifically for the JVM.
 - Clojure is a variation of LISP that brings functional languages concepts to the JVM. Clojure also integrates well with Java code, so it can take advantage of the huge number of Java libraries.
 - Clojure provides many useful features, but in this article, we will look at just one: immutability.
 
-## Benefits of Immutability
+### Benefits of Immutability
 
 In Clojure, immutability is the default. Once an object or data structure is created, it cannot be changed. This provides many benefits:
 
@@ -42,7 +42,7 @@ In Clojure, object references can be safely shared, since they can never change.
 - Concurrency
      - Immutable objects are thread-safe by definition. If an object cannot be changed, it can be shared among different concurrent threads without concurrent modification exceptions.
 
-##  Look Ma, No Variables!
+###  Look Ma, No Variables!
 
 While there are many benefits to pervasive immutability, it does require different programming styles. It takes some getting used to.
 
@@ -71,3 +71,18 @@ Traditionally in functional programming languages such as Scheme and Lisp, this 
                         (print "Ho! ")
                         (greetings-from-santa (dec n)))))
 ```
+
+For more on clojure, see https://objectcomputing.com/resources/publications/sett/march-2009-clojure-functional-programming-for-the-jvm/
+
+## Scheme and Son of Scheme (Racket)
+
+- OO (is just lambdas) in Scheme: http://people.cs.aau.dk/~normark/prog3-03/html/notes/oop-scheme_themes-classes-objects-sec.html#oop-scheme_classes-objects_title_1
+- Data structures in Racket https://beautifulracket.com/explainer/data-structures.html
+
+## Supporting technology
+
+TCO 
+
+Garbage collection
+
+- http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/gc01/index.html
