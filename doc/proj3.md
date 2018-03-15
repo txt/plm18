@@ -20,7 +20,7 @@ Due April13.
 What to hand in 
 
 - Pointer to github repo whose top level contains a directory `proj2`.
-- The directory contains `proj2.pdf` (the above report), the final code, and 2 examples that the whole thing works (the games in action).
+- The directory contains `proj3.pdf` (the above report), the final code, and 2 examples that the whole thing works (the games in action).
    - Video
    - or text transcript
 
