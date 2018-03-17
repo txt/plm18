@@ -71,6 +71,9 @@ A: When we substitute X with the value kim!
 Matching can fail.
 
     ?- p(X, dog, X) = p(cat, Y, Y).
+    false
+
+![](../img/tree4.png)
 
 Matching can match to matches
 
@@ -79,7 +82,6 @@ Matching can match to matches
     W = X, X = 2,
     Y = Z, Z = 3.
 
-![](../img/tree4.png)
 
 Prolog programs are lots of tree fragments. At runtime,
 one tree can hook into another. See below
@@ -545,4 +547,7 @@ For example:
         push(atwindow, middle)
         climb
         grasp
+
+## Timm's secret weapon
+
 
