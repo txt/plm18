@@ -26,6 +26,70 @@ PROLOG came from natural langauge research in the 1970s, 1980s and was
 an attempt to treat human texts as logic formulae. Hence, before we can
 explain NL in PROLOG, we must explain PROLOG.
 
+## Tree Matching == Unification
+
+Prolog Terms = (Tree) Structured Data
+
+```
+type term
+  = Constant of int
+  | Atom     of string
+  | Variable of string
+  | Compound of string * term list
+```
+
+Atom = lowercase, variable = uppercase.
+
+Equality is unification.
+Two terms can be unified if we can substitute values for variables to make the terms identical
+
+    
+    ?- kim = kim.
+    true.
+    
+    ?- kim = holly.
+    false.
+    
+Unification is  recursive
+    
+    ?- foo(kim) = foo(kim).
+    true.
+    
+    ?- foo(kim) = foo(holly).
+    false.
+    
+    
+Q: When is the term X identical to the term kim?    
+A: When we substitute X with the value kim!
+    
+    ?- foo(X) = foo(kim).
+    X = kim.
+    
+    ?- foo(X, dog) = foo(cat, Y).
+    X = cat, Y = dog.
+    
+    ?- p(X, dog, X) = p(cat, Y, Y).
+    
+The top nodes of both trees have same predicate so go inside.
+    
+![](../img/tree1.png)
+    
+    ?- p(X, dog, X) = p(cat, Y, Y).
+    
+![](../img/tree2.png)
+    
+    ?- p(X, dog, X) = p(cat, Y, Y).
+    
+![](../img/tree4.png)
+
+    ?- a(W, foo(W, Y), Y) = a(2, foo(X, 3), Z), print(y(Y)).
+    y(3)
+    W = X, X = 2,
+    Y = Z, Z = 3.
+    
+Prolog programs are lots of tree fragments. At runtime,
+one tree can hook into another. See below
+
 Predicates, not Functions
 -------------------------
 
