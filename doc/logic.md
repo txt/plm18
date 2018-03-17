@@ -68,26 +68,19 @@ A: When we substitute X with the value kim!
     ?- foo(X, dog) = foo(cat, Y).
     X = cat, Y = dog.
     
-    ?- p(X, dog, X) = p(cat, Y, Y).
-    
-The top nodes of both trees have same predicate so go inside.
-    
+Matching can fail.
+
     ?- p(X, dog, X) = p(cat, Y, Y).
 
-![](../img/tree1.png)
-    
-    ?- p(X, dog, X) = p(cat, Y, Y).
-    
-![](../img/tree2.png)
-    
+Matching can match to matches
+
     ?- a(W, foo(W, Y), Y) = a(2, foo(X, 3), Z), print(y(Y)).
     y(3)
     W = X, X = 2,
     Y = Z, Z = 3.
 
-![](../img/tree4.png)
 
-    Prolog programs are lots of tree fragments. At runtime,
+Prolog programs are lots of tree fragments. At runtime,
 one tree can hook into another. See below
 
 Predicates, not Functions
