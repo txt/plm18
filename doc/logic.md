@@ -79,6 +79,7 @@ Matching can match to matches
     W = X, X = 2,
     Y = Z, Z = 3.
 
+![](../img/tree4.png)
 
 Prolog programs are lots of tree fragments. At runtime,
 one tree can hook into another. See below
