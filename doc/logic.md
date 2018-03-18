@@ -26,6 +26,28 @@ PROLOG came from natural langauge research in the 1970s, 1980s and was
 an attempt to treat human texts as logic formulae. Hence, before we can
 explain NL in PROLOG, we must explain PROLOG.
 
+## Prolog: don't code, draw
+
+```prolog
+states(Alabama, Mississippi, Georgia, Tennessee, Florida) :-
+  borders(Mississippi, Tennessee),
+  borders(Mississippi, Alabama),
+  borders(Alabama, Tennessee),
+  borders(Alabama, Georgia),
+  borders(Alabama, Florida),
+  borders(Georgia, Florida),
+  borders(Georgia, Tennessee).
+
+borders(X,Y) :- color(X), color(Y),  not(X = Y).
+
+color(red).
+color(orange).
+color(yellow).
+color(green).
+color(blue).
+color(violet).
+```
+
 ## Tree Matching == Unification
 
 Prolog Terms = (Tree) Structured Data

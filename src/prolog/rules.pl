@@ -33,6 +33,7 @@ shares1([_|T],X) :- shares1(T,X).
 
 %%%%%%%
 % facts
+* order of tasks = [init, elaborate, report].
 * age of tim  =  20.
 * age of john = 300.
 * age of jane =   5.
@@ -51,26 +52,8 @@ for  init
 if   age of Who > 100 
 then status of Who now dead. 
 
-%%%%%%
-% inference
-
-thinks :- retractall(uses(_,_,_)), think, listing(*).
-
-think :-
-  bagof(Rule, match(Rule), Rules), !,
-  selects(Rules, Act, Uses),
-  asserta( Uses ),
-  Act,
-  think.
-think.
-
-match(X if Condition then Act holds Uses) :-
-      X if Condition then Act holds Uses,
-      Condition,
-      not( Uses ).
-
-selects([_ if _ then Act holds Uses | _ ], Act, Uses).
-
+%%%%%
+% details
 X and Y      :- X, Y.
 X or _       :- X.
 _ or Y       :- Y.
@@ -84,4 +67,29 @@ X of Y >   Z :- * X of Y = Z0, Z0 >  Z.
 X of Y now Z :-
   retract(* X of Y = _) -> assert(* X of Y = Z);  assert(* X of Y = Z).
 
+
+%%%%%%
+% inference
+
+thinks :- 
+	retractall(uses(_,_,_)), 
+	* order of tasks = Tasks,
+	maplist(think, Tasks),
+	listing(*).
+
+think(Task) :-
+  	bagof(Rule, match(Task, Rule), Rules), !,
+  	selects(Rules, Act, Uses),
+  	asserta( Uses ),
+  	Act,
+  	think(Task).
+think(_).
+
+match(Task, 
+      rule X for Task if Condition then Act holds Uses) :-
+      rule X for Task if Condition then Act holds Uses,
+      Condition,
+      not( Uses ).
+
+selects([_ if _ then Act holds Uses | _ ], Act, Uses).
 :- thinks, halt.
