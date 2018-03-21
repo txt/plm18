@@ -13,3 +13,42 @@ The = o(
   players = 2,
   interface = "scroll")
 
+import re,traceback
+
+PASS = FAIL = 0
+
+def oks():
+  global PASS, FAIL
+  print("\n# PASS= %s FAIL= %s %%PASS = %s%%"  % (
+         PASS, FAIL, int(round(PASS*100/(PASS+FAIL+0.001)))))
+
+def ok(f):
+  global PASS, FAIL
+  try:
+      print("\n-----| %s |-----------------------" % f.__name__)
+      if f.__doc__:
+        print("# "+ re.sub(r'\n[ \t]*',"\n# ",f.__doc__))
+      f()
+      print("# pass")
+      PASS += 1
+  except Exception as e:
+      FAIL += 1
+      print(traceback.format_exc())
+  return f
+
+class S:
+  def __init__(i,txt): i.txt = txt
+  def __eq__(i,prefix): return i.txt.startswith(prefix)
+
+com="di"
+print(S('discard') == com)
+
+@ok
+def _test1():
+    assert 1==1,"ok"
+
+@ok
+def _test2():
+    assert 1==2,"should be ok"
+
+oks()
