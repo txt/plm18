@@ -6,7 +6,7 @@
 :- op( 995, xfx,  and).
 :- op( 994,  fy,  not).
 :- op( 993,  fx,  (*)).
-:- op( 704, xfy, (::)).
+:- op( 804, xfy, (::)).
 :- op( 703, xfx,   of).
 :- op( 702, xfx,  now).
 :- op( 100, xfx,   in).
@@ -16,20 +16,26 @@
 %---------------------------------------------------
 %  term accessors
 
-:- F= has/4, (dynamic F), (discontiguous F).
+:- F= has/2, (dynamic F), (discontiguous F).
 more(Functor = Fields, 
-     has(Functor,Field,Value,Term)) :-
+     has(Functor,Field,Val1,Val2,Term1,Term2)) :-
     length(Fields, Arity),
-    nth1(Pos, Fields, Field),
-    functor(Term, Functor, Arity),
-    arg(Pos, Term, Value).
+    length(Vs1,    Arity), 
+    length(Vs2,    Arity), 
+    args(Vs1,Vs2,Fields,Field, Val1, Val2),
+    Term1 =.. [Functor | Vs1],
+    Term2 =.. [Functor | Vs2].
+
+args([V1|Vs],  [V2|Vs],  [Field|_],  Field, V1,V2).
+args([V |V1s], [V |V2s], [_|Fields], Field, V1,V2) :-
+        args(V1s, V2s,     Fields,  Field, V1,V2). 
 
 % shell to walk over has/4
 F := T :: X :- F=T :: X, T.
 F  = T :: X :- with(X, F, T).
 
 with(X :: Y, F, T) :- with(X, F, T), with(Y, F, T).
-with(X =  Y, F, T) :- has(F, X, Y, T).
+with(X =  Y, F, T) :- has(F, X, Y, _,T,_).
 
 % macro exansion hooks.
 term_expansion(A =B,        Cs) :- bagof(C, more(A = B,C), Cs).
@@ -136,4 +142,6 @@ X of Y now Z :-
   retract(* X of Y = _) -> assert(* X of Y = Z);  asserta(* X of Y = Z).
 
 %-------------------------------------------------
+:- listing(has).
+%
 :- thinks, halt.
