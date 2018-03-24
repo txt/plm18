@@ -1,5 +1,7 @@
 :- dynamic (*)/1.
 
+:- op(1200, fx,     #).
+:- op( 999, xfx,   (?=)).
 :- op( 998, xfx,   if).
 :- op( 997, xfx, then).
 :- op( 996, xfy,   or).
@@ -42,6 +44,16 @@ term_expansion(A =B,        Cs) :- bagof(C, more(A = B,C), Cs).
 goal_expansion(F:=T :: X,    T) :- F=T :: X.
 goal_expansion(F =T :: X, true) :- F=T :: X.
 
+%term_expansion((# X0 :- Y),(X :- D,Y)) :-
+%	L0 =.. X0,
+%	defaults(L0, L,[],D0),
+%	L =.. X,
+%	defaults1(D0,D).
+%
+%defaults([],[],L,L
+%defaults([H|T0],[H|T],     L0,L) :- var(H), defaults(T0,T,L0,L).
+%defaults([H ?= V|T0],[H|T],L0,L) :- H=..[Name|V], defaults(T0,T,[L0,L]).
+%
 %-------------------------------------------------
 % terms with names slots
 
