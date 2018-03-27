@@ -16,7 +16,7 @@ ______
 
 ### Week 8~10 : 03/01/2018 ~ 03/22/2018
 
-Q1. Describe the operations of the lisp virtual machine. In what ways of these different to the operations provided by the java virtual machine?
+Q1. Describe the operations of the lisp virtual machine. In what ways of these different to the operations provided by the Java virtual machine?
 
 Q2. Kotlin and Java are two languages, how are they similar and different?
 
@@ -59,7 +59,7 @@ Here are some smalltalk code for iteration in an array, the method "value:value:
 
 Q8a. What might blocks be called in lisp?
 
-Q8b. Write the with do methods in python, such that even numbered indexes of an array are printed.
+Q8b. Write the with do methods in Python, such that even numbered indexes of an array are printed.
 
 Here are some smalltalk code for extracting or deleting items in a collection items
 
@@ -76,9 +76,9 @@ Here are some smalltalk code for extracting or deleting items in a collection it
 			stream nextPut: each ] ].
 		^ stream contents
 
-Q9. Write equivalent python iterators called "reject" and "select" such that reject is implemented as a special called selected. 
+Q9. Write equivalent Python iterators called "reject" and "select" such that reject is implemented as a special called selected. 
 
-Covert the following kotlin code to python:
+Covert the following Kotlin code to Python:
 
 Q10a.
 
