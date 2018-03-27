@@ -32,7 +32,7 @@ Q6b. Assuming polymorphism, in the simulation of ducks and cows that "quack" and
 
 Q6c. The simulations have been extened, now there are humans that "sing", assuming polymorphism, what has to be changed in the centralized controllers?
 
-In the following questions, assume there is a method call "ifTrue:ifFalse:". In polymorphic systems, control is pushed out to the leaf classes, here are the smalltalk definations of fTrue: and ifFalse:
+In the following questions, assume there is a method call "ifTrue:ifFalse:". In polymorphic systems, control is pushed out to the leaf classes, here are the smalltalk definations of ifTrue: and ifFalse:
 
 	! Boolean methods !
 
