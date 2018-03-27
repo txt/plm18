@@ -81,6 +81,7 @@ Q9. Write equivalent python iterators called "reject" and "select" such that rej
 Covert the following kotlin code to python:
 
 Q10a.
+
 	when (x) {
     	1 -> print("x is 1")
     	2 -> print("x is 2")
@@ -90,6 +91,7 @@ Q10a.
 	}
 
 Q10b.
+
 	class Frame {
     	var width: Int = 800
     	var height: Int = 600
@@ -99,9 +101,11 @@ Q10b.
 	}
 
 Q10c.
+
 	val name = ship?.captain?.name ?: "unknown"
 
 Q10d.
+
 	str.removeSuffix(".txt")
 	str.capitalize()
 	str.substringAfterLast("/")
