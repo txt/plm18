@@ -14,7 +14,7 @@ ______
 
 # Review
 
-### Week 11 : 03/13/2018 ~ 03/22/2018
+### Week 10 : 03/13/2018 ~ 03/22/2018
 
 Q1. Describe the operations of the lisp virtual machine. In what ways of these different to the operations provided by the java virtual machine?
 
