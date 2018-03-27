@@ -110,3 +110,6 @@ Q10d.
 	str.capitalize()
 	str.substringAfterLast("/")
 	str.replaceAfter(":", "classified")
+
+Answer:
+https://goo.gl/tJTwLA
