@@ -572,4 +572,4 @@ For example:
 
 ## Timm's secret weapon
 
-
+[Prolog for DSLs](../src/prolog/rules.pl)
