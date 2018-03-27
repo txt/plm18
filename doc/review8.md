@@ -24,7 +24,7 @@ Q3. How are containers same and different to the JVM? When would containers be m
 
 Q4. How are serverless apps are same and different to containers? When would serverless apps be most useful?
 
-Q5. List and explain 3 advantages and 3 disadvantages of servesless apps.
+Q5. List and explain 3 advantages and 3 disadvantages of serverless apps.
 
 Q6a. What is polymorphism?
 
