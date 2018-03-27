@@ -16,7 +16,7 @@ ______
 
 ### Week 11 : 03/13/2018 ~ 03/22/2018
 
-Q1. Descripe the operation of the lisp virtual machine. In what ways of these different to the operation provided by the java virtual machine?
+Q1. Describe the operation of the lisp virtual machine. In what ways of these different to the operation provided by the java virtual machine?
 
 Q2. Kotlin and Java are two languages, how are they similar and different?
 
