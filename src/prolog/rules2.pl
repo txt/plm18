@@ -30,7 +30,9 @@ F := T :: X :- F=T :: X, T.
 F  = T :: X :- with(X, F, T).
 
 with(X :: Y, F, T) :- with(X, F, T), with(Y, F, T).
-with(X =  Y, F, T) :- slot(F, X, _,Y,T).
+with(X =  Y, F, T) :- isa(F,T), slot(F, X, Pos,Y,_), arg(Pos, T,Y).
+
+isa(F,T) :- var(T) -> once(slot(F,_,_,_,T)); true.
 
 % macro exansion hooks.
 term_expansion(A =B,        Cs) :- bagof(C, more(A = B,C), Cs).
@@ -153,4 +155,4 @@ X of Y now Z :-
 
 %-------------------------------------------------
 %
-:- thinks, halt.
+%:- thinks, halt.
