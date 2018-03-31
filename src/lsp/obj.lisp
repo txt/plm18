@@ -76,6 +76,5 @@
                          (,set (setf (nth ,n (cdr self)) v))))))
       (mapcar #'getter lst))))
 
-(dolist (x (z1 'a 'b 'c))
-  (print x))
+;(dolist (x (z1 'a 'b 'c)) (print x))
 
