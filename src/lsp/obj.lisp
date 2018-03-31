@@ -23,18 +23,17 @@
 (defun say (self m &rest args) (print (apply self (cons m args))))
 (defun ask (self m &rest args)        (apply self (cons m args)))
 
-(let ((self (point :x 1)))
+(let ((self (point :x 1 :y 1)))
+  (format t "~%~%;--------- point ------------~%")
   (say self 'x?)
   (ask self 'x! 2)
   (say self 'x?)
-  (say self 'dist 0 2)
-  )
+  (say self 'dist 10 10)
+  (print self))
 
 (defun point2 ()
   (labels (
      (_keys  ()         `(x y)) 
-     (_klass (self)     (car self))
-     (_vals  (self)     (cdr self))
      (_get   (self z)         (nth (position z (_keys)) (cdr self)))
      (_set   (self z v) (setf (nth (position z (_keys)) (cdr self)) v))
      (x?     (self)     (_get self 'x))
@@ -63,9 +62,47 @@
 
 (let* ((klass (point2))
        (self  (make klass 1 1)))
+  (format t "~%~%;--------- point2 ------------~%")
   (say2 self 'x?)
   (ask2 self 'x! 2)
   (say2 self 'x?)
   (say2 self 'dist 10 10)
-  (print self)
-  )
+  (print (cdr self)))
+
+;;;;;;;;;;;;;;;;;;;
+
+(defun point3 ()
+  (labels (
+     (x?    (self)         (first  (cdr self)))
+     (x!    (self v) (setf (first  (cdr self)) v))
+     (y?    (self)         (second (cdr self)))
+     (y!    (self v) (setf (second (cdr self)) v))
+     (_sq   (z)      (* z z))
+     (dist  (self x2 y2)
+       (let ((x1 (x? self))
+             (y1 (y? self)))
+         (sqrt (+ (_sq (- x1 x2)) 
+                  (_sq (- y1 y2)))))))
+    (lambda (self z args)
+      (case z
+        (x?   (x? self))
+        (y?   (y? self))
+        (x!   (x! self (first args)))
+        (y!   (y! self (first args)))
+        (dist (dist self (first args) (second args)))
+        (otherwise 
+          (error "~a unknown" z))))))
+
+(defun make (klass  &rest args) (cons klass args))
+(defun say2 (self m &rest args) (print (funcall (car self) self m args)))
+(defun ask2 (self m &rest args)        (funcall (car self) self m args))
+
+(let* ((klass (point3))
+       (self  (make klass 1 1)))
+  (format t "~%~%;--------- point3 ------------~%")
+  (say2 self 'x?)
+  (ask2 self 'x! 2)
+  (print (cdr self))
+  (say2 self 'x?)
+  (say2 self 'dist 10 10)
+  (print (cdr self)))
