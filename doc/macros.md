@@ -26,11 +26,10 @@ A macro is a program called at runtime to write other programs.
 
 They are used to expand shorthand into longhand.
 
-Macros in LISP are particularly nice. LISP manipluates lists. LISP
-programs are lists. LISP macros rewrite lists to add in the required
-details.
+- Macros in LISP are particularly nice. LISP manipluates lists. LISP
+  programs are lists. LISP macros rewrite lists to add in the required
+  details.
 
-For example, see below.
 
 Note that there is much more to writing macros than shown below. For
 more details, see http://www.gigamonkeys.com/book/macros-defining-your-own.html
@@ -39,7 +38,88 @@ Note also that for decades, LISP was the king of macros. Now, finally,
 other languages have caught on. So JULIA has a macro system that is
 (nearly) as powerful as LISP. So macros live!
 
-## Macros for Object Orientation
+## Macros in Julia
+
+What is Julia? Think "next generation Python". 
+[Fast as heck](https://julialang.org/#high-performance-jit-compiler). 
+Scales.  A language to watch.
+
+From [Julua](https://julialang.org/):
+
+- Julia is a high-level, high-performance dynamic programming
+  language for numerical computing. It provides a sophisticated
+  compiler, distributed parallel execution, numerical accuracy, and
+  an extensive mathematical function library. Julia’s Base library,
+  largely written in Julia itself, also integrates mature, best-of-breed
+  open source C and Fortran libraries for linear algebra, random
+  number generation, signal processing, and string processing.
+
+But that does not matter now.
+Julia has a type system, with some limits. E.g. default
+Julia does not let you define types with default variables.
+
+So here's a macro that genertes a `type` and `function $(name)`.
+
+    #------------------------------------------------
+    # define types and a constructor that drops in the
+    # right default values
+    # e.g. @def emp age=0 salary=10000
+    macro has(typename, pairs...)
+        name = esc(symbol(string(typename,0)))
+        x    = esc(symbol("x"))
+        ones = [  x.args[1]  for x in pairs ]
+        twos = [  x.args[2]  for x in pairs ]
+        sets = [ :($x.$y=$y) for y in ones  ]
+        :(type $(typename)
+             $(ones...)
+          end;
+          function $(name)(; $(pairs...) )
+            $x = $(typename)($(twos...))
+            $(sets...)
+            $x
+          end)
+    end
+
+Example
+
+    @has aa bb=1 cc=10+1
+
+First, we get the results of the macro
+
+     begin
+        type aa # /Users/timm/gits/timm/15/jl/one.jl, line 18:
+            bb
+            cc
+        end
+        function aa0() # /Users/timm/gits/timm/15/jl/one.jl, line 21:
+            aa(1,10 + 1)
+        end
+     end
+
+Secondly, lets call some functions.  Julia programs are organized
+around multiple dispatch, which allows built-in and user-defined
+functions to be overloaded for different combinations of argument
+types.
+
+    someFun(x::Any) = println(1000000)
+    someFun(x::aa)  = println(x.bb)
+
+So if this code rules, we can use `aa0`  to build a type that
+auto-assigns some fields to something of type `aa`, and
+initialize its fields to `1` and `10+1`.
+
+    x    = aa0()
+    x.bb = 200
+
+    someFun(22)
+    someFun(x)
+
+Running results:
+
+    1000000
+    200
+    
+## Lisp Macros for Object Orientation
 
 ### OO Version1 (no macros, yet)
 
