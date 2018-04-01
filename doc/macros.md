@@ -19,21 +19,117 @@ ______
 
 ## What is a Macro and Why Should I Care?
 
-A macro is a program called at runtime to write other programs.
+A macro (short for "macroinstruction")
+is a program called at runtime to write other programs.
 
 They are used to expand shorthand into longhand.
 
-- Macros in LISP are particularly nice. LISP manipluates lists. LISP
-  programs are lists. LISP macros rewrite lists to add in the required
+    ;; example in Clojure
+    (defmacro on-error [default-value code]
+      `(try ~code (catch Exception ~'e ~default-value)))
+    
+    (on-error 0 (+ nil nil))               ;; would normally throw NullPointerException
+    => 0                                   ;l; but we get the default value
+    
+There are simple lexical
+text-substitution macro
+languages like the "C" pre-processor or ye olde M4.
+Note that these simple macro systems
+have no access to the semantics
+of the underlying language.
+
+ define(`ALPHA', `abcdefghijklmnopqrstuvwxyz')
+  define(`ALPHA_UPR', `ABCDEFGHIJKLMNOPQRSTUVWXYZ')
+  define(`ROT13', `nopqrstuvwxyzabcdefghijklm')
+
+  translit(`abc ebg13', ALPHA, ALPHA_UPR)
+  # -> ABC EBG13
+   # -> ABC EBG13
+  
+  translit(`abc ebg13', ALPHA, ROT13)
+  # -> nop rot13
+  define(`eng',`engineering')
+  substr(`engineer',0,3)           # -> eng -> engineering
+  translit(`rat', ALPHA, ROT13)    # -> eng -> engineering
+
+Then there are somewhat clean macro
+languages that offer a declarative view of
+the semantics, like the Moustache library
+available in Python, Ruby, Java, JavaScript,
+Lua, etc etc
+    
+    {
+      "beatles": [
+        { "firstName": "John", "lastName": "Lennon" },
+        { "firstName": "Paul", "lastName": "McCartney" },
+        { "firstName": "George", "lastName": "Harrison" },
+        { "firstName": "Ringo", "lastName": "Starr" }
+      ],
+      "name": function () {
+        return this.firstName + " " + this.lastName;
+      }
+    }
+    
+Template:
+    
+    {{#beatles}}
+    * {{name}}
+    {{/beatles}}
+
+Note that the first line is actually a condition.
+If `#beatles` returns a zero count, nothing
+is generated.
+
+Output:
+
+    * John Lennon
+    * Paul McCartney
+    * George Harrison
+    * Ringo Starr
+   
+Most Macro languages offer only a tiny subset
+of a full language. A notable exception
+is the `defmacro`
+operator of LISP
+that
+offer the whole power of the underlying language
+as part of the macro system. `defmacros` are
+LISP functions that return a list which
+the compiler then compiles as "real lisp".
+
+This is particularly nice since
+
+- LISP manipluates lists (LISP= list processing)
+- LISP
+  programs are lists (in fact, in ye olde times, a LISP
+  function was jsut a list starting with `lambda`.
+- LISP macros rewrite lists to add in the required
   details.
 
+
+For decades, LISP was the king of macros. Now, finally,
+other languages have caught on. So 
+[CLOJURE](https://www.slideshare.net/pcalcado/lisp-macros-in-20-minutes-featuring-clojure-presentation),
+[ELIXR](https://elixir-lang.org/getting-started/meta/macros.html),
+Prolog, Dylan, Scala, Nemerle, Rust, 
+Julia has a macro system that is
+(nearly) as powerful as LISP. So macros live!
+
+
+But the more powerful the macro language,
+the more skill required to use
+them wisely.
+Beginners have a lot of trouble with LISP/Julia
+macros. They can get fiendishly
+difficult.  But experienced programmers
+use them, a lot. 
+For the absolute best book on macros in LISP, see the amazing Let
+Over Lambda (http://letoverlambda.com/) book by Doug Hoyte.  Absolutely
+not for beginners.
 
 Note that there is much more to writing macros than shown below. For
 more details, see http://www.gigamonkeys.com/book/macros-defining-your-own.html
 
-Note also that for decades, LISP was the king of macros. Now, finally,
-other languages have caught on. So JULIA has a macro system that is
-(nearly) as powerful as LISP. So macros live!
 
 ## Macros in Julia
 
@@ -656,14 +752,5 @@ result in _n1_.
 
 And the gensyms avoid variable name clashes.
 
-## Warning
 
-Beginners have a lot of trouble with macros. They can get fiendishly
-difficult.  But every experienced LISP programmer uses them. So use
-them carefully at first and soon you will be LISP programming guru
-writing macros to write macros.
-
-For the absolute best book on macros in LISP, see the amazing Let
-Over Lambda (http://letoverlambda.com/) book by Doug Hoyte.  Absolutely
-not for beginners.
 
