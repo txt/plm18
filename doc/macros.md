@@ -16,9 +16,6 @@ ______
 
 # Macros
 
-These notes are adapted from `http://aplcenmp.apl.jhu.edu/~hall/'.
-
-   For more notes on macros, see Graham p162 to 172.
 
 ## What is a Macro and Why Should I Care?
 
@@ -338,6 +335,15 @@ Back ticks create a toggle mode within which things are not evaluated
 unless they are proceeded by a comma.
 
    This allows for the simple definition of nested list structures.
+
+    (let ((a 1)
+          (b 2))
+       (print '(a a b b)) ; ==> (A A B B)
+       (print `(a ,a b ,b))) ; ==> (A 1 B 2)
+
+(Note: so back tick is a DSL
+for specifying nested lists).
+
 For example, the following tells LISP to convert all calls to
 
     (time-it 10 (run-this-long-function))
