@@ -162,21 +162,37 @@ It works ok but, really, the objects it creates are very verbose.
     
 ### OO Version2 (still no macros, yet)
 
-Here's a version where instances are just a pointer
-to a lambda body and a list of instance variables. Much
-better when dealing with 1000s to 1000000s of instances.
+Here's a version where instances 
+are a two-part list:
 
-In the following, `self` is the instance.
+     (klass var1 var2...)
+
+where `klass` is a lambda body shared
+by all instances of the same klass and
+`var` are the  list of the instance values.
 
     (defun make (klass  &rest args) 
        (cons klass args))
 
-    (defun say (self m &rest args) 
-       (print (funcall (car self) self m args)))
+Note that this approach is much
+better when dealing with 1000s to 1000000s of instances.
+
+In the following, `self` is the instance.
+To send a message, we grap the `car` then
+send it (1) the instances; (2) the name
+of the method; and (3) any arguments to
+that method:
 
     (defun ask (self m &rest args)        
        (funcall (car self) self m args))
-    
+
+    (defun say (self m &rest args) 
+       "same as 'ask', but prints the results"
+       (print (funcall (car self) self m args)))
+   
+Here's the new class definition, which
+uses `self`:
+
     (defun point2 ()
       (labels (
          (_sq  (z)      (* z z))
@@ -219,7 +235,24 @@ Note that the above klasses have template that look like this:
                (otherwise 
                  (error "~a unknown" %z)))))))
 
-As to the magic `getsets` function, this creates a setter and
+Using this macro, we can spec our point
+class as follows (so `lst` is now `(x y)` and
+`body` are is a list of `(sqMethod distMethod)`:
+
+    (defklass point3 (x y)
+       (_sq  (z) (* z z))
+       (dist (self x2 y2)
+             (let ((x1 (ask self 'x?))
+                   (y1 (ask self 'y?)))
+               (sqrt (+ (_sq (- x1 x2)) 
+                        (_sq (- y1 y2)))))))
+
+The rest of the template fills itself in
+by querying `lst` and `body` for the names
+of the instance variables and the number of
+arguments to each methods.
+
+The `getsets` function creates a setter and
 a getter for each variables (e.g. see the definitions of `x?` and `x!`
 above).
 
@@ -238,8 +271,8 @@ above).
             (dolist (y (getter x))
               (push y out))))))
 
-As to the magic `method-calls-with-n-args` function,
-this looks up methods and their number of arguments,
+The `method-calls-with-n-args` function
+looks up methods and their number of arguments,
 and adds in the right entry to the case statement (e.g. see
 the definition of `dist`, above).
 
@@ -259,17 +292,8 @@ the definition of `dist`, above).
             (unless (eq #\_ (char (string f) 0))
               (push call  out))))))
     
-Now we can spec a klass, oh so succinctly
-
-    (defklass point3 (x y)
-       (_sq  (z) (* z z))
-       (dist (self x2 y2)
-             (let ((x1 (ask self 'x?))
-                   (y1 (ask self 'y?)))
-               (sqrt (+ (_sq (- x1 x2)) 
-                        (_sq (- y1 y2)))))))
-    
-This expans exactly to what we want.
+   
+Now we can expand our `defobject`.
 
     (macroexpand-1 '(defobject point3 (x y)
        (_sq  (z) (* z z))
