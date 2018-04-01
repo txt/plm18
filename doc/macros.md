@@ -54,8 +54,9 @@ From [Julua](https://julialang.org/):
   open source C and Fortran libraries for linear algebra, random
   number generation, signal processing, and string processing.
 
-But that does not matter now.
-Julia has a type system, with some limits. E.g. default
+But right now, our focus is on one part of Julia- its
+type system.
+Julia has a nice type system, with some limits. E.g. default
 Julia does not let you define types with default variables.
 
 So here's a macro that genertes a `type` and `function $(name)`.
@@ -96,7 +97,7 @@ First, we get the results of the macro
         end
      end
 
-Secondly, lets call some functions.  Julia programs are organized
+Julia programs are organized
 around multiple dispatch, which allows built-in and user-defined
 functions to be overloaded for different combinations of argument
 types.
