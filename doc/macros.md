@@ -160,7 +160,9 @@ It works ok but, really, the objects it creates are very verbose.
 ### OO Version2 (still no macros, yet)
 
 Here's a version where instances 
-are a two-part list:
+are a list containinging the
+instance variables, plus one slot for
+the associated lambda:
 
      (klass var1 var2...)
 
