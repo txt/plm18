@@ -38,6 +38,7 @@ Note that these simple macro systems
 have no access to the semantics
 of the underlying language.
 
+      # example in M4
       define(`ALPHA', `abcdefghijklmnopqrstuvwxyz')
       define(`ALPHA_UPR', `ABCDEFGHIJKLMNOPQRSTUVWXYZ')
       define(`ROT13', `nopqrstuvwxyzabcdefghijklm')
@@ -58,6 +59,7 @@ the semantics, like the Moustache library
 available in Python, Ruby, Java, JavaScript,
 Lua, etc etc
     
+    # example is moustache
     {
       "beatles": [
         { "firstName": "John", "lastName": "Lennon" },
@@ -154,7 +156,7 @@ Julia does not let you define types with default variables.
 
 So here's a macro that genertes a `type` and `function $(name)`.
 
-    #------------------------------------------------
+    # example in Julia
     # define types and a constructor that drops in the
     # right default values
     # e.g. @def emp age=0 salary=10000
