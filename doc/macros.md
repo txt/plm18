@@ -88,7 +88,9 @@ Output:
     * Paul McCartney
     * George Harrison
     * Ringo Starr
-   
+
+I've written whole web sites that are just Mustache expansions.
+
 Most Macro languages offer only a tiny subset
 of a full language. A notable exception
 is the `defmacro`
@@ -114,16 +116,45 @@ other languages have caught on. So
 [CLOJURE](https://www.slideshare.net/pcalcado/lisp-macros-in-20-minutes-featuring-clojure-presentation),
 [ELIXR](https://elixir-lang.org/getting-started/meta/macros.html),
 Prolog, Dylan, Scala, Nemerle, Rust, 
-Julia has a macro system that is
-(nearly) as powerful as LISP. So macros live!
+Julia, etc, etc have macro systems that are
+(nearly) as powerful as LISP. So macros flourish!
 
 
 But the more powerful the macro language,
 the more skill required to use
 them wisely.
-Beginners have a lot of trouble with LISP/Julia
-macros. They can get fiendishly
-difficult.  But experienced programmers
+Beginners have a lot of trouble with 
+macros. 
+For example, here is an example in the GNU C pre-processor that
+goes terrible wrong due to "variable capture"
+
+    #define LOG(msg) ({ \
+        int state = get_log_state(); \
+        if (state > 0) { \
+            printf("log(%d): %s\n", state, msg); \
+        } \
+    })
+    
+Here’s a simple use case that goes terribly wrong:
+
+    const char *state = "reticulating splines";
+    LOG(state)
+    
+This expands to
+
+    const char *state = "reticulating splines";
+    {
+        int state = get_log_state();
+        if (state > 0) {
+            printf("log(%d): %s\n", state, state);
+        }
+    }
+    
+Note the double call the `state` in the last line. To avoid variable
+capture, we need "hygenic macros" (see below) that are 
+guaranteed not to cause the accidental capture of identifiers.
+
+But experienced programmers
 use them, a lot. 
 For the absolute best book on macros in LISP, see the amazing Let
 Over Lambda (http://letoverlambda.com/) book by Doug Hoyte.  Absolutely
@@ -131,7 +162,6 @@ not for beginners.
 
 Note that there is much more to writing macros than shown below. For
 more details, see http://www.gigamonkeys.com/book/macros-defining-your-own.html
-
 
 ## Macros in Julia
 
@@ -161,8 +191,8 @@ So here's a macro that genertes a `type` and `function $(name)`.
     # right default values
     # e.g. @def emp age=0 salary=10000
     macro has(typename, pairs...)
-        name = esc(symbol(string(typename,0)))
-        x    = esc(symbol("x"))
+        name = esc(symbol(string(typename,0))) # hygiene
+        x    = esc(symbol("x"))                # hygiene 
         ones = [  x.args[1]  for x in pairs ]
         twos = [  x.args[2]  for x in pairs ]
         sets = [ :($x.$y=$y) for y in ones  ]
@@ -325,7 +355,7 @@ Note that the above klasses have template that look like this:
       "template for klasses"
       `(defun ,klass ()
          (labels (,@body)
-           (lambda (self %z args)
+           (lambda (self %z args)  ; using %z is a hygiene cheat
              (case %z
                ,@(getsets lst)
                ,@(method-calls-with-n-args body)
@@ -500,7 +530,7 @@ The resultant code is what the compiler sees.
 
 1. Trying to evaluate arguments at compile time
 2. Evaluating arguments too many times
-3. Variable name clashes.
+3. Variable name capture (not being hygienic).
 
 #### Compile Time Eval Error
 
@@ -547,7 +577,7 @@ How does that look?
 
 Which is nearly what we want.... except for variable name clashes.
 
-### Variable name clashes
+### Variable name capture (not being hygienic)
 
 Square-3 is perfectly safe, but consider instead the following macro,
 which takes two numbers and squares the sum of them:
@@ -585,7 +615,7 @@ local variable `FIRST`, not the one you passed in. Thus
  returns 4, not 100!
 
 Solution: need to create a variable name inside the macro that
-cannot exist anywhere else in the code.
+cannot exist anywhere else in the code. Now the macro is "hygienic".
 
     (defmacro Square-Sum (X Y)
         (let ((First (gensym "FIRST-"))
@@ -737,9 +767,9 @@ Now we can explain the _time-it_ code that started this lecture.
 
     (defmacro time-it (n &body body)
       "Run 'body' 'n' times."
-      (let ((n1 (gensym))
-            (i  (gensym))
-            (t1 (gensym)))
+      (let ((n1 (gensym)) ; hygiene
+            (i  (gensym)) ; hygiene
+            (t1 (gensym))) ; hygiene
         `(let ((,n1 ,n)
                (,t1 (get-internal-run-time)))
            (dotimes (,i ,n1) ,@body)
