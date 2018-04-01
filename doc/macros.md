@@ -38,20 +38,20 @@ Note that these simple macro systems
 have no access to the semantics
 of the underlying language.
 
- define(`ALPHA', `abcdefghijklmnopqrstuvwxyz')
-  define(`ALPHA_UPR', `ABCDEFGHIJKLMNOPQRSTUVWXYZ')
-  define(`ROT13', `nopqrstuvwxyzabcdefghijklm')
-
-  translit(`abc ebg13', ALPHA, ALPHA_UPR)
-  # -> ABC EBG13
-   # -> ABC EBG13
-  
-  translit(`abc ebg13', ALPHA, ROT13)
-  # -> nop rot13
-  define(`eng',`engineering')
-  substr(`engineer',0,3)           # -> eng -> engineering
-  translit(`rat', ALPHA, ROT13)    # -> eng -> engineering
-
+      define(`ALPHA', `abcdefghijklmnopqrstuvwxyz')
+      define(`ALPHA_UPR', `ABCDEFGHIJKLMNOPQRSTUVWXYZ')
+      define(`ROT13', `nopqrstuvwxyzabcdefghijklm')
+    
+      translit(`abc ebg13', ALPHA, ALPHA_UPR)
+      # -> ABC EBG13
+      # -> ABC EBG13
+      
+      translit(`abc ebg13', ALPHA, ROT13)
+      # -> nop rot13
+      define(`eng',`engineering')
+      substr(`engineer',0,3)           # -> eng -> engineering
+      translit(`rat', ALPHA, ROT13)    # -> eng -> engineering
+    
 Then there are somewhat clean macro
 languages that offer a declarative view of
 the semantics, like the Moustache library
