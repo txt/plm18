@@ -59,6 +59,8 @@ Parsing (basics):
 <a href="doc/re.md">Regx</a>,  				      
 <a href="doc/syntax.md">syntax</a>,  			      
 <a href="doc/lambda.md">lambda</a>,  		      
+<a href="https://github.com/txt/ase16/blob/master/doc/dsl.md">stocks and flows</a>,
+<a href="doc/macros.md">macros</a>,  		      
 <a href="doc/logic.md">logic</a>,  		      
 <a href="src/prolog/rule.pl">prolog</a>,  		      
 macros
