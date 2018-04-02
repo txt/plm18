@@ -464,15 +464,17 @@ And it all works fine
 Back ticks create a toggle mode within which things are not evaluated
 unless they are proceeded by a comma.
 
-   This allows for the simple definition of nested list structures.
+This allows for the simple definition of nested list structures.
 
     (let ((a 1)
-          (b 2))
-       (print '(a a b b)) ; ==> (A A B B)
-       (print `(a ,a b ,b))) ; ==> (A 1 B 2)
+          (b 2)
+          (c '(10 20 30 40)))
+       (print '(a a b b))          ; ==> (A A B B)
+       (print `(a ,a b ,b))        ; ==> (A 1 B 2)
+       (print `(a ,a b ,b c ,c))   ; ==> (a 1 b 2 c (10 20 30 40))
+       (print `(a ,a b ,b c ,@c))) ; ==> (a 1 b 2 c 10 20 30 40)
 
-(Note: so back tick is a DSL
-for specifying nested lists).
+(Note: so back tick is a DSL for specifying nested lists).
 
 For example, the following tells LISP to convert all calls to
 
