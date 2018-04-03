@@ -63,7 +63,7 @@ Q6b. What are i, dt, t respectively?
 
 Q6c. How to represent payload in the code?
 
-Q6d. How to update the field of v? Using field of u: (v.C +=  dt*(u.q - u.r))
+Q6d. How to update the field of v?
 	
 Q6e. Write a compartmental model for the diaper example.
 	
