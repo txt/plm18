@@ -81,11 +81,11 @@ r = flow of clean diapers to dirty diapers
 s = out-flow of dirty diapers
 ```
 	
-Q7. Stocks, Flows, Aux are Subclasses of Has. What is the difference between them?
+Q8. What is the difference between Stocks and Flows in Compartmental Modeling?
 
-Q8. What are auxillary variables used for?
+Q9. In Compartmental Modeling, what are auxillary variables used for?
 
-Q9. Why would a stock need this?
+Q10. Why would a stock need this?
 
 	  def restrain(i,x):
 		return max(i.lo, 
@@ -123,14 +123,14 @@ In class "model":
 		  b4 = now
 		return keep
 
-Q10a. What is keep = []?
+Q11a. What is keep = []?
 
-Q10b. What is happending here:
+Q11b. What is happending here:
 
       for k in state.keys(): 
         now[k] = state[k].restrain(now[k]) ## 4
 
-Q10c. What returns here: 
+Q11c. What returns here: 
 
 	  keep += [[t] + now.asList(keys)] ## 2
 
@@ -156,11 +156,11 @@ In the following code about "printm":
 	   for row in [fmt.format(*row) for row in s]:
 		  print(row)
 		  
-Q11. What do these two lines do:
+Q12. What do these two lines do:
 
 	   s = [[str(e) for e in row] for row in matrix]
 	   lens = [max(map(len, col)) for col in zip(*s)]
 
-Q12. For Compartmental Models, why we do not try to debug complex emergent behavior?
+Q13. For Compartmental Models, why we do not try to debug complex emergent behavior?
 
-Q13. Instead of debugging complex emergent behavior, what we can do?
+Q14. Instead of debugging complex emergent behavior, what we can do?
