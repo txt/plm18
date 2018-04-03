@@ -65,7 +65,23 @@ Q6c. How to represent payload in the code?
 
 Q6d. How to update the field of v?
 	
-Q6e. Write a compartmental model for the diaper example.
+Q7. For the following example, write a compartmental model.
+## Example: Diapers
+
+
+```
+ q   +-----+  r  +-----+
+---->|  C  |---->|  D  |--> s
+ ^   +-----+     +-+---+
+ |                 |
+ +-----------------+ 
+
+C = stock of clean diapers
+D = stock of dirty diapers
+q = inflow of clean diapers
+r = flow of clean diapers to dirty diapers
+s = out-flow of dirty diapers
+```
 	
 Q7. Stocks, Flows, Aux are Subclasses of Has. What is the difference between them?
 
