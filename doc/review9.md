@@ -22,7 +22,7 @@ Q2. What is the difference between object-based system and class-based system?
 
 Q3. There are two ways to build a DSL: External and Internal, briefly explain what they are and give an example for each of them.
 
-Q4. Name some python tools that can be used for DSLs, and explain how to use them.
+Q4. Some python tools can be used for DSLs, decorator for example, explain how to use it as a test engine.
 
 Q5a. What is context manager? And what is the following say?
 
