@@ -22,11 +22,9 @@ Q2. What is the difference between object-based system and class-based system?
 
 Q3. There are two ways to build a DSL: External and Internal, briefly explain what they are and give an example for each of them.
 
-Q4. Some python tools can be used for DSLs, decorator for example, explain how to use it as a test engine.
+Q4a. What is context manager? And what is the following say?
 
-Q5a. What is context manager? And what is the following say?
-
-Q5b.
+Q4b.
 
 	def duration():
 		t1 = time.time()
@@ -35,7 +33,7 @@ Q5b.
 		print("\n" + "-" * 72)
 		print("# Runtime: %.3f secs" % (t2-t1))
 		
-Q5c.
+Q4c.
 
 	def closing(thing):
 		try:
@@ -57,15 +55,15 @@ In the following code:
 		  draw diagram, change something
 		  
 		  
-Q6a. How do we get the constants of dict?
+Q5a. How do we get the constants of dict?
 
-Q6b. What are i, dt, t respectively?
+Q5b. What are i, dt, t respectively?
 
-Q6c. How to represent payload in the code?
+Q5c. How to represent payload in the code?
 
-Q6d. How to update the field of v?
+Q5d. How to update the field of v?
 	
-Q7. For the following example, write a compartmental model.
+Q6. For the following example, write a compartmental model.
 
 ```
  q   +-----+  r  +-----+
@@ -81,11 +79,11 @@ r = flow of clean diapers to dirty diapers
 s = out-flow of dirty diapers
 ```
 	
-Q8. What is the difference between Stocks and Flows in Compartmental Modeling?
+Q7. What is the difference between Stocks and Flows in Compartmental Modeling?
 
-Q9. In Compartmental Modeling, what are auxillary variables used for?
+Q8. In Compartmental Modeling, what are auxillary variables used for?
 
-Q10. Why would a stock need this?
+Q9. Why would a stock need this?
 
 	  def restrain(i,x):
 		return max(i.lo, 
@@ -123,14 +121,14 @@ In class "model":
 		  b4 = now
 		return keep
 
-Q11a. What is keep = []?
+Q10a. What is keep = []?
 
-Q11b. What is happending here:
+Q10b. What is happending here:
 
       for k in state.keys(): 
         now[k] = state[k].restrain(now[k]) ## 4
 
-Q11c. What returns here: 
+Q10c. What returns here: 
 
 	  keep += [[t] + now.asList(keys)] ## 2
 
@@ -156,15 +154,15 @@ In the following code about "printm":
 	   for row in [fmt.format(*row) for row in s]:
 		  print(row)
 		  
-Q12. What do these two lines do:
+Q11. What do these two lines do:
 
 	   s = [[str(e) for e in row] for row in matrix]
 	   lens = [max(map(len, col)) for col in zip(*s)]
 
-Q13. For Compartmental Models, why we do not try to debug complex emergent behavior?
+Q12. For Compartmental Models, why we do not try to debug complex emergent behavior?
 
-Q14. Instead of debugging complex emergent behavior, what we can do?
+Q13. Instead of debugging complex emergent behavior, what we can do?
 
-Q15. Label the models below:
+Q14. Label the models below:
  
 ![cmnl](https://cloud.githubusercontent.com/assets/1433964/10382538/12b9265c-6df3-11e5-8572-7b60661e4464.jpg)
