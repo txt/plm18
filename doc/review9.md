@@ -16,13 +16,15 @@ ______
 
 ### Week 11 : 03/27/2018 ~ 03/29/2018
 
-Q1. In DSLs, why Racket almost never uses classes? 
+Q1. 
 
 Q2. What is the difference between object-based system and class-based system?
+Given an applciation with 1000000 objects, which might you prefer? Justify your answer.
 
 Q3. There are two ways to build a DSL: External and Internal, briefly explain what they are and give an example for each of them.
 
-Q4a. What is context manager? And what is the following say?
+Q4a. What is context manager? What do  the following do? For each of 4b 4c ofefr
+another example where you might use this langauge feature.
 
 Q4b.
 
@@ -41,6 +43,9 @@ Q4c.
 		finally:
 			thing.close()
 			
+
+!Q4d. Are4 b, 4c examples of itnernal or external DSLs. Justify your answer.
+
 In the following code:
 
 	  def step(i,dt,t,u,v):
@@ -52,31 +57,35 @@ In the following code:
 		if t == 27: # special case (the day i forget)
 		  v.s = 0
 
-		  draw diagram, change something
+Q5a. Draw the associated compartmental model
 		  
-		  
-Q5a. How do we get the constants of dict?
+Q5b. How do we get the constants of dict?
 
-Q5b. What are i, dt, t respectively?
+Q5c. What are i, dt, t respectively?
 
-Q5c. How to represent payload in the code?
+Q5d. How to represent payload in the code?
 
-Q5d. How to update the field of v?
-	
+Q5e. How to update the field of v?
+
+Q5f. Is this an external or internal DSL?
+
 Q6. For the following example, write a compartmental model.
 
 ```
- q   +-----+  r  +-----+
----->|  C  |---->|  D  |--> s
- ^   +-----+     +-+---+
- |                 |
- +-----------------+ 
+ a   +-----+  c  +-----+
+---->|  B  |---->|  D  |--> e
+ ^   +-----+     +-+---+    |
+ |                          |
+ +--------------------------+ 
+         f
 
-C = stock of clean diapers
-D = stock of dirty diapers
-q = inflow of clean diapers
-r = flow of clean diapers to dirty diapers
-s = out-flow of dirty diapers
+B = contents of supermarket shelves
+D = contents of tummy
+a = restock rate of supermarket
+c = buying rate of a student
+e = garbage bags outside student housing
+f = increases restocking for stuburbs with lottsa garbage
+
 ```
 	
 Q7. What is the difference between Stocks and Flows in Compartmental Modeling?
