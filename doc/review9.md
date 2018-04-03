@@ -20,7 +20,7 @@ Q1. In DSLs, why Racket almost never uses classes?
 
 Q2. What is the difference between object-based system and class-based system?
 
-Q3. There are two ways to build a DSL: External and Internal, briefly explain what they are and give an examples for each of them.
+Q3. There are two ways to build a DSL: External and Internal, briefly explain what they are and give an example for each of them.
 
 Q4. Name some python tools that can be used for DSLs, and explain how to use them.
 
