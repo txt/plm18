@@ -16,17 +16,15 @@ ______
 
 ### Week 11 : 03/27/2018 ~ 03/29/2018
 
-Q1. 
-
-Q2. What is the difference between object-based system and class-based system?
+Q1. What is the difference between object-based system and class-based system?
 Given an applciation with 1000000 objects, which might you prefer? Justify your answer.
 
-Q3. There are two ways to build a DSL: External and Internal, briefly explain what they are and give an example for each of them.
+Q2. There are two ways to build a DSL: External and Internal, briefly explain what they are and give an example for each of them.
 
-Q4a. What is context manager? What do  the following do? For each of 4b 4c ofefr
+Q3a. What is context manager? What do the following do? For each of 3b, 3c offer
 another example where you might use this langauge feature.
 
-Q4b.
+Q3b.
 
 	def duration():
 		t1 = time.time()
@@ -35,7 +33,7 @@ Q4b.
 		print("\n" + "-" * 72)
 		print("# Runtime: %.3f secs" % (t2-t1))
 		
-Q4c.
+Q3c.
 
 	def closing(thing):
 		try:
@@ -44,7 +42,7 @@ Q4c.
 			thing.close()
 			
 
-!Q4d. Are4 b, 4c examples of itnernal or external DSLs. Justify your answer.
+Q3d. Are 3b, 3c examples of itnernal or external DSLs? Justify your answer.
 
 In the following code:
 
@@ -57,19 +55,19 @@ In the following code:
 		if t == 27: # special case (the day i forget)
 		  v.s = 0
 
-Q5a. Draw the associated compartmental model
+Q4a. Draw the associated compartmental model
 		  
-Q5b. How do we get the constants of dict?
+Q4b. How do we get the constants of dict?
 
-Q5c. What are i, dt, t respectively?
+Q4c. What are i, dt, t respectively?
 
-Q5d. How to represent payload in the code?
+Q4d. How to represent payload in the code?
 
-Q5e. How to update the field of v?
+Q4e. How to update the field of v?
 
-Q5f. Is this an external or internal DSL?
+Q4f. Is this an external or internal DSL?
 
-Q6. For the following example, write a compartmental model.
+Q5. For the following example, write a compartmental model.
 
 ```
  a   +-----+  c  +-----+
@@ -88,11 +86,11 @@ f = increases restocking for stuburbs with lottsa garbage
 
 ```
 	
-Q7. What is the difference between Stocks and Flows in Compartmental Modeling?
+Q6. What is the difference between Stocks and Flows in Compartmental Modeling?
 
-Q8. In Compartmental Modeling, what are auxillary variables used for?
+Q7. In Compartmental Modeling, what are auxillary variables used for?
 
-Q9. Why would a stock need this?
+Q8. Why would a stock need this?
 
 	  def restrain(i,x):
 		return max(i.lo, 
@@ -130,14 +128,14 @@ In class "model":
 		  b4 = now
 		return keep
 
-Q10a. What is keep = []?
+Q9a. What is keep = []?
 
-Q10b. What is happending here:
+Q9b. What is happending here:
 
       for k in state.keys(): 
         now[k] = state[k].restrain(now[k]) ## 4
 
-Q10c. What returns here: 
+Q9c. What returns here: 
 
 	  keep += [[t] + now.asList(keys)] ## 2
 
@@ -163,15 +161,15 @@ In the following code about "printm":
 	   for row in [fmt.format(*row) for row in s]:
 		  print(row)
 		  
-Q11. What do these two lines do:
+Q10. What do these two lines do:
 
 	   s = [[str(e) for e in row] for row in matrix]
 	   lens = [max(map(len, col)) for col in zip(*s)]
 
-Q12. For Compartmental Models, why we do not try to debug complex emergent behavior?
+Q11. For Compartmental Models, why we do not try to debug complex emergent behavior?
 
-Q13. Instead of debugging complex emergent behavior, what we can do?
+Q12. Instead of debugging complex emergent behavior, what we can do?
 
-Q14. Label the models below:
+Q13. Label the models below:
  
 ![cmnl](https://cloud.githubusercontent.com/assets/1433964/10382538/12b9265c-6df3-11e5-8572-7b60661e4464.jpg)
