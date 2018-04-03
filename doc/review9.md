@@ -66,8 +66,6 @@ Q6c. How to represent payload in the code?
 Q6d. How to update the field of v?
 	
 Q7. For the following example, write a compartmental model.
-## Example: Diapers
-
 
 ```
  q   +-----+  r  +-----+
