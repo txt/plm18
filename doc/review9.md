@@ -164,3 +164,7 @@ Q12. What do these two lines do:
 Q13. For Compartmental Models, why we do not try to debug complex emergent behavior?
 
 Q14. Instead of debugging complex emergent behavior, what we can do?
+
+Q15. Label the models below:
+ 
+![cmnl](https://cloud.githubusercontent.com/assets/1433964/10382538/12b9265c-6df3-11e5-8572-7b60661e4464.jpg)
