@@ -67,7 +67,7 @@ Q4e. How to update the field of v?
 
 Q4f. Is this an external or internal DSL?
 
-Q5. For the following example, write a compartmental model in python
+Q5. For the following example, write a compartmental model in python.
 
 ```
  a   +-----+  c  +-----+
