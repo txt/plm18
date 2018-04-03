@@ -24,9 +24,10 @@ Q3. There are two ways to build a DSL: External and Internal, briefly explain wh
 
 Q4. Name some python tools that can be used for DSLs, and explain how to use them.
 
-Q5a. What is context manager? what is the following say?
+Q5a. What is context manager? And what is the following say?
 
 Q5b.
+
 	def duration():
 		t1 = time.time()
 		yield
@@ -35,6 +36,7 @@ Q5b.
 		print("# Runtime: %.3f secs" % (t2-t1))
 		
 Q5c.
+
 	def closing(thing):
 		try:
 			yield thing
