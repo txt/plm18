@@ -63,6 +63,9 @@ test(R) :-
 % Exanding rules with some extra details.
 
 term_expansion( rule Id for Task if If then Then, Rule) :-
+  xpandRule( rule Id for Task if If then Then, Rule).
+
+xpandRule( rule Id for Task if If then Then, Rule) :-
   term_variables(( Id,Task,If ), V1),
   term_variables(Then, V2),
   shares(V1, V2, V),
