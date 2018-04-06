@@ -1,0 +1,1148 @@
+% 
+% 
+% 
+%                            - 1 -
+% 
+% 
+% 
+%              COMP3411  Artificial Intelligence
+% 
+%                       Session 1, 1992
+% 
+%               Assignment 2 - Heuristic Search
+% 
+%           Due date: Friday (week 9) May 8, 1992
+% 
+% 
+%                             NOTE
+% 
+% Support code for this assignment can be found in:
+% 
+%   ~cs3411/public/assigns/ass2.pro
+% 
+%                           WARNING
+% 
+% You are reminded that all work submitted for assessment MUST
+% be your own.  Penalties include deduction of marks for the
+% assignment (in cases of collusion or complicity) and failure
+% of this subject (in cases of direct copying).
+% 
+% 
+% 1.  PROBLEM_DESCRIPTION
+% 
+% Your task is to implement the BAGGER expert system. BAGGER
+% is an automated supermarket grocery packing expert system
+% that controls how grocery bags are packed at the check-out
+% counter of a supermarket. The problem sounds trivial, but it
+% is directly analogous to the problem solved by XCON, the
+% world's first commercial expert system. XCON automatically
+% configured Digital's CPU boxes so that they satisfied the
+% precise customer requirements. This freed up the time of
+% DEC's top hardware designers. Instead of spending their time
+% in customer support, they could get to work on the next
+% generation of DEC's hardware. BAGGER and XCON both work on
+% the same problem: allocating physical objects inside a
+% constrained space. XCON worked inside a CPU box while BAGGER
+% works inside grocery bags.
+% 
+% The attached photocopied sheets describe the BAGGER domains.
+% You have to turn the pseudo-English rules into Prolog facts.
+% Your program must have at least 14 rule/3 facts of the form:
+% 
+%   rule(LABEL, IF, THEN).
+% 
+% The tricky bit is to implement the appropriate "conflict
+% resolution strategy". This is explained in the photocopied
+% sheets. However, in brief, when a rule interpreter executes,
+% it could find that more than one rule has a satisfied
+% condition. If so, then the rule with the **BIGGEST**
+% 
+% 
+% 
+% 
+% 
+% 
+% 
+% 
+% 
+% 
+% 
+%                            - 2 -
+% 
+% 
+% 
+% condition should be executed. Your main loop should look
+% like this:
+% 
+%   fchain :-
+%           triggerredRules(RULES),
+%           conflictResolution(RULES, RULE),
+%           fire(RULE),
+%           fchain.
+%   fchain.
+% 
+% That is, you collect a list of rules that are currently
+% satisfied, then you select ONE RULE ONLY to be executed.
+% This is then executed and the system loops.
+% 
+% The top level driver of your program should be "bagger/2".
+% Its first argument is a list of grocery items, and the
+% second argument is a list of generated bags. The example
+% shown in the photocopied sheets could look like this:
+% 
+%   bagger([bread,glop,granola,granola,iceCream,potatoChips],
+%           X)?
+% 
+%   X =     [[pepsi, granola, granola],
+%           [bread, insulated(iceCream), potatoChips, glop]]
+% 
+% Note that insulated(X) denotes X has been wrapped in an
+% insulation bag.
+% 
+% Your program may have to use lots of asserts and retracts.
+% Keep calm.  Its ok to use asserts and retracts in Prolog.
+% Just don't do more than you have to.
+% 
+% With the utilities defined in "ass2.pro", you rules could
+% look quite neat.  For example:
+% 
+%   rule(b9,        step(bag_medium_items) and
+%                   bought(ITEM) and
+%                   ITEM has size = medium
+%                   ,
+%                   newBag).
+% 
+% 
+% 2.  SUBMISSION
+% 
+% Your assignment should be submitted using:
+% 
+%                       give myprog ass2
+%               or ~cs3411/bin/give myprog ass2
+% 
+% where myprog is your program.
+% 
+% 
+% 
+% 
+% 
+% 
+% 
+% 
+% 
+%              COMP3411  Artificial Intelligence
+% 
+%                       Session 1, 1992
+% 
+%               Assignment 2 - Heuristic Search
+% 
+%            Due date: Friday (week 9) May 8, 1992
+% 
+%                     Supplementary Notes
+% 
+% Here are some more notes on the BAGGER assignment.
+% 
+% After implementing our solution, we realised that the
+% Winston specification of the problem was incomplete. We are
+% therefore extending the Winston spec, simplifying the
+% problem somewhat, are defining your task a little better.
+% We're giving you most of the code. You have to:
+% 
+%   1.  write the predicates:
+% 
+%       triggeredRules/1              Returns a list of rules
+%                                     with satisfied
+%                                     conditions. Items in the
+%                                     list are of the form:
+%                                     rule X if Y then Z.
+%                                     Fails if no such rules
+%                                     are found (i.e.
+%                                     generated list in
+%                                     empty).
+% 
+%       conflictResolution/2          Takes the list generated
+%                                     by triggerred_rules/1
+%                                     and returns one rule to
+%                                     be fired.
+% 
+%       fire/1                        Fires the rule passed to
+%                                     it by triggered_rules/1
+%                                     If "watchOn" is
+%                                     asserted, also prints
+%                                     the label of the fired
+%                                     rule.
+% 
+%   2.  modify the predicate:
+% 
+%         clear/0
+% 
+%       so that is works for your assertions.
+% 
+%   3.  write the rules not provided below.
+% 
+%   4.  re-write the rules provided below to remove
+%       disjunction.
+% 
+% In our system, tasks one and two are less than 50 lines of
+% code.
+% 
+% The code described below can be found in:
+% 
+%               ~cs3411/public/assigns/ass2.proA
+% 
+% Note that the "give" command for this assignment expects ONE
+% file. Hence, you should take a copy off ass2.proA and modify
+% it for your work. Note also that ass2.proA  will require
+% better comments in it BEFORE you submit it. These comments
+% should distinguish CLEARLY between the predicates supplied
+% to you in "ass2.proA" and those that you wrote yourself.
+% 
+% 
+% 1.  CONFLICT_RESOLUTION
+% 
+% 
+% We'll use conflict resolution by size ordering, not
+% specificity.  That is, if N rules are currently relevant
+% (i.e. their conditions are satisfied), then apply the rule
+% with the BIGGEST condition.
+% 
+% For example, in the following case, rule 1 has three
+% conditions and rule 2 has two conditions. Conflict
+% resolution should select rule 1 to fire.
+% 
+%   rule 1
+%   if      a  and
+%           b  and
+%           not c
+%   then
+%           ...
+% 
+%   rule 2
+%   if      not c and
+%           d
+%   then
+%           ...
+% 
+% 
+% "Aha!" you exclaim, " but what about disjunction? How do we
+% define 'size' of a rule condition when there is an 'or'
+% there?"  This is a good question. We'll ignore it (since its
+% kinda hard).  Disjunctions are not to be used in the BAGGER
+% rule set. So, the rules B7 and B8 have to be teased apart
+% into B7a, B7b, B8a, and B8b (one rule for every conjunction
+% within the disjunction). For example:
+% 
+%   rule 1
+%   if      a  and
+%           b  or
+%           not c
+%   then
+%           ...
+% 
+% would be written as TWO rules:
+% 
+%   rule 1a
+%   if      a  and
+%           b
+%   then
+%           ...
+% 
+%   rule 1b
+%   if      not c
+%   then
+%           ...
+% 
+% 
+% 
+% 2.  RULE_SYNTAX
+% 
+% 
+% We had a play with the rule syntax and we think that the
+% rule/3 syntax mentioned in the assignment is too
+% restrictive.  Here are some of the rules in our knowledge
+% base. They use certain predicates defined below.
+% 
+%   %------------------------------------------------------
+%   % operator definitions
+%   % author: tjm, april '92
+%   op(990,xfx,if)!
+%   op(980,xfx,then)!
+%   op(970,xfx,or)!
+%   op(960,xfy,and)!
+%   op(950,fx,not)!
+%   op(800,fx,--)!
+%   op(800,fx,++)!
+%   op(800,xfx,<--)!
+%   op(680,xfx,includes)!
+%   op(720,xfx,has)!
+%   op(720,xfx,isa)!
+%   op(720,xfx,of)!
+%   op(720,fx,the)!
+%   op(710,xfy,with)!
+%   op(10,fx,rule)!
+% 
+% 
+%   % bagger kb
+%   % author: tjm, april '92
+%   rule    b1
+%   if      the step is check_order                 and
+%           there isa item(potatoChips)             and
+%           not (there isa item(X) and
+%                X has type = bottle)
+%   then
+%           ++ there isa item(pepsi).
+% 
+%   rule b4
+%   if      the step is bag_large_items             and
+%           ITEM <-- there isa item(X)              and
+%           X has size = large                      and
+%           BAG <-- bag(ITEMS)                      and
+%           number(ITEMS) of size(large) < 6
+%   then
+%           -- ITEM                                 and
+%           -- BAG                                  and
+%           ++ bag([ X | ITEMS ]).
+% 
+%   rule b5
+%   if      the step is bag_large_items             and
+%           there isa item(X)                       and
+%           X has size = large
+%   then
+%           newBag.
+% 
+%   rule    b6
+%   if      OLD <-- the step is bag_large_items
+%   then
+%           -- OLD                                  and
+%           ++ the step is bag_medium_items.
+% 
+%   % Note that B7 would have to be re-written out twice to
+%   % handle the disjunction.
+%   %
+%   % rule b7
+%   % if    the step is bag_medium_items            and
+%   %       ITEM <-- there isa item(X)              and
+%   %       X has size = medium                     and
+%   %       BAG <-- bag(ITEMS)                      and
+%   %       (ITEMS = []                             or
+%   %       ITEMS includes ANOTHER_ITEM             and
+%   %       ANOTHER_ITEM has size = medium)         and
+%   %       not fullBag(ITEMS)                      and
+%   %       X has frozen = y
+%   % then  -- ITEM                                 and
+%   %       -- BAG                                  and
+%   %       ++ bag([insulated(X)|ITEMS]).
+% 
+% You can use these rules in your solution.  Note that B7
+% would have to be re-written out twice to handle the
+% disjunction.
+% 
+% These rules need some support utilities.
+% 
+%   %------------------------------------------------------
+%   % bagger rule language utilities
+%   % author: tjm, april '92
+%   X and Y :- X, Y.
+% 
+%   not X :- not(X).
+% 
+%   -- X :- retract(X).
+% 
+%   ++ X :- asserta(X).
+% 
+%   X includes Y :- member(Y,X).
+% 
+%   X has Y :-
+%           item(X,ITEM),
+%           grocery(ITEM, TYPE, SIZE, FROZEN),
+%           fields(Y,grocery(ITEM, TYPE, SIZE, FROZEN)).
+% 
+%   fields(A with B, TUPLE) :- !,
+%           fields(A, TUPLE),
+%           fields(B, TUPLE).
+%   fields(FIELD = VALUE, TUPLE) :-
+%           field(FIELD,_,TUPLE,VALUE).
+% 
+%   % If the following predicate still confuses you, ignore how
+%   % it is implemented. Have a look at how it is used in rule B4.
+%   number(ITEMS) of OP(FIELD(VALUE),N) :-
+%           bagof(1,
+%                   (member(X,ITEMS),
+%                    item(X,ITEM),
+%                    ITEM has FIELD = VALUE),
+%                   L),
+%           length(L,M),
+%           OP(M,N).
+% 
+%   item(insulated(X),X) :-!.
+%   item(X,X).
+% 
+% One new predicate is a little tricky.  Recall rule B6:
+% 
+%   rule    b6
+%   if      OLD <-- the step is bag_large_items
+%   then
+%           -- OLD                                  and
+%           ++ the step is bag_medium_items.
+% 
+% What does "OLD <-- the step is bag_large_items" do?  It is
+% implemented as follows:
+% 
+%   X <-- X :- X.
+% 
+% Its just some syntactic sugar to simplify deletions. It just
+% takes a copy of the matched fact and lets you refer to it
+% with a simple variable binding.  For example, suppose we
+% re-wrote without using this predicate. It would look like
+% this...
+% 
+%   rule    b6
+%   if      the step is bag_large_items
+%   then
+%           -- the step is bag_large_items          and
+%           ++ the step is bag_medium_items.
+% 
+% "<--" just makes a rule more acceptable to the reader.
+% 
+% 
+% 3.  MAIN_PROGRAM
+% 
+% 
+% You should use the following main program:
+% 
+%   %------------------------------------------------------
+%   % bagger main module
+%   % author: tjm, april '92
+% 
+%   % bagger/2
+%   % assert the shopping items, run the inference engine,
+%   % collect the asserted bags.
+%   % As this program runs, the asserted shopping items are
+%   % retracted as they are moved into bags.
+%   bagger(ITEMS, BAGS) :-
+%           clear,
+%           assertItems(ITEMS),
+%           ++ the step is check_order,
+%           fchain,
+%           !,
+%           collectBags(BAGS).
+% 
+%   % assertL/1
+%   % assert everything in the list.
+%   assertItems(L) :-
+%           doAll((
+%                   member(I,L),
+%                   assert(there isa item(I))
+%           )).
+% 
+%   % doAll/1
+%   % backtrack through all solutions to X.
+%   doAll(X) :- X, fail.
+%   doAll(_).
+% 
+%   % collectBags/1
+%   % collect all the shopping bags.
+%   collectBags(BAGS) :-
+%           bagof(ITEMS,bag(ITEMS), BAGS).
+% 
+%   % clear /0
+%   % clear all the assertions generated at the last
+%   % run of the program.
+%   % our clear/1 looks like this...
+%   % clear :-
+%   %       retractall(bag(_)),
+%   %       retractall(the _ is _),
+%   %       retractall(there isa item(_)).
+% 
+%   % fchain /0
+%   % find all the triggerred rules with satisfied
+%   % conditions, select one to fire, fire it, then
+%   % loop. Terminate when there are no more triggered
+%   % rules. Also, print some debug information on the
+%   % way through.
+%   fchain :-
+%           triggeredRules(RULES),
+%           watch(RULES),
+%           conflictResolution(RULES, RULE),
+%           fire(RULE),
+%           fchain.
+%   fchain.
+% 
+%   % watch/1
+%   % prints out trace information if the "watchOn" fact is
+%   % asserted. In particular, the predicate lists all the
+%   % current bags, then prints the labels of all the rules
+%   % in the conflict set.
+%   % Assumes that RULES is a list of items of the form
+%   % rule X if Y then Z
+%   watch(RULES) :-
+%           watchOn,
+%           !,
+%           pp bag,
+%           doAll((
+%                   prin("conflict set:"),
+%                   member(rule L if _ then _, RULES),
+%                   prin(" ",L)
+%           )),
+%           nl.
+%   watch(_).
+% 
+%   % triggered_rules/1
+%   % You write this one. Returns a list of rules with
+%   % satisfied conditions. Items in the list are of the
+%   % form: rule X if Y then Z. Fails if no such rules
+%   % are found (i.e. generated list in empty).
+% 
+%   % conflict resolution/2
+%   % Takes the list generated by triggerred_rules/1
+%   % and returns one rule to be fired.
+% 
+%   % fire/1
+%   % Fires the rule passed to it by triggered_rules/1
+%   % If "watchOn" is asserted, also prints the label of
+%   % the fired rule.
+% 
+% 
+% 
+% 4.  OTHER_CODE
+% 
+% You must use the following grocery/4 database:
+% 
+%   %------------------------------------------------------
+%   % bagger item knowledge
+%   % auther: tjm, april '92
+% 
+%   % grocery(name,
+%   %       container type, -- one of [bag(plastic), jar, box(cardboard),
+%   %                                  bottle(cardboard), bottle]
+%   %       size,           -- one of [small, medium, large]
+%   %       frozen?         -- one of [y,n]
+%   %       )
+% 
+%   grocery(        bread,          bag(plastic),           medium,         n).
+%   grocery(        glop,           jar,                    small,          n).
+%   grocery(        granola,        box(cardboard),         large,          n).
+%   grocery(        iceCream,       carton(cardboard),      medium,         y).
+%   grocery(        pepsi,          bottle,                 large,          n).
+%   grocery(        potatoChips,    bag(plastic),           medium,         n).
+% 
+% It is highly-recommened that you use the following code:
+% 
+%   % field/4
+%   % selector library for grocerys.  Used by X has Y.
+% 
+%   field(name,     grocery,        grocery(X,_,_,_),       X).
+%   field(type,     grocery,        grocery(_,X,_,_),       X).
+%   field(size,     grocery,        grocery(_,_,X,_),       X).
+%   field(frozen,   grocery,        grocery(_,_,_,X),       X).
+% 
+%   % newBag/0
+%   % creates a new bag.
+%   newBag :-
+%           asserta(bag([])).
+% 
+%   % fullBag/1
+%   % definition of a full bag.
+%   fullBag(ITEMS) :-
+%           volumeOfBag(ITEMS,V),
+%           bagSize(V).
+% 
+%   volumeOfBag(ITEMS, VOLUME) :-
+%           bagof(V, (member(X,ITEMS),
+%                     item(X,ITEM),
+%                     volume(ITEM,VOLUME)),
+%                L),
+%           sum(L,VOLUME).
+% 
+%   volume(large,3).
+%   volume(medium,2).
+%   volume(small,1).
+% 
+%   bagSize(20).
+% 
+%   %------------------------------------------------------
+%   % bagger general utilities
+%   % author: tjm '92
+% 
+%   % test /0
+%   % convenient top-lvel driver for testing your system
+%   test :-
+%           ITEMS = [bread, glop, granola, granola,iceCream,potatoChips],
+%           test1(ITEMS).
+% 
+%   test1(ITEMS) :-
+%           bagger(ITEMS,BAGS),
+%           nl,
+%           print("ITEMS:"),
+%           print("     ",ITEMS),
+%           print("FINAL BAGS:"),
+%           member(BAG,BAGS),
+%           print("     ",BAG),
+%           fail,
+%   test1(_).
+% 
+%   sum([],0).
+%   sum([H|T],OUT) :- sum(T,TEMP), OUT is TEMP + H.
+% 
+%   member(X,[X|_]).
+%   member(X,[_|T]) :- member(X,T).
+% 
+% 
+% 
+% 5.  BUG_FIXES
+% 
+% 
+% The file "ass2.pro" contains three bugs (that we know
+% of!!!).
+% 
+%   1.
+% 
+%         X and Y :- X and Y.
+% 
+%       should read:
+% 
+%         X and Y :- X , Y.
+% 
+% 
+%   2.  The comment on grocery/4 is wrong. The valid ranges
+%       for "frozen" is y,n and not t,f.
+% 
+%   3.  The "number(X) of Y" predicate can't handle the
+%       insulated bags. It should read:
+% 
+%         number(ITEMS) of OP(FIELD(VALUE),N) :-
+%                 bagof(1,
+%                         (member(X,ITEMS),
+%                          item(X,ITEM),
+%                          ITEM has FIELD = VALUE),
+%                         L),
+%                 length(L,M),
+%                 OP(M,N).
+% 
+%         item(insulated(X),X) :-!.
+%         item(X,X).
+% 
+% 
+%   4.  The predicate:
+% 
+%         X or Y :- X | Y.
+% 
+%       should **NOT** be used under the new assignment
+%       specification.
+% 
+% 
+% 6.  SAMPLE_OUTPUT
+% 
+% When our code runs, we get the following output:
+% 
+%   cs3411 unswp -s2000 bagger
+% 
+%   UNSW - PROLOG V4.2
+%   : test!
+% 
+%   ITEMS:
+%        [bread, glop, granola, granola, iceCream, potatoChips]
+%   FINAL BAGS:
+%        [glop, potatoChips, bread, insulated(iceCream)]
+%        [granola, granola, pepsi]
+%   :
+%   :  watchOn.
+%   : test!
+% 
+%   conflict set: b1 b2
+%   firing: b1
+% 
+%   conflict set: b2
+%   firing: b2
+% 
+%   conflict set: b5 b5 b5 b6
+%   firing: b5
+% 
+%   bag([]).
+%   conflict set: b4 b4 b4 b5 b5 b6 b3 b3 b3
+%   firing: b3
+% 
+%   bag([pepsi]).
+%   conflict set: b4 b4 b5 b5 b6
+%   firing: b4
+% 
+%   bag([granola, pepsi]).
+%   conflict set: b4 b5 b6
+%   firing: b4
+% 
+%   bag([granola, granola, pepsi]).
+%   conflict set: b6
+%   firing: b6
+% 
+%   bag([granola, granola, pepsi]).
+%   conflict set: b9 b9 b9 b10
+%   firing: b9
+% 
+%   bag([]).
+%   bag([granola, granola, pepsi]).
+%   conflict set: b7a b9 b9 b10
+%   firing: b7a
+% 
+%   bag([insulated(iceCream)]).
+%   bag([granola, granola, pepsi]).
+%   conflict set: b8b b8b b9 b10
+%   firing: b8b
+% 
+%   bag([bread, insulated(iceCream)]).
+%   bag([granola, granola, pepsi]).
+%   conflict set: b8b b8b b9 b10
+%   firing: b8b
+% 
+%   bag([potatoChips, bread, insulated(iceCream)]).
+%   bag([granola, granola, pepsi]).
+%   conflict set: b10
+%   firing: b10
+% 
+%   bag([potatoChips, bread, insulated(iceCream)]).
+%   bag([granola, granola, pepsi]).
+%   conflict set: b11 b11 b12 b12 b13 b14
+%   firing: b11
+% 
+%   bag([glop, potatoChips, bread, insulated(iceCream)]).
+%   bag([granola, granola, pepsi]).
+%   conflict set: b14
+%   firing: b14
+% 
+%   ITEMS:
+%        [bread, glop, granola, granola, iceCream, potatoChips]
+%   FINAL BAGS:
+%        [glop, potatoChips, bread, insulated(iceCream)]
+%        [granola, granola, pepsi]
+:- print("
+-----------------
+ BAGGER  [v0.01] 
+(timm's  version)
+(c) UNSW AI, 1992   
+-----------------").
+
+%------------------------------------------------------
+% operator definitions
+% author: tjm, april '92
+:- op(990,xfx,if).
+:- op(980,xfx,then).
+:- op(970,xfx,or).
+:- op(960,xfy,and).
+:- op(950,fx,not).
+:- op(800,fx,--).
+:- op(800,fx,++).
+:- op(800,xfx,<--).
+:- op(680,xfx,includes).
+:- op(720,xfx,has).
+:- op(720,xfx,isa).
+:- op(720,xfx,of).
+:- op(720,fx,the).
+:- op(710,xfy,with).
+:- op(10,fx,rule).   
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+rule	b1
+if   	the step is check_order 		and
+	there isa item(potatoChips) 		and
+	not (there isa item(X) and
+	     X has type = bottle)
+then 	
+	++ there isa item(pepsi).           
+
+
+rule	b2
+if     	OLD <-- the step is check_order
+then	
+	-- OLD					and
+	++ the step is bag_large_items.  
+
+rule	b3
+if	the step is bag_large_items 		and
+	there isa item(X) 		and 
+	X has size = large 			and
+	ITEM <-- there isa item(Y)		 	and
+	Y has type = bottle with size = large 	and
+	BAG <-- bag(ITEMS) 			and                
+	number(ITEMS) of size(large) < 6
+then				
+	-- ITEM					and
+	-- BAG					and
+	++ bag([ Y | ITEMS ]).
+
+rule b4
+if	the step is bag_large_items 		and
+	ITEM <-- there isa item(X)	 	and  
+        X has size = large			and
+	BAG <-- bag(ITEMS) 			and                
+	number(ITEMS) of size(large) < 6
+then				
+	-- ITEM					and
+	-- BAG					and
+	++ bag([ X | ITEMS ]).
+
+rule b5
+if	the step is bag_large_items		and  
+	there isa item(X)		 	and  
+        X has size = large		
+then
+	newBag.
+                                                          
+rule	b6
+if     	OLD <-- the step is bag_large_items
+then	
+	-- OLD					and
+	++ the step is bag_medium_items.
+
+
+rule b7a
+if	the step is bag_medium_items		and
+	ITEM <-- there isa item(X)		and    
+	X has size = medium			and
+	BAG <-- bag(ITEMS)			and
+	ITEMS = []				and
+	not fullBag(ITEMS)			and
+	X has frozen = y			
+then	-- ITEM					and
+	-- BAG					and
+	++ bag([insulated(X)|ITEMS]).         
+
+rule b7b
+if	the step is bag_medium_items		and
+	ITEM <-- there isa item(X)		and    
+	X has size = medium			and
+	BAG <-- bag(ITEMS)			and
+	ITEMS includes ANOTHER_ITEM		and
+	ANOTHER_ITEM has size = medium		and
+	not fullBag(ITEMS)			and
+	X has frozen = y			
+then	-- ITEM					and
+	-- BAG					and
+	++ bag([insulated(X)|ITEMS]).
+
+rule b8a
+if	the step is bag_medium_items		and
+	ITEM <-- there isa item(X)		and
+	X has size = medium			and    
+	BAG <-- bag(ITEMS)			and
+	ITEMS = []				or   
+	not fullBag(ITEMS)
+then	-- ITEM 				and
+	-- BAG					and
+	++ bag([X | ITEMS ]).               
+
+rule b8b
+if	the step is bag_medium_items		and
+	ITEM <-- there isa item(X)		and
+	X has size = medium			and    
+	BAG <-- bag(ITEMS)			and
+	ITEMS includes ANOTHER_ITEM		and
+	ANOTHER_ITEM has size = medium		and 
+	not fullBag(ITEMS)
+then	-- ITEM 				and
+	-- BAG					and
+	++ bag([X | ITEMS ]).
+
+
+rule b9
+if	the step is bag_medium_items		and
+	there isa item(ITEM)			and
+	ITEM has size = medium
+then	newBag.
+                                             
+rule b10      
+if	OLD <-- the step is bag_medium_items
+then	-- OLD					and
+	++ the step is bag_small_items.  
+
+rule b11
+if	the step is bag_small_items		and
+	ITEM <-- there isa item(X)		and
+	X has size = small			and
+	BAG <-- bag(ITEMS)			and
+	not fullBag(ITEMS)			and
+	not (ITEMS includes ITEM1 and
+	    ITEM1 has type = bottle)               
+then	-- BAG					and
+	-- ITEM					and
+	++ bag([X | ITEMS ]).
+
+rule b12
+if	the step is bag_small_items		and
+	ITEM <-- there isa item(X)		and
+	BAG <-- bag(ITEMS)			and
+	not fullBag(ITEMS)			
+then	-- ITEM					and
+	-- BAG					and
+	++ bag ([ X | ITEMS ] ).
+
+rule b13
+if	the step is bag_small_items		and
+	there isa item(ITEM)		
+then	newBag.
+
+rule b14
+if	OLD <-- the step is bag_small_items
+then	-- OLD.
+
+%------------------------------------------------------
+% bagger rule language utilities
+% author: tjm, april '92
+X and Y :- X, Y. 
+
+not X :- not(X).
+
+-- X :- retract(X).
+
+++ X :- asserta(X).
+
+X includes Y :- member(Y,X).
+
+X has Y :-                    
+	item(X,ITEM),
+	grocery(ITEM, TYPE, SIZE, FROZEN),
+	fields(Y,grocery(ITEM, TYPE, SIZE, FROZEN)).
+
+fields(A with B, TUPLE) :- !,
+	fields(A, TUPLE),
+	fields(B, TUPLE).
+fields(FIELD = VALUE, TUPLE) :-
+	field(FIELD,_,TUPLE,VALUE).
+
+% If the following predicate still confuses you, ignore how
+% it is implemented. Have a look at how it is used in rule B4.
+number(ITEMS) of OP(FIELD(VALUE),N) :-
+	bagof(1,
+		(member(X,ITEMS), 
+		 item(X,ITEM),
+		 ITEM has FIELD = VALUE),
+		L),
+	length(L,M),
+	OP(M,N).
+
+item(insulated(X),X) :-!.
+item(X,X).	             
+
+X <-- X :- X. 
+
+%------------------------------------------------------
+% bagger main module
+% author: tjm, april '92
+ 
+% bagger/2
+% assert the shopping items, run the inference engine,
+% collect the asserted bags.
+% As this program runs, the asserted shopping items are
+% retracted as they are moved into bags.   
+bagger(ITEMS, BAGS) :-
+	clear, 
+	assertItems(ITEMS),
+	++ the step is check_order,
+	fchain,
+	!,
+	collectBags(BAGS).
+          
+% assertL/1                  
+% assert everything in the list.
+assertItems(L) :-
+	doAll((
+		member(I,L),
+		assert(there isa item(I))
+	)).
+  
+% doAll/1                              
+% backtrack through all solutions to X.
+doAll(X) :- X, fail.
+doAll(_).
+         
+% collectBags/1                              
+% collect all the shopping bags.
+collectBags(BAGS) :-
+	bagof(ITEMS,bag(ITEMS), BAGS).   
+                                
+% clear /0                                        
+% clear all the assertions generated at the last
+% run of the program.
+% clear /1
+% fire asserts a "alreadyUsed/2" fact which clear must
+% remove as well as the other assertions.
+                              
+wme(alreadyUsed(_,_)).
+wme(the _ is _).
+wme(there isa item(_)).
+wme(bag(_)).
+
+clear :- wme(X), retract(X), fail.
+clear.
+
+show :- wme(X), X, print(X), fail.
+show.
+
+% fchain /0
+% find all the triggerred rules with satisfied
+% conditions, select one to fire, fire it, then
+% loop. Terminate when there are no more triggered
+% rules. Also, print some debug information on the
+% way through.
+fchain :-    
+	triggeredRules(RULES),   
+	watch(RULES),
+	conflictResolution(RULES, RULE),
+	fire(RULE),
+	fchain.
+fchain.
+
+% watch/1
+% prints out trace information if the "watchOn" fact is
+% asserted. In particular, the predicate lists all the 
+% current bags, then prints the labels of all the rules 
+% in the conflict set.
+% Assumes that RULES is a list of items of the form
+% rule X if Y then Z
+watch(RULES) :-  
+	watchOn,
+	!,
+	pp bag,  
+	doAll((
+		prin("conflict set:"),
+		member(rule L if _ then _, RULES),
+		prin(" ",L)
+	)),
+	nl.    
+watch(_).
+             
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% triggered rules                        
+% calls triggeredRule via a bagof, then tests for an
+% non-empty list (hence, fails when no rules are 
+% triggered).
+
+triggeredRules(RULES) :-
+	bagof(RULE, triggeredRule(RULE), RULES),
+	RULES /= [].
+
+% a rule is triggered if its premise is true and we
+% have not used it previously.
+triggeredRule(rule LABEL if PREMISE then ACTION) :-
+	rule LABEL if PREMISE then ACTION,   
+	PREMISE,
+	not(alreadyUsed(LABEL, PREMISE)). 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% conflict resolution
+% Run down  list a find the rule with the most conditions.
+
+conflictResolution(RULES, RULE) :-
+	conflictResolution(RULES,RULE,_).
+                           
+conflictResolution([rule L if IF then THEN],
+		rule L if IF then THEN, 
+		SIZE) :- !,    
+	sizeOf(IF,SIZE).
+conflictResolution([rule L if IF then THEN| RULES],
+		BEST, SIZE) :-
+	conflictResolution(RULES, TEMP, SIZE1),
+	conflictResolution1(rule L if IF then THEN, 
+				TEMP, SIZE1, BEST, SIZE).
+
+conflictResolution1(rule L if IF then THEN, _, SIZE1,  
+		    rule L if IF then THEN, SIZE2) :-   
+	sizeOf(IF,SIZE2),
+	SIZE2 > SIZE1,
+	!.
+conflictResolution1(_,RULE,SIZE,RULE,SIZE).
+        
+sizeOf(A and B,S) :- !,sizeOf(A,SA),sizeOf(B,SB), S is SA + SB. 
+sizeOf(not A,S) :- !, sizeOf(A,S).
+sizeOf(A,1).
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% fire: a trivial predicate.
+
+fire(rule LABEL if PREMISE then ACTION) :-
+	assert(alreadyUsed(LABEL , PREMISE)),                        
+	talk(firing(LABEL)),
+	ACTION.
+
+talk(X) :- watchOn,!, print(X).
+talk(_). 
+
+%------------------------------------------------------
+% bagger item knowledge
+% auther: tjm, april '92
+                    
+% grocery(name,		
+%	container type, -- one of [bag(plastic), jar, box(cardboard), 
+%				   bottle(cardboard), bottle]
+%	size, 	 	-- one of [small, medium, large]
+%	frozen?       	-- one of [y,n]
+%	)                                  
+
+grocery(	bread,		bag(plastic),		medium,		n).
+grocery(	glop,		jar,			small,		n).
+grocery(	granola,	box(cardboard),		large,		n).
+grocery(	iceCream,	carton(cardboard), 	medium, 	y).
+grocery(	pepsi,		bottle,			large,		n).
+grocery(	potatoChips,	bag(plastic),		medium,		n).		
+
+
+% field/4
+% selector library for grocerys.  Used by X has Y.
+
+field(name,	grocery,	grocery(X,_,_,_),	X).  
+field(type,	grocery,	grocery(_,X,_,_),	X).  
+field(size,	grocery,	grocery(_,_,X,_),	X).  
+field(frozen,	grocery,	grocery(_,_,_,X),	X).   
+
+% newBag/0
+% creates a new bag.
+newBag :-                                         
+	asserta(bag([])). 
+                           
+% fullBag/1
+% definition of a full bag.
+fullBag(ITEMS) :-
+	fail,
+	volumeOfBag(ITEMS,V1),
+	bagSize(V2),
+	V1 >= V2.
+
+volumeOfBag(ITEMS, VOLUME) :-
+	bagof(V, (member(X,ITEMS),
+		  item(X,ITEM),
+		  volume(ITEM,VOLUME)), 
+	     L),
+	sum(L,VOLUME).   
+
+volume(large,3).
+volume(medium,2).
+volume(small,1).
+
+bagSize(20).
+ 
+%------------------------------------------------------
+% bagger general utilities
+% author: tjm '92
+
+% test /0
+% convenient top-lvel driver for testing your system
+test :-                            
+	ITEMS = [bread, glop, granola, granola,iceCream,potatoChips],
+	test1(ITEMS).
+
+test1(ITEMS) :-
+	bagger(ITEMS,BAGS),
+	nl,  
+	print("ITEMS:"),
+	print("     ",ITEMS),
+	print("FINAL BAGS:"),
+	member(BAG,BAGS),
+	print("     ",BAG),
+	fail.
+test1(_).
+
+sum([],0).
+sum([H|T],OUT) :- sum(T,TEMP), OUT is TEMP + H. 
+
+member(X,[X|_]).
+member(X,[_|T]) :- member(X,T).  
+
+:- print("\nBagger loaded.\nFor a demo, enter the goal :- test").
