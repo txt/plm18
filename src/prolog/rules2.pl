@@ -1,3 +1,6 @@
+% rules2 using setarg
+%
+%
 :- dynamic (*)/1.
 
 :- op(1200, fx,     #).

@@ -1,3 +1,5 @@
+% joining partial eval to full term
+%
 :- dynamic (*)/1.
 
 :- op(1200, fx,     #).
