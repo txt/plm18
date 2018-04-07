@@ -1,44 +1,58 @@
-:- dynamic (*)/1.
+:- dynamic (<>)/1.
 
-:- op(1200, fx,     #).
-:- op( 999, xfx,   (?=)).
-:- op( 998, xfx,   if).
-:- op( 997, xfx, then).
-:- op( 996, xfy,   or).
-:- op( 995, xfx,  and).
-:- op( 994,  fy,  not).
-:- op( 993,  fx,  (*)).
+:- op( 999, fx,    (<>)).
+:- op( 998, xfx,   (?=)).
+:- op( 997, xfx,   if).
+:- op( 996, xfx, then).
+:- op( 995, xfy,   or).
+:- op( 994, xfx,  and).
+:- op( 993,  fy,  not).
+:- op( 992,  fx,  (*)).
+:- op( 810,  fx,    a).
+:- op( 809,  fx,   an).
+:- op( 804, xfy, with).
 :- op( 804, xfy, (::)).
 :- op( 703, xfx,   of).
 :- op( 702, xfx,  now).
+:- op( 700,  fx,   no).
 :- op( 100, xfx,   in).
-:- op(   2,  fx, rule).
-:- op(   1, xfx,  for).
+:- op(  50, xfx,  for).
 
 %---------------------------------------------------
 %  term accessors
 
 :- F= slot/5, (dynamic F), (discontiguous F).
-more(Functor = Fields0, slot(Functor,Field,Pos,Val,Term)) :- 
-	Fields = [ _id | Fields0 ],
+more(<> Functor = Fields0, slot(Functor,Field,Pos,Val,Term)) :- 
+	Fields = [ oid | Fields0 ],
 	length(Fields,N),
 	functor(Term,Functor,N),
 	nth1(Pos,Fields,Field),
 	arg(Pos,Term,Val).
 
 % shell to walk over slot/5
+
+F := T with X :- F=T    with X, T.
+ a   F with X :- F := _ with X.
+an   F with X :- F := _ with X.
+F  = T with X :- with1(X, F, T).
+F  = T with X :- with1(X, F, T).
+
 F := T :: X :- F=T :: X, T.
+ a   F :: X :- F := _ :: X.
+an   F :: X :- F := _ :: X.
+F  = T :: X :- with(X, F, T).
 F  = T :: X :- with(X, F, T).
 
-with(X :: Y, F, T) :- with(X, F, T), with(Y, F, T).
-with(X =  Y, F, T) :- isa(F,T), slot(F, X, Pos,Y,_), arg(Pos, T,Y).
-with(Y in X, F, T) :- with(X=Z, F, T), member(Y,Z)
+with1(X ::     Y, F, T) :- with1(X, F, T), with1(Y, F, T).
+with1(X =      Y, F, T) :- isa(F,T), slot(F, X, Pos,Y,_), arg(Pos, T,Y).
+with1(X has    Y, F, T) :- not(Y= no _), with1(X=Z, F, T), member(Y,Z).
+with1(X has no Y, F, T) :- not(with1(X has Y,F,T).
 
 isa(F,T) :- var(T) -> once(slot(F,_,_,_,T)); true.
 
 ensure(New) :- 
-  slot(F,_,_,1,Id,New),
-  slot(F,_,_,1,Id,Old),
+  slot(F, oid,_,1,Id,New),
+  slot(F, oid,_,1,Id,Old),
   (var(Id)      -> gensym(F, Id) ; true),
   (retract(Old) -> assert(New)   ; assert(New)).
 
@@ -47,8 +61,7 @@ term_expansion(A =B,        Cs) :- bagof(C, more(A = B,C), Cs).
 goal_expansion(F:=T :: X,    T) :- F=T :: X.
 goal_expansion(F =T :: X, true) :- F=T :: X.
 
-
-rule = [spec,id,task,condition,action,vars].
+<> rule = [spec,id,task,condition,action,vars].
 
 test(R) :-
 	rule = R :: task=t.
@@ -58,10 +71,10 @@ test(R) :-
 %-------------------------------------------------
 % Exanding rules with some extra details.
 
-term_expansion( rule Id for Task if If then Then, Rule) :-
-  xpandRule( rule Id for Task if If then Then, Rule).
+term_expansion(<> Id for Task if If then Then, Rule) :-
+  xpandRule( Id for Task if If then Then, Rule).
 
-xpandRule( rule Id for Task if If then Then, Rule) :-
+xpandRule( Id for Task if If then Then, Rule) :-
   term_variables(( Id,Task,If ), V1),
   term_variables(Then, V2),
   shares(V1, V2, V),
@@ -118,39 +131,36 @@ selects([ _ / Rule | _ ], Then, done(Task,Id,V) ) :-
 sp(S,L)   :- flag(spyp,true) -> format(S,L) ; true.
 spln(S,L) :- sp(S,L), nl.
 
-% facts
-* age of tim  =  20.
-* age of john = 300.
-* age of jane =   5.
-
-term_expansion(* X,Y) :-
-  X =.. [ H|T ],
-  gensym(H, Id),
-  Y =.. [ H,Id|T ].
+term_expansion(<> [H|T],Y) :- Y =.. [ H,Id|T ], gensym(H, Id).
 
 % need to call order without id
 
-grocery = [ item,type, size, frozen ].
+<>  grocery= [ item,        type,              size,    frozen ].
+<> [grocery,   bread,       bag/plastic,       medium,  n].
+<> [grocery,   glop,        jar,               small,   n].
+<> [grocery,   granola,     box/cardboard,     large,   n].
+<> [grocery,   iceCream,    carton/cardboard,  medium,  y].
+<> [grocery,   pepsi,       bottle,            large,   n].
+<> [grocery,   potatoChips, bag/plastic,       medium,  n].
 
-% grocery(name,
-* grocery(	bread,		bag/plastic,		medium,		n).
-* grocery(	glop,		jar,			small,		n).
-* grocery(	granola,	box/cardboard,		large,		n).
-* grocery(	iceCream,	carton/cardboard, 	medium, 	y).
-* grocery(	pepsi,		bottle,			large,		n).
-* grocery(	potatoChips,	bag/plastic,		medium,		n).
+<> bag = [items].
+<>[bag, []].
 
-rule r0
+<>  r0
 for chec_order
-if   order = O items  has N and
-     grocery = G with name = N with type(T)
+if   order = O with items  has N and
+     a grocery with name = N with type(T)
 then spyln('~w : ~w isa ~w',[I,,N,T).
 
 %%%%%
 % rules
-rule b1
-for check_order
-if  item(potatoChips)
+<>   b1
+for  check_order
+if   order=B with items = pepsi with not items has bottle and
+then modify B with items push pepsi.
+
+Y has X :- member(X,Y).
+
 rule 1 
 for  init
 if   age of Who > 100 
