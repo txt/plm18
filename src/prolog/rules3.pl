@@ -115,10 +115,36 @@ selects([ _ / Rule | _ ], Then, done(Task,Id,V) ) :-
 
 %-------------------------------------------------
 
+sp(S,L)   :- flag(spyp,true) -> format(S,L) ; true.
+spln(S,L) :- sp(S,L), nl.
+
 % facts
 * age of tim  =  20.
 * age of john = 300.
 * age of jane =   5.
+
+term_expansion(* X,Y) :-
+  X =.. [ H|T ],
+  gensym(H, Id),
+  Y =.. [ H,Id|T ].
+
+% need to call order without id
+
+grocery = [ item,type, size, frozen ].
+
+% grocery(name,
+* grocery(	bread,		bag/plastic,		medium,		n).
+* grocery(	glop,		jar,			small,		n).
+* grocery(	granola,	box/cardboard,		large,		n).
+* grocery(	iceCream,	carton/cardboard, 	medium, 	y).
+* grocery(	pepsi,		bottle,			large,		n).
+* grocery(	potatoChips,	bag/plastic,		medium,		n).
+
+rule r0
+for chec_order
+if   order = O items  has N and
+     grocery = G with name = N with type(T)
+then spyln('~w : ~w isa ~w',[I,,N,T).
 
 %%%%%
 % rules
