@@ -152,12 +152,13 @@ if   order = O with items  has N and
      a grocery with name = N with type(T)
 then spyln('~w : ~w isa ~w',[I,,N,T).
 
+%without
 %%%%%
 % rules
 <>   b1
 for  check_order
-if   order=B with items = pepsi with not items has bottle and
-then modify B with items push pepsi.
+if   order=B with items = pepsi without items has bottle and
+then modify B with items  taking pepsi.
 
 Y has X :- member(X,Y).
 
