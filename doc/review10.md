@@ -192,3 +192,5 @@ Q11. In the nested slot access example,
 		  
 
 How does this expand `(? obj a b c d)`?
+
+Answer: https://goo.gl/T8rCQH
