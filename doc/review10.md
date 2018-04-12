@@ -127,17 +127,17 @@ Q8a. This is not an object language. Explain why. What would be needed to make i
 
 Q8b. In English, describe what `getsets` does. Write the exact inputs seen by `getsets`.
 
-Q8c. In English, describe what `method-calls-with-n-args` does. Write the exact inputs seen by `method-calls-with-n-args`
+Q8c. In English, describe what `method-calls-with-n-args` does. Write the exact inputs seen by `method-calls-with-n-args`.
 
 Q9. In the following examples,
 
 	(let ((a 1)
 		  (b 2)
 		  (c '(10 20 30 40)))
-	   (print '(a a b b))          ;
-	   (print `(a ,a b ,b))        ;
-	   (print `(a ,a b ,b c ,c))   ;
-	   (print `(a ,a b ,b c ,@c))) ;
+	   (print '(a a b b))          
+	   (print `(a ,a b ,b))        
+	   (print `(a ,a b ,b c ,c))   
+	   (print `(a ,a b ,b c ,@c))) 
 
 What are the results of these prints?
 
@@ -164,7 +164,3 @@ Q11. In the nested slot access example,
 		  
 
 How does this expand `(? obj a b c d)`?
-
-		  
-
-How does this expand (? obj a b c d)
