@@ -18,7 +18,7 @@ ______
 
 Q1. A macro is a program called at loadtime to expand smaller things to bigger things, give two examples why this is useful.
 
-Q2a. Languages such as C and assembly language have rudimentary text based macro systems, how do these macro work? How does these macros methods handle the scoope varilbles? Do these macro systems have access to the semantics of the underlying language?
+Q2a. Languages such as C and assembly language have rudimentary text based macro systems, how do these macros work? How do these macros methods handle the scoope varilbles? Do these macro systems have access to the semantics of the underlying language?
 
 Q2b. In the following code, there is a problem in `msg`, what is the problem?
 
@@ -108,7 +108,7 @@ Q7b. For the following code, what is the representations of `self`? How to gener
     (x!   (setf (nth 0 (cdr self)) (nth 0 args)))
     (y!   (setf (nth 1 (cdr self)) (nth 1 args)))
 	
-7c. What information is needed to auto generate the above code?
+Q7c. What information is needed to auto generate the above code?
 
 In OO Version3 examples,
 
@@ -139,7 +139,7 @@ Q9. In the following examples,
 	   (print `(a ,a b ,b c ,c))   
 	   (print `(a ,a b ,b c ,@c))) 
 
-What are the results of these prints?
+What are the results of these `print`?
 
 Q10. For the following three, describle the problem and advangeage of each approach.
 
