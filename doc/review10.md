@@ -67,16 +67,16 @@ Q6. In the following example,
 		return this.animalName + " " + this.legNum;
 	  }
 	}
-
-
-	{{#beatles}}
-	* {{name}}
-	{{/beatles}}
-	{{#animals}}
-	* {{name}}
-	{{/animals}}
 	
-What are these moustaches about? Why are they useful? What is the output of these moustahses? 
+What are these moustaches about? Why are they useful? What is the output of these moustahses:
+
+`{{#beatles}}
+* {{name}}
+{{/beatles}}`
+	
+`{{#animals}}
+* {{name}}
+{{/animals}}`
 
 In OO Version2 examples,
 
