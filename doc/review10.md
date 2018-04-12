@@ -44,9 +44,9 @@ Q5. In the following code, there is a problem in: msg, what is the problem?
 	})
 
 
-Q5. What is "variable capture" problem when using macros? And how avoid this? (hygienic macros)	
+Q6. What is "variable capture" problem when using macros? And how to avoid this? (hygienic macros)	
 
-Q6. In the example of Macros in Julia, 
+Q7. In the example of Macros in Julia, 
 
 	someFun(x::Any) = println(1000000)
 	someFun(x::aa)  = println(x.bb)
@@ -54,20 +54,20 @@ Q6. In the example of Macros in Julia,
 	x    = aa0()
 	x.bb = 200
 
-explain how to get the results when we call
+Explain how to get the results when we call
 
 	someFun(22)
 	someFun(x)
 	
-Q7. In the following example,
+Q8. In the following example,
 
 	{{#beatles}}
 	* {{name}}
 	{{/beatles}}
 
-What are these mass dash about? why are they useful?  (everything in mas dash is "for each, do" ,have no if)
+What are these mass dash about? Why are they useful?  (everything in mas dash is "for each, do" ,have no if)
 
-Q8. In OO Version2 examples,
+In OO Version2 examples,
 
 	(defun point2 ()
 	  (labels (
@@ -87,16 +87,16 @@ Q8. In OO Version2 examples,
 			(otherwise 
 			  (error "~a unknown" z))))))
 
-What happened if I call dist? (labels do nested methods in lisp.)
+Q9a. What happened if I call dist? (labels do nested methods in lisp.)
 
-Q9. How to generate this automatically:
+Q9b. How to generate this automatically:
 
 	(x?         (nth 0 (cdr self)))
     (y?         (nth 1 (cdr self)))
     (x!   (setf (nth 0 (cdr self)) (nth 0 args)))
     (y!   (setf (nth 1 (cdr self)) (nth 1 args)))
 	
-Q10. In OO Version3 examples,
+In OO Version3 examples,
 
 	(defmacro defklass (klass lst &rest body)
 	  "template for klasses"
@@ -109,11 +109,11 @@ Q10. In OO Version3 examples,
 			   (otherwise 
 				 (error "~a unknown" %z)))))))
 
-What is returned by "template for klasses"?
+Q10a. What is returned by "template for klasses"?
 
-Q11. What is ",@(getsets lst)" used for? What args it takes? What does it return?
+Q10b. What is ",@(getsets lst)" used for? What args it takes? What does it return?
 
-Q12. In the following examples,
+Q11. In the following examples,
 
 	(let ((a 1)
 		  (b 2)
@@ -125,7 +125,7 @@ Q12. In the following examples,
 
 Why are the last two print different?
 
-Q13. What is the potential problem in the following macros?
+Q12. What is the potential problem in the following macros?
 
 	(defmacro Square-1 (X)
 		`(* ,X ,X))
@@ -133,7 +133,7 @@ Q13. What is the potential problem in the following macros?
 	(defmacro Square-2 (X)
 		(* X X))
 		
-Q14. In the nested slot access example:
+Q13. In the nested slot access example:
 
 	(defmacro ? (obj first-slot &rest more-slots)
 	  "From https://goo.gl/dqnmvH:"
