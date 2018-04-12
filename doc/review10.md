@@ -27,12 +27,15 @@ Q3. In a rudimentary macro system, what is the following used for?
 	#define min(X, Y)  ((X) < (Y) ? (X) : (Y))
 
 Q3. In a rudimentary macro system, what's the difference between the following two?
+
 	#define MULTIPLY(x, y) x * y
 	#define MULTIPLY(x, y) (x) * (y)
+
 
 Q4. Compare to many other languages, what's the advantage of LISP defmacro? (it offers the whole power of the underlying language as part of the macro system)
 
 Q5. In the following code, there is a problem in: msg, what is the problem?
+
 	#define LOG(msg) ({ \
 		int state = get_log_state(); \
 		if (state > 0) { \
@@ -40,9 +43,11 @@ Q5. In the following code, there is a problem in: msg, what is the problem?
 		} \
 	})
 
+
 Q5. What is "variable capture" problem when using macros? And how avoid this? (hygienic macros)	
 
 Q6. In the example of Macros in Julia, 
+
 	someFun(x::Any) = println(1000000)
 	someFun(x::aa)  = println(x.bb)
 	
@@ -50,6 +55,7 @@ Q6. In the example of Macros in Julia,
 	x.bb = 200
 
 explain how to get the results when we call
+
 	someFun(22)
 	someFun(x)
 	
