@@ -109,9 +109,9 @@ In OO Version3 examples,
 			   (otherwise 
 				 (error "~a unknown" %z)))))))
 
-Q10a. What is returned by "template for klasses"?
+Q10a. What is returned by `"template for klasses"`?
 
-Q10b. What is ",@(getsets lst)" used for? What args it takes? What does it return?
+Q10b. What is `,@(getsets lst)` used for? What args it takes? What does it return?
 
 Q11. In the following examples,
 
