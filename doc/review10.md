@@ -87,9 +87,9 @@ Q6. In the following example,
 	{
 	  "animals": [
 		{ "animalName": "beatles", "legNum": "six" },
-		{ "animalName": "horse", "legNum": "four" },
-		{ "animalName": "spider", "legNum": "eight" },
-		{ "animalName": "snake", "legNum": "zero" }
+		{ "animalName": "horses", "legNum": "four" },
+		{ "animalName": "spiders", "legNum": "eight" },
+		{ "animalName": "snakes", "legNum": "zero" }
 	  ],
 	  "name": function () {
 		return this.animalName + " " + this.legNum;
