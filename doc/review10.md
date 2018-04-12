@@ -101,7 +101,7 @@ In OO Version2 examples,
 
 Q7a. This is not a class instance language. Explain why. What would be needed to make it a class instance language? 
 
-Q7b. For the following code, what is the representations of "self"? How to generate this automatically?
+Q7b. For the following code, what is the representations of `self`? How to generate this automatically?
 
 	(x?         (nth 0 (cdr self)))
     (y?         (nth 1 (cdr self)))
