@@ -16,29 +16,11 @@ ______
 
 ### Week 13-14 : 04/02/2018 ~ 04/09/2018
 
-Q1. A macro is a program called at loadtime to expand smaller thing to bigger things , give 2 examples why this is useful?
+Q1. A macro is a program called at loadtime to expand smaller things to bigger things, give two examples why this is useful.
 
-Q2. Languages such as C and assembly language have rudimentary text based macro systems, how do these macro work? (simple textual search-and-replace at the token) how does these macros methods handle the sccope varilbles?
+Q2a. Languages such as C and assembly language have rudimentary text based macro systems, how do these macro work? How does these macros methods handle the scoope varilbles? Do these macro systems have access to the semantics of the underlying language?
 
-Do these macro systems have access to the semantics of the underlying language?
-
-Q3. In c pre-processing macro system, what is the following used for?
-
-	#define M (x*x+2*x+1)
-	#define BUFFER_SIZE 1024
-	#define min(X, Y)  ((X) < (Y) ? (X) : (Y))
-	
-Q3b. #define min suffers from the repearted computation problems. Explain. When is such repeated computation a problem? 
-
-
-
-Q4. Lisp is a lang where programs are expressed as lists. How does the demacro exploit this?
-
-
-
-======================================
-
-Q2b. In the following code, there is a problem in: msg, what is the problem?
+Q2b. In the following code, there is a problem in `msg`, what is the problem?
 
 	#define LOG(msg) ({ \
 		int state = get_log_state(); \
@@ -47,11 +29,19 @@ Q2b. In the following code, there is a problem in: msg, what is the problem?
 		} \
 	})
 
-Q2c. the problemof 2B could be fixed with hygeninc macros variables. Explain.
-
+Q2c. The problem of 2b could be fixed with hygeninc macros variables. Explain how.
 	
+Q3a. In C pre-processing macro system, what is the following used for?
 
-Q7. In the example of Macros in Julia, 
+	#define M (x*x+2*x+1)
+	#define BUFFER_SIZE 1024
+	#define min(X, Y)  ((X) < (Y) ? (X) : (Y))
+	
+Q3b. `#define min(X, Y)` suffers from the repearted computation problems. Explain when is such repeated computation a problem? 
+
+Q4. Lisp is a language where programs are expressed as lists. How does the defmacro exploit this?
+
+Q5. In the example of Macros in Julia, 
 
 	someFun(x::Any) = println(1000000)
 	someFun(x::aa)  = println(x.bb)
@@ -64,13 +54,29 @@ Explain how to get the results when we call
 	someFun(22)
 	someFun(x)
 	
-Q8. In the following example,
+Q6. In the following example,
+
+	{
+	  "animals": [
+		{ "animalName": "beatles", "legNum": "six" },
+		{ "animalName": "horse", "legNum": "four" },
+		{ "animalName": "spider", "legNum": "eight" },
+		{ "animalName": "snake", "legNum": "zero" }
+	  ],
+	  "name": function () {
+		return this.animalName + " " + this.legNum;
+	  }
+	}
+
 
 	{{#beatles}}
 	* {{name}}
 	{{/beatles}}
-
-What are these moustaches about? Why are they useful?  (everything in mas dash is "for each, do" ,have no if) what is the output of these moustahse. 
+	{{#animals}}
+	* {{name}}
+	{{/animals}}
+	
+What are these moustaches about? Why are they useful? What is the output of these moustahses? 
 
 In OO Version2 examples,
 
@@ -92,16 +98,16 @@ In OO Version2 examples,
 			(otherwise 
 			  (error "~a unknown" z))))))
 
-Q9a. This is not a class instance language. explain. What would be needed to make it a class instance language? 
+Q7a. This is not a class instance language. Explain why. What would be needed to make it a class instance language? 
 
-Q9b1. For the following code, what is the representations of "self"?How to generate this automatically:
+Q7b. For the following code, what is the representations of "self"? How to generate this automatically?
 
 	(x?         (nth 0 (cdr self)))
     (y?         (nth 1 (cdr self)))
     (x!   (setf (nth 0 (cdr self)) (nth 0 args)))
     (y!   (setf (nth 1 (cdr self)) (nth 1 args)))
 	
-9b2. What info is needed to auto generate the above code.
+7c. What information is needed to auto generate the above code?
 
 In OO Version3 examples,
 
@@ -115,25 +121,26 @@ In OO Version3 examples,
 			   ,@(method-calls-with-n-args body)
 			   (otherwise 
 				 (error "~a unknown" %z)))))))
-Q10_0. This is not an object language. explain. What would be needed to make it a object language? 
 
-In english, describle what getsets does and write the exact inputs seen by getsets
-what method called (method-calls-with-n-args does. write the exact inputs seen by method-calls-with-n-args
+Q8a. This is not an object language. Explain why. What would be needed to make it an object language? 
 
+Q8b. In English, describe what `getsets` does. Write the exact inputs seen by `getsets`.
 
-Q11. In the following examples,
+Q8c. In English, describe what `method-calls-with-n-args` does. Write the exact inputs seen by `method-calls-with-n-args`
+
+Q9. In the following examples,
 
 	(let ((a 1)
 		  (b 2)
 		  (c '(10 20 30 40)))
-	   (print '(a a b b))          ; ==> (A A B B)
-	   (print `(a ,a b ,b))        ; ==> (A 1 B 2)
-	   (print `(a ,a b ,b c ,c))   ; ==> (a 1 b 2 c (10 20 30 40))
-	   (print `(a ,a b ,b c ,@c))) ; ==> (a 1 b 2 c 10 20 30 40)           (note: ask results)
+	   (print '(a a b b))          ;
+	   (print `(a ,a b ,b))        ;
+	   (print `(a ,a b ,b c ,c))   ;
+	   (print `(a ,a b ,b c ,@c))) ;
 
-Why are the last two print different?
+What are the results of these prints?
 
-Q12. All the following 3, describle the problem and advangeage of each approach.
+Q10. For the following three, describle the problem and advangeage of each approach.
 
 	(defmacro Square-1 (X)
 		`(* ,X ,X))
@@ -146,13 +153,17 @@ Q12. All the following 3, describle the problem and advangeage of each approach.
 	  `(let ((,temp ,x))
 	      (* ,temp ,temp)))
 		
-Q13. In the nested slot access example:
+Q11. In the nested slot access example,
 
 	(defmacro ? (obj first-slot &rest more-slots)
 	  "From https://goo.gl/dqnmvH:"
 	  (if (null more-slots)
 		  `(slot-value ,obj ',first-slot)
 		  `(? (slot-value ,obj ',first-slot) ,@more-slots)))
+		  
+
+How does this expand `(? obj a b c d)`?
+
 		  
 
 How does this expand (? obj a b c d)
