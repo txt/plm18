@@ -43,6 +43,34 @@ Q4. Lisp is a language where programs are expressed as lists. How does the defma
 
 Q5. In the example of Macros in Julia, 
 
+	macro has(typename, pairs...)
+	    name = esc(symbol(string(typename,0))) # hygiene
+	    x    = esc(symbol("x"))                # hygiene 
+	    ones = [  x.args[1]  for x in pairs ]
+	    twos = [  x.args[2]  for x in pairs ]
+	    sets = [ :($x.$y=$y) for y in ones  ]
+	    :(type $(typename)
+		 $(ones...)
+	      end;
+	      function $(name)(; $(pairs...) )
+		$x = $(typename)($(twos...))
+		$(sets...)
+		$x
+	      end)
+	end
+	
+	@has aa bb=1 cc=10+1
+	
+	begin
+	    type aa # /Users/timm/gits/timm/15/jl/one.jl, line 18:
+	        bb
+		cc
+	    end
+	    function aa0() # /Users/timm/gits/timm/15/jl/one.jl, line 21:
+		aa(1,10 + 1)
+	    end
+	end
+
 	someFun(x::Any) = println(1000000)
 	someFun(x::aa)  = println(x.bb)
 	
