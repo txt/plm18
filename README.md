@@ -62,7 +62,7 @@ Parsing (basics):
 <a href="https://github.com/txt/ase16/blob/master/doc/dsl.md">stocks and flows</a>,
 <a href="doc/macros.md">macros</a>,  		      
 <a href="doc/logic.md">logic</a>,  		      
-<a href="src/prolog/rule.pl">prolog</a>,  		      
+<a href="src/prolog/rules.pl">prolog</a>,  		      
 macros
 <dt>
 Metaphors:
