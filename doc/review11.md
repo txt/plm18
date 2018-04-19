@@ -54,14 +54,18 @@ Ans: (A variable which has (not) been given a value.)
 
 Q7. In prolog, Can you have structures within structures? Give an example if yes.
 
+
 What does the following code do?
+
 Q7a.
+
     testone([],[]).
     testone([_|A],[_|B]) :- testone(A,B).
 	
 Ans: (test if has same length)
 
 Q7b.
+
     testtwo([]).
     testtwo([_]).
     testtwo([H,H|R]) :- testtwo([H|R]).	
@@ -70,6 +74,7 @@ Ans: (test if all are same)
 
 
 When having the following fact:
+
 	parent(pat,jim). 
 	parent(pam,bob). 
 	parent(bob,ann). 
@@ -78,6 +83,7 @@ When having the following fact:
 	parent(tom,bob). 
 	
 Q8. What do the follwing return:
+
 	?- parent(bob,pat).
 	?- parent(liz,pat).
 	?- parent(tom,ben).
@@ -86,6 +92,7 @@ Q8. What do the follwing return:
 	
 	
 When having the following fact:
+
 	% lectures(X, Y): person X lectures in course Y
 	lectures(turing, CSC101).
 	lectures(codd, CSC226).
@@ -111,6 +118,7 @@ When having the following fact:
 Q9a. What is the output of `studies(henry, What). `?
 
 Ans: 
+
 	?- studies(henry, What).
 	What = CSC216 ;
 	What = CSC236.
@@ -118,11 +126,13 @@ Ans:
 Q9b. Write a query which will answer the question: "What student(s) in year 2 study CSC216?" And what will the answer be?
 
 Ans: 
+
 	?- studies(Student, CSC216), year(Student, 2).
 	Student = jill ;
 	false.
 	
 Q9c. Write a rule to define the property of being in year 1 and enrolled in a course.
+
 	% year1stud(Student, Course) succeeds if Student is in year 1
 	% and Student is studying Course.
 
@@ -136,6 +146,7 @@ Ans:
 Q10. Write rules to define a bad dog. A dog is bad if it bites the postman, chews the newspaper, or chases the cat. Make up your own predicates for biting and chewing and chasing.
 
 Ans: 
+
 	bad_dog(Dog) :-
 		is_dog(Dog),
 		bites(Dog, Postman),
