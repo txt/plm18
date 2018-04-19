@@ -21,9 +21,11 @@ Ans: (A term followed by a period. No, the term must be a head)
 
 
 Q2. Which of the following is not a correct query?
+
 	?- student(Lisa, 5). 
 	?- student(Lisa, X), student(Abraham, X). 
 	?- student(Abraham, X) 
+	
 	
 Ans: (?- student(Abraham, X))
 
