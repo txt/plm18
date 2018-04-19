@@ -55,7 +55,7 @@ Q6. What is the meaning of free/bound variable?
 
 Ans: (A variable which has (not) been given a value.)
 
-Q7. In prolog, Can you have structures within structures? Give an example if yes.
+Q7. In prolog, can you have structures within structures? Give an example if yes.
 
 
 
