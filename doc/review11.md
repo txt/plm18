@@ -173,6 +173,7 @@ Ans:
    
    
 Q13. Here is the fact named "mystery"
+
 	mystery(A,B) :- 
 	mystery(A,[],B).
 	mystery([X|Y],Z,W) :- 
@@ -180,6 +181,7 @@ Q13. Here is the fact named "mystery"
 	mystery([],X,X).
 
 What's the results if we query:
+
 	?- mystery([1,2,3], A).
 
 Ans: 
