@@ -123,7 +123,7 @@ Ans:
 	What = CSC216 ;
 	What = CSC236.
 	
-Q9b. Write a query which will answer the question: "What student(s) in year 2 study CSC216?" And what will the answer be?
+Q9b. Write a query which will answer the question: `What student(s) in year 2 study CSC216?` And what will the answer be?
 
 Ans: 
 
