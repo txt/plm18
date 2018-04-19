@@ -18,25 +18,16 @@ ______
 
 Q1. What is a fact in prolog? Can the term in a fact be a variable?
 
-Ans: (A term followed by a period. No, the term must be a head)
-
-
 Q2. Which of the following is not a correct query?
 
 	?- student(Lisa, 5). 
 	?- student(Lisa, X), student(Abraham, X). 
 	?- student(Abraham, X) 
-	
-	
-Ans: (?- student(Abraham, X))
 
 
 Q3. Backtracking is basically a form of searching. Briefly describe how does prolog do backtracking?
 
-Ans: (Backtracking is a process. When a subgoal fails, the Prolog system traces its steps backwards to the previous goal and tries to resatisfy it.)
-
 Q4. Can a query be made up of more than one subgoal?
-
 
 Q5. Which of the following is not a variable? What a legal variable should be like?
 
@@ -49,14 +40,9 @@ Q5. Which of the following is not a variable? What a legal variable should be li
 	28k
 	plm_18
 	
-Ans: (A variable is written as a sequence of letters and digits, beginning with a capital letter. The underscore (_) is considered to be a capital letter.)
-	
 Q6. What is the meaning of free/bound variable?
 
-Ans: (A variable which has (not) been given a value.)
-
 Q7. In prolog, can you have structures within structures? Give an example if yes.
-
 
 
 What does the following code do?
@@ -65,16 +51,12 @@ Q8a.
 
     testone([],[]).
     testone([_|A],[_|B]) :- testone(A,B).
-	
-Ans: (test if has same length)
 
 Q8b.
 
     testtwo([]).
     testtwo([_]).
     testtwo([H,H|R]) :- testtwo([H|R]).	
-	
-Ans: (test if all are same)
 
 
 When having the following fact:
@@ -120,56 +102,20 @@ When having the following fact:
 	year(henry, 4).
 	
 Q10a. What is the output of `studies(henry, What). `?
-
-Ans: 
-
-	?- studies(henry, What).
-	What = CSC216 ;
-	What = CSC236.
 	
 Q10b. Write a query which will answer the question: `What student(s) in year 2 study CSC216?` And what will the answer be?
-
-Ans: 
-
-	?- studies(Student, CSC216), year(Student, 2).
-	Student = jill ;
-	false.
 	
 Q10c. Write a rule to define the property of being in year 1 and enrolled in a course.
 
 	% year1stud(Student, Course) succeeds if Student is in year 1
 	% and Student is studying Course.
 
-Ans: 
-	
-	year1stud(Student, Course) :-
-		year(Student, 1),
-		studies(Student, Course).	
-
 		
 Q11. Write rules to define a bad dog. A dog is bad if it bites the postman, chews the newspaper, or chases the cat. Make up your own predicates for biting and chewing and chasing.
 
-Ans: 
-
-	bad_dog(Dog) :-
-		is_dog(Dog),
-		bites(Dog, Postman),
-		is_postman(Postman).
-	bad_dog(Dog) :-
-		is_dog(Dog),
-		chews(Dog, Newspaper),
-		is_newspaper(Newspaper).
-	bad_dog(Dog) :-
-		is_dog(Dog),
-		chases(Dog, Cat),
-		is_cat(Cat).
 		
 Q12. Define a predicate sumlist(L,N) which, given a list of integers L, returns the sum N of all the elements of L.
 
-Ans: 
-
-	sumlist([],0).
-	sumlist([X|L],N) :- sumlist(L,M), N is M+X.
    
    
 Q13. Here is the fact named "mystery"
@@ -183,7 +129,3 @@ Q13. Here is the fact named "mystery"
 What's the results if we query:
 
 	?- mystery([1,2,3], A).
-
-Ans: 
-
-	A=[3,2,1]
