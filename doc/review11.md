@@ -167,6 +167,7 @@ Ans:
 Q12. Define a predicate sumlist(L,N) which, given a list of integers L, returns the sum N of all the elements of L.
 
 Ans: 
+
 	sumlist([],0).
 	sumlist([X|L],N) :- sumlist(L,M), N is M+X.
    
@@ -182,4 +183,5 @@ What's the results if we query:
 	?- mystery([1,2,3], A).
 
 Ans: 
+
 	A=[3,2,1]
