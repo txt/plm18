@@ -20,8 +20,9 @@ rprint(L) :- rprint([],L).
 rprint(Pre,X) :-
   prim(X) -> rprint1(Pre,X) | X=[A|B], rprint(Pre,A), maplist(rprint(['|   '|Pre]),B).
 
-rprint1([_|Pres],X) :-
-	forall(member(Pre,Pres), write(Pre)),
+rprint1([],X) :-  print(X), nl.
+rprint1([Pre|Pres],X) :- 
+	forall(member(B4,[Pre|Pres]), write(Pre)),
 	print(X), nl.
 
 %-----------------
