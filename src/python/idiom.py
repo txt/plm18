@@ -280,51 +280,33 @@ def zip2lines(file):
       for line in f:
         yield line.rstring('\n')
 
-def lines(str):
-  "returns an iterator"
-  def ext()  : return str[-3:]
-  def zip()  : return ext() == "zip"
-  def file() : return ext() in [".py", "csv", "txt"]
-  # --- begin main ------------------
-  if  file() : return file2lines(str)
-  elif zip() : return zip2lines(str)
-  else       : return str2lines(str)
-
-#@go
-def linesEg1():
-  for n,line in enumerate(lines("""111 
-                    222
-                    333""")):
-    print(n,"\t",line)
-
-#@go
-def linesEg2():
-  for n,line in enumerate(lines("idiom.py")):
-    print(n,"\t",line)
-
 #-----------------------------------------------------
 # csv reader
-def csv(src):
-  """kill whitespace, comments, skip blanklines, 
-     return list of cells, one per line"""
-  for line in lines(src):
-    line = re.sub(r'([\n\t\r ]|#.*)', '', line)
-    if line:
-      line= [z.strip() for z in line.split(",")]
-      if line:
-        yield  line
+def rows(src):
+  """kill whitespace, comments, skip blanklines, join lines
+     ending with ',', return list of cells, one per line"""
+  txt=""
+  for line in src:
+    txt += re.sub(r'([\n\t\r ]|#.*)', '', line)
+    if txt and txt[-1] != ",":
+      cells = txt.split(",") 
+      if cells:
+        txt = ""
+        yield cells
 
 str001="""forecast,temp,humidity, ?windy, play
           #------- ---- --------  -----  -----
           ?,     85, ?,  false, no
           sunny, 72, 95.0, false, no
           sunny, 80, 90, true,  no # comments
-          rainy, 65, 70, true,  no
+          rainy, 65, 70, 
+          true,  no
           rainy, 71, 91, true,  no
           overcast, 83, 86, false, yes
           rainy, 70, ?, false, yes
 
-          rainy, 68, 80, false, yes
+          rainy,    
+                68, 80, false, yes
           # another comment
           overcast, 64, 65, true, yes
           sunny, 69, 70, false, yes
@@ -333,10 +315,13 @@ str001="""forecast,temp,humidity, ?windy, play
           overcast, 72, 90, true, yes
           overcast, 81, 75, false, yes"""
 
-#@go
-def csvEg():
-  for cells in csv(str001):
+@go
+def rowsEg():
+  for cells in rows(str2lines(str001)):
     print(cells)
+  for cells in rows(str2lines("")):
+    print(cells)
+
 
 def thing(x):
   def sym(x): return x
@@ -378,27 +363,32 @@ print("W3> ",s["name"])
 #-----------------------------------------------------
 # columns reader
 def cols(src):
-  """ Cols have meta-knowledge. Meta-K starts life as
-      'None'. Then, when the first non empty cells shows up,
-      they are converted to 'int' or 'sym' or 'float'.
-  """
-  meta = None
-  # --- utils -----------------
-  def cols1(line,c, cell, f):
-    if line == 0   : return cell
-    if cell == "?" : return cell
-    if f           : return f(cell)
-    cell, meta[c] = thing(cell)
-    return cell 
-  # --- main ------------------
-  for line,cells in enumerate(csv(src)):
-    meta = meta or { 
-            c:None for c,cell in enumerate(cells) if cell[0] != "?" }
-    yield [ cols1(line, c, cells[c], meta[c]) for c in meta ]
+  use=None
+  for row in src:
+    use = use or [pos for pos,cell in enumerate(row) if cell[0] != "?"]
+    yield [row[pos] for pos in use]
 
-#@go
+def types(src):
+  fs = None
+  for line,row in enumerate(src):
+    def worker(pos,f):
+      cell = row[pos]
+      if   line==0 or cell[0]=="?" : return cell
+      elif f                       : return f(cell)
+      else:
+        cell, fs[pos] = thing(cell)
+        return cell
+    #- main ----- 
+    fs = fs or [None for _ in row]
+    yield [worker(pos,f) for pos,f in enumerate(fs)]
+
+def csv(src):
+  for row in types(cols(rows(src))):
+    yield row
+
+@go
 def colsEg():
-  for cells in cols(str001):
+  for cells in csv(str2lines(str001)):
     print(cells)
 
 if __name__ == "__main__": 
