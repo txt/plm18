@@ -1,0 +1,2 @@
+where="/usr/local/Cellar/gnu-smalltalk/3.2.5_4/bin"
+nice -n 1 $where/gst -qg *.st $*

@@ -1,0 +1,43 @@
+Finding Out More About Smalltalk
+	Smalltalk101
+		The famous Smalltalk cheatsheet: [1]
+		List of commonly-used methods [2]
+		A beginner's Tutorial on GST Smalltalk [3]
+
+Mailing Lists
+	General smalltalk discussion list; [4]
+	GNU Smalltalk home page [5]
+	Archive of the GNU Smalltalk discussion list [6]
+
+On-line Reference Material
+	Base class index [7]
+	Method index [8]
+	Read the source code (on the web); [9]
+	Read the source code (locally):
+		: $ locate Array.st
+		: /opt/local/share/smalltalk/kernel/Array.st
+		: /opt/local/share/smalltalk/kernel/ByteArray.st
+		: /opt/local/share/smalltalk/kernel/CharArray.st
+		: /opt/local/share/smalltalk/kernel/RunArray.st
+
+Now you can browse the raw syntax of the Smalltalk system. 
+Hint: do not edit this source code.
+
+Books
+	A truly great book on Smalltalk best practices by one of the masters [10]
+	A very advanced book on mathematical methods in Smalltalk. [11]
+	A beginner's book on GNU Smalltalk [12]
+
+Urls:
+[1] http://agent-ready.googlecode.com/svn/trunk/share/pdf/st-cheatsheet.pdf
+[2] http://agent-ready.googlecode.com/svn/trunk/share/pdf/commonMethods.pdf
+[3] http://www.cs.oswego.edu/~odendahl/manuals/smalltalk/tutorial/
+[4] http://groups.google.com/group/comp.lang.smalltalk/topics
+[5] http://smalltalk.gnu.org/
+[6] http://lists.gnu.org/archive/html/help-smalltalk/
+[7] http://www.gnu.org/software/smalltalk/manual-base/html_node/Base-classes.html#Base-classes
+[8] http://www.gnu.org/software/smalltalk/manual-libs/html_node/Method-index.html
+[9] http://git.savannah.gnu.org/gitweb/?p=smalltalk.git;a=tree;f=kernel;h=ac812ee0c778f3e13eb4423a962f9385b8e98c6d;hb=360283245fea7f65ca51c9df0c86f494adc4bc1b
+[10] http://stephane.ducasse.free.fr/FreeBooks/BestSmalltalkPractices/Draft-Smalltalk%20Best%20Practice%20Patterns%20Kent%20Beck.pdf
+[11] http://www.amazon.com/Object-Oriented-Implementation-Numerical-Methods-Introduction/dp/1558606793/ref=sr_11_1/182-7961430-6156935?ie=UTF8&qid=1234352470&sr=11-1
+[12] http://www.canol.info/books/computer_programming_using_gnu_smalltalk/computer_programming_using_gnu_smalltalk.zip 

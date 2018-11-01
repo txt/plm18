@@ -1,0 +1,60 @@
+Q0
+        Set up
+                : svn export http://unbox.org/wisp/var/timm/10/310/src/st/3/d
+                : svn add d
+                : svn commit -m "3d ready to go"
+                :
+For each of the following questions, add lines like this to "run"
+        printf "\n===== 3/d/q1 ========================\n\n"
+        cat myGrammarFilesUsedInThisExample.rules
+        cat myCodeThatAnswersThisQuestion.st
+        execute
+                : where "execute" is the "test" command shown below.
+Q1	
+	Write
+		: Add guards to the grammar. Now, when selecting if a rule applies,
+		: each rule object has a guard block. Rules are only considered for
+		: rewriting if their Heads match the current symbol being rewritten
+		: AND the guard is satisfied E.g. jane only runs with joan if their
+		: outfits are different or joan is half the age of jane.
+	Issues
+		: When to evaluate the guards? 
+			: 	Before the rule is matched, after then : rewrites happen???
+		: Adding properties to symbols
+			:  Now you need to build classes for each noun (jane, joan are
+			:  both instances of class Person) and extend the rule grammars
+			:  such that the "grammar" files can modify those properties
+		: Mapping symbols to instances
+			: How do we make the symbol "joan" become an instance of class
+			: Person? Try this trick:
+				: 1) Create a class called Noun with a instance var "name"
+				: 2) Modify initialize such that a side-effect of making a new
+				: Noun called (say) tim is the store that new instance in a
+				: class variable of Noun (a Dictionary names Nouns that maps symbols to
+				: a Noun).
+				: 3) Add a symbol/string method 
+				: 	asNoun ^Noun at: self
+				: (requires an accessor to the Nouns class variable). 
+			: BTW, in the above trick "Person" would be a subclass of Noun and
+			: the "grammar" file would need  need extra syntax to handle the
+			: definitions of the Noun properties.
+	Hints
+		: using && and ||  and not you can write guards that test arbitrarily
+		: complex combinations of Noun properties,
+		: as long as you can compile the guard string (which is
+		: something new you'd add into the grammar files- note, you'll have to
+		: change Tag.st to handle recognizing the guard strings) and you can
+		: access symbol properties.
+		: Compiling the guard string 
+			: 	 r := Rule new. Behavior evaluate: 'guard := [:x|x+1]' to: r.
+			: 	 r guard value: 10.
+			: 	 nil -> ()
+			: 	 a BlockClosure
+			: 	 11
+			: 	 st> 
+	Test
+		: Show that a grammar with Noun properties and guards can load and
+		: that the right Guards will be selected.
+		: You'll have to get imaginative with the grammar to make this a
+		: compelling example.
+
